@@ -1,0 +1,8 @@
+=================================
+2010/12/25: Version 1.0.0
+=================================
+
+- moved "Submitter" before "Answered" in the Forms (Mamba)
+- updated English translations (Mamba)
+- replaced GIF images to PNG (Mamba)
+- Original release (Mojtaba Jamali)

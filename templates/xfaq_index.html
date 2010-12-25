@@ -1,0 +1,87 @@
+<{if $topicNum > 0}>
+<div class="ui-widget ui-widget-content ui-corner-all" style="margin-top:20px; width:95%;">
+	<h4 class="ui-widget-header" align='center'>
+		<{$smarty.const._AM_XFAQ_MANAGER_TOPIC}>
+	</h4>
+	<{foreach item=topic from=$topicList}>
+		<div id="topic_topics" class="ui-widget ui-widget-content ui-corner-all" style="margin:12px; width:95%; height: 100%;">
+			<h4 id="topic_title" class="ui-widget-header">
+				<span class="ui-icon ui-icon-folder-open" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+				</span>
+				<a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>">
+					<{$topic.topic_title}>
+				</a>
+			</h4>
+			<table>
+				<tr>
+					<td width=20%>
+						<a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>">
+							<img src="<{$topic.topic_img}>" style="max-height:60px;">
+						</a>
+					</td>
+					<td>
+						<{$topic.topic_desc}>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<{/foreach}>
+</div>
+<{/if}>
+
+<{if $faqNum > 0}>
+	<div class="ui-widget ui-widget-content ui-corner-all" style="margin-top:20px; width:95%;">
+		<h4 class="ui-widget-header" align='center'>
+			<{$smarty.const._AM_XFAQ_MANAGER_FAQ}>
+		</h4>
+	<{foreach item=faq from=$faqList}>
+		<div id="faq_faqs" class="ui-widget ui-widget-content ui-corner-all" style="margin:12px; width:95%;">
+			<h4 id="faq_question" class="ui-widget-header">
+				<span id="faq_question" class="ui-icon ui-icon-help" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+				</span>
+				<{$smarty.const._AM_XFAQ_FAQ_QUESTION}>
+			</h4>
+			
+			<p>
+				<span id="faq_question" class="ui-icon ui-icon-comment" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+				</span>
+				<{$faq.faq_question}>
+			</p>
+			<h4 id="faq_answer" class="ui-widget-header">
+			<span id="faq_answer" class="ui-icon ui-icon-check" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+				</span>
+				<{$smarty.const._AM_XFAQ_FAQ_ANSWER}>
+			</h4>
+			<p>
+				<span id="faq_answer" class="ui-icon ui-icon-script" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+				</span>
+				<{$faq.faq_answer}>
+			</p>
+			
+			<h6 id="faq_note" class="ui-state-highlight">
+				<table class="ui-priority-secondary">
+					<tr>
+						<td>
+							<span id="faq_answer" class="ui-icon ui-icon-calendar" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+							</span>
+							<{$smarty.const._AM_XFAQ_FAQ_DATE_CREATED}> : <{$faq.faq_date_created}>
+						</td>
+						<td>
+							<span id="faq_answer" class="ui-icon ui-icon-person" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+							</span>
+							<{$smarty.const._AM_XFAQ_FAQ_SUBMITTER}> : 
+							<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_submitterId}>"><{$faq.faq_submitter}></a>
+						</td>
+						<td>
+							<span id="faq_answer" class="ui-icon ui-icon-person" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
+							</span>
+							<{$smarty.const._AM_XFAQ_FAQ_ANSUSER}> : 
+							<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_ansUserId}>"><{$faq.faq_ansUser}></a>
+						</td>
+					</tr>
+				</table>
+			</h6>
+		</div>
+	<{/foreach}>
+	</div>
+<{/if}>
