@@ -66,6 +66,7 @@ define("_AM_XFAQ_TOPIC_ONLINE","Online");
 define("_AM_XFAQ_FAQ_NO_TOPIC","No topic exist for you to add questions.");
 
 define("_AM_XFAQ_FAQ_ADD","Add new FAQ");
+define("_AM_XFAQ_FAQ_PRIVACY","Add Priacy FAQ");
 define("_AM_XFAQ_FAQ_EDIT","Edit Question");
 define("_AM_XFAQ_FAQ_DELETE","Delete Question");
 define("_AM_XFAQ_FAQ_ID","Id");
@@ -73,7 +74,12 @@ define("_AM_XFAQ_FAQ_QUESTION","Question");
 define("_AM_XFAQ_FAQ_ANSWER","Answer");
 define("_AM_XFAQ_FAQ_TOPIC","Topic");
 define("_AM_XFAQ_FAQ_URL","URL");
-define("_AM_XFAQ_FAQ_OPEN","Open");
+define("_AM_XFAQ_FAQ_OPEN","status");
+define("_AM_XFAQ_FAQ_OPEN1","Asked");
+define("_AM_XFAQ_FAQ_OPEN2","Answered - close");
+define("_AM_XFAQ_FAQ_OPEN3","Answered - Open");
+define("_AM_XFAQ_FAQ_OPEN4","Privacy");
+define("_AM_XFAQ_FAQ_OPEN5","Answered by users");
 define("_AM_XFAQ_FAQ_ANSUSER","Answered");
 define("_AM_XFAQ_FAQ_SUBMITTER","Submitted");
 define("_AM_XFAQ_FAQ_DATE_CREATED","Date created");
@@ -81,6 +87,12 @@ define("_AM_XFAQ_FAQ_ONLINE","Online");
 define("_AM_XFAQ_FAQ_USER_FAQ","Your FAQs");
 define("_AM_XFAQ_FAQ_USER_FAQ","You don't have permission to access this area.<br/>Please login!");
 define("_AM_XFAQ_FAQ_NO_ANSWER","There are no answer for this question until now!");
+define("_AM_XFAQ_FAQ_DATE_ANSWER","Date answered");
+define("_AM_XFAQ_FAQ_WEIGHT","Weight");
+define("_AM_XFAQ_FAQ_METAKEY","Meta Keywords");
+define("_AM_XFAQ_FAQ_METADESC","Meta Description");
+define("_AM_XFAQ_FAQ_HOWDOI","How do I");
+define("_AM_XFAQ_FAQ_DIDUNO","Did You Know?");	
 
 //Blocks.php
 define("_AM_XFAQ_TOPIC_BLOCK_DAY","Today's Topics");

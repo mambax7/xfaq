@@ -21,13 +21,33 @@
  * Version : 1.00:
  * ****************************************************************************
  */
- 
+
+//User menu
+define("_MI_XFAQ_REQUEST","Add Question");
+define("_MI_XFAQ_REQUEST_PRIVACY","Add Privacy Question");
+define("_MI_XFAQ_USER_ASKEDFAQ","My Asked Questions");
+define("_MI_XFAQ_USER_ANSWEREDFAQ","My Answered Questions");
+define("_MI_XFAQ_USER_ANSWERED","Answered questions");
+
 //Config
 define("_MI_XFAQ_EDITOR","Editor");
-define("_MI_XFAQ_REQUEST","Add Question");
-define("_MI_XFAQ_USER_FAQ","My Questions");
-//define("_MI_XFAQ_","");
+define("_MI_XFAQ_USE_TAG", "Use TAG module to generate tags");
+define("_MI_XFAQ_USE_TAG_DSC", "You have to install TAG module in order to use this option");
+define("_MI_XFAQ_IMG_SIZE","Image size");
+define("_MI_XFAQ_IMG_SIZE_DESC","Max size for topic image size");
+define("_MI_XFAQ_IMG_MIMETYPES","Image mimetypes");
+define("_MI_XFAQ_IMG_MIMETYPES_DESC","Mimetypes for topic image");
+define("_MI_XFAQ_NUMCOLUME","Number of colume");
+define("_MI_XFAQ_NUMCOLUME_DESC","Number of colume in each topic");
+define("_MI_XFAQ_PERPAGE","FAQ per page");
+define("_MI_XFAQ_PERPAGEEDSC","Number of FAQs in each page in user side");
+define("_MI_XFAQ_PERADMIN","FAQ per admin page");
+define("_MI_XFAQ_PERADMINEDSC","Number of FAQs in each page in admin side");
+define("_MI_XFAQ_TOPICPERADMIN","Topic per admin page");
+define("_MI_XFAQ_TOPICPERADMINEDSC","Number of Topics in each page in admin side");
 
+
+//Menu
 define("_AM_XFAQ_MANAGER_INDEX","List");
 define("_AM_XFAQ_MANAGER_ABOUT","About");
 define("_AM_XFAQ_MANAGER_PREFERENCES","Preferences");

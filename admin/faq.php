@@ -55,7 +55,7 @@ switch ($op)
         } else {
            $obj =& $faqHandler->create();
         }
-		$obj->setVar("faq_question", $_REQUEST["faq_question"]);
+		   $obj->setVar("faq_question", $_REQUEST["faq_question"]);
 			$obj->setVar("faq_answer", $_REQUEST["faq_answer"]);
 			$obj->setVar("faq_topic", $_REQUEST["faq_topic"]);
 			$obj->setVar("faq_url", $_REQUEST["faq_url"]);
@@ -66,13 +66,20 @@ switch ($op)
 			$online = ($_REQUEST["faq_online"] == 1) ? "1" : "0";
 			$obj->setVar("faq_online", $online);
 			
-		
-        if ($faqHandler->insert($obj)) {
-           redirect_header("faq.php?op=show_list_faq", 2, _AM_XFAQ_FORMOK);
-        }
-        //include_once("../include/forms.php");
-        echo $obj->getHtmlErrors();
-        $form =& $obj->getForm();
+         if ($faqHandler->insert($obj)) {
+	         if (($xoopsModuleConfig['xfaqtag'] == 1) and (is_dir('../../tag'))){
+	            if (isset($_REQUEST["faq_id"])) {
+	                $faq_id = $_REQUEST['faq_id'];
+	            }else{
+	                $faq_id = $obj->get_new_enreg();
+	            }
+				   $tag_handler = xoops_getmodulehandler('tag', 'tag');
+					$tag_handler->updateByItem($_POST["item_tag"], $faq_id , $xoopsModule->getVar("dirname"), $catid = 0);
+			   }
+	         redirect_header("faq.php?op=show_list_faq", 2, _AM_XFAQ_FORMOK);
+         }
+         echo $obj->getHtmlErrors();
+         $form =& $obj->getForm();
 	break;
 	
 	case "edit_faq":
@@ -115,19 +122,60 @@ switch ($op)
 
 		$criteria = new CriteriaCompo();
 		$criteria->setSort("faq_id");
-		$criteria->setOrder("ASC");
+		$criteria->setOrder("DESC");
 		$numrows = $faqHandler->getCount();
 		$faq_arr = $faqHandler->getall($criteria);
 		
 		//Affichage du tableau
 		if ($numrows>0) 
-		{			
+		{		
+		
+             /**
+				 * start pagenav setting 
+				 * get information for limit by $_REQUEST['limit']
+				 * get information for start by $_REQUEST['start']
+				 */ 
+				 
+				 // get limited information
+		       if (isset($_REQUEST['limit'])) {
+			        $criteria->setLimit($_REQUEST['limit']);
+			        $limit = $_REQUEST['limit'];
+			    } else {
+			        $criteria->setLimit($xoopsModuleConfig['itemperadmin']);
+			        $limit = $xoopsModuleConfig['itemperadmin'];
+			    }
+			    
+			    // get start information
+		       if (isset($_REQUEST['start'])) {
+		        $criteria->setStart($_REQUEST['start']);
+		        $start = $_REQUEST['start'];
+			    } else {
+		        $criteria->setStart(0);
+		        $start = 0;
+			    }
+		       
+		       // make pagenav tolbar
+			    $faq_arr = $faqHandler->getall($criteria);
+			    if ( $numrows > $limit ) {
+			        $pagenav = new XoopsPageNav($numrows, $limit, $start, 'start', 'limit=' . $limit);
+			        $pagenav = $pagenav->renderNav(4);
+			    } else {
+			        $pagenav = '';
+			    }
+			    
+			    echo $pagenav;	
+				 
+				 /**
+				 * end pagenav setting 
+				 */		
+		
+			
 			echo "<table width=\"100%\" cellspacing=\"1\" class=\"outer\">
 				<tr>
-					<th align=\"center\">"._AM_XFAQ_FAQ_QUESTION."</th>
+					   <th align=\"center\">"._AM_XFAQ_FAQ_ID."</th>
+					   <th align=\"center\">"._AM_XFAQ_FAQ_QUESTION."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_ANSWER."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_TOPIC."</th>
-						<th align=\"center\">"._AM_XFAQ_FAQ_URL."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_OPEN."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_SUBMITTER."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_ANSUSER."</th>
@@ -143,12 +191,12 @@ switch ($op)
 			{
 				echo "<tr class=\"".$class."\">";
 				$class = ($class == "even") ? "odd" : "even";
-				echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_question")."</td>";	
+				   echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_id")."</td>";	
+				   echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_question")."</td>";	
 					echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_answer")."</td>";	
 					$faq1 = $topicHandler->get($faq_arr[$i]->getVar("faq_topic"));
 					$faq_topic1 = $faq1->getVar("topic_title");
 					echo "<td align=\"center\">".$faq_topic1."</td>";	
-					echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_url")."</td>";	
 					echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_open")."</td>";	
 					echo "<td align=\"center\">".XoopsUser::getUnameFromId($faq_arr[$i]->getVar("faq_submitter"),"S")."</td>";	
 					echo "<td align=\"center\">".XoopsUser::getUnameFromId($faq_arr[$i]->getVar("faq_ansUser"),"S")."</td>";	

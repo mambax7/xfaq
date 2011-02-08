@@ -145,16 +145,56 @@ switch ($op)
 
 		$criteria = new CriteriaCompo();
 		$criteria->setSort("topic_id");
-		$criteria->setOrder("ASC");
+		$criteria->setOrder("DESC");
 		$numrows = $topicHandler->getCount();
 		$topic_arr = $topicHandler->getall($criteria);
 		
 		//Affichage du tableau
 		if ($numrows>0) 
-		{			
+		{	
+		
+						 /**
+				 * start pagenav setting 
+				 * get information for limit by $_REQUEST['limit']
+				 * get information for start by $_REQUEST['start']
+				 */ 
+				 
+				 // get limited information
+		       if (isset($_REQUEST['limit'])) {
+			        $criteria->setLimit($_REQUEST['limit']);
+			        $limit = $_REQUEST['limit'];
+			    } else {
+			        $criteria->setLimit($xoopsModuleConfig['topicperadmin']);
+			        $limit = $xoopsModuleConfig['topicperadmin'];
+			    }
+			    
+			    // get start information
+		       if (isset($_REQUEST['start'])) {
+		        $criteria->setStart($_REQUEST['start']);
+		        $start = $_REQUEST['start'];
+			    } else {
+		        $criteria->setStart(0);
+		        $start = 0;
+			    }
+		       
+		       // make pagenav tolbar
+			    $topic_arr = $topicHandler->getall($criteria);
+			    if ( $numrows > $limit ) {
+			        $pagenav = new XoopsPageNav($numrows, $limit, $start, 'start', 'limit=' . $limit);
+			        $pagenav = $pagenav->renderNav(4);
+			    } else {
+			        $pagenav = '';
+			    }
+			    
+			    echo $pagenav;	
+				 
+				 /**
+				 * end pagenav setting 
+				 */			
 			echo "<table width=\"100%\" cellspacing=\"1\" class=\"outer\">
 				<tr>
-					<th align=\"center\">"._AM_XFAQ_TOPIC_TITLE."</th>
+					   <th align=\"center\">"._AM_XFAQ_TOPIC_ID."</th>
+					   <th align=\"center\">"._AM_XFAQ_TOPIC_TITLE."</th>
 						<th align=\"center\">"._AM_XFAQ_TOPIC_DESC."</th>
 						<th align=\"center\">"._AM_XFAQ_TOPIC_IMG."</th>
 						<th align=\"center\">"._AM_XFAQ_TOPIC_WEIGHT."</th>
@@ -169,7 +209,8 @@ switch ($op)
 			{
 				echo "<tr class=\"".$class."\">";
 				$class = ($class == "even") ? "odd" : "even";
-				echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_title")."</td>";	
+				   echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_id")."</td>";
+				   echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_title")."</td>";	
 					echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_desc")."</td>";	
 					echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_img")."</td>";	
 					echo "<td align=\"center\">".$topic_arr[$i]->getVar("topic_weight")."</td>";	

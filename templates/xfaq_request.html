@@ -1,93 +1,75 @@
-<{$requestForm}>
+<{if $requestForm}>
+request Form help
+<{/if}>
 
-
+<{if $privacyForm}>
+privacy Form help
+<{/if}>
 
 <{if $faqNum > 0}>
-	<div class="ui-widget ui-widget-content ui-corner-all  ui-helper-clearfix" style="margin-top:20px; width:95%;">
-		<h4 class="ui-widget-header" align='center'>
-			<{$smarty.const._AM_XFAQ_FAQ_USER_FAQ}>
-		</h4>
+	<div><{$smarty.const._AM_XFAQ_FAQ_USER_FAQ}></div>
+	
 	<{foreach item=faq from=$faqList}>
-		<div id="faq_faqs" class="ui-widget ui-widget-content ui-corner-all" style="margin:12px; width:95%;">
-			<h4 id="faq_question" class="ui-widget-header">			
-			<table>
-				<tr>
-					<td>
-						<span id="faq_question" class="ui-icon ui-icon-help" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;"></span>
-					</td>
-					<td>
-						<{$smarty.const._AM_XFAQ_FAQ_QUESTION}>
-					</td>
-					<td>
-						<a href="<{$xoops_url}>/modules/xfaq/request.php?op=edit_faq&faq_id=<{$faq.faq_id}>">
-							<span id="faq_question" class="ui-icon ui-icon-pencil" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;"  title="<{$smarty.const._AM_XFAQ_FAQ_EDIT}>"></span>
-						</a>
-					</td>
-					<td>
-						<a href="<{$xoops_url}>/modules/xfaq/request.php?op=delete_faq&faq_id=<{$faq.faq_id}>">
-							<span id="faq_question" class="ui-icon ui-icon-trash" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;" title="<{$smarty.const._AM_XFAQ_FAQ_DELETE}>"></span>
-						</a>
-					</td>
-					<td>
-						<a class="ui-priority-secondary" href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$faq.faq_topicId}>">
-							<span id="faq_answer" class="ui-icon ui-icon-folder-open" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-							</span>
-						</a>
-					</td>
-				</tr>
-			</table>
-			</h4>
-			<p>
-				<span id="faq_question" class="ui-icon ui-icon-comment" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-				</span>
-				<{$faq.faq_question}>
-			</p>
-			<h4 id="faq_answer" class="ui-widget-header">
-			<span id="faq_answer" class="ui-icon ui-icon-check" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-				</span>
-				<{$smarty.const._AM_XFAQ_FAQ_ANSWER}>
-			</h4>
-			<{if $faq.faq_answer == ''}>
-				<div class="ui-state-error ui-corner-all">
-					<p class="ui-state-error-text">
-						<span id="faq_answer" class="ui-icon ui-icon-notice" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-						</span>
-						<{$smarty.const._AM_XFAQ_FAQ_NO_ANSWER}>
-					</a>
-				</div>
-			<{else}>
-			<p>
-				<span id="faq_answer" class="ui-icon ui-icon-script" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-				</span>
-				<{$faq.faq_answer}>
-			</p>
-			<{/if}>
-			<h6 id="faq_note" class="ui-state-highlight">
-				<table class="ui-priority-secondary">
-					<tr>
-						<td>
-							<span id="faq_answer" class="ui-icon ui-icon-calendar" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-							</span>
-							<{$smarty.const._AM_XFAQ_FAQ_DATE_CREATED}>: <{$faq.faq_date_created}>
-						</td>
-						<td>
-							<span id="faq_answer" class="ui-icon ui-icon-person" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-							</span>
-							<{$smarty.const._AM_XFAQ_FAQ_SUBMITTER}>: 
-							<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_submitterId}>"><{$faq.faq_submitter}></a>
-						</td>
-						<{if $faq.faq_ansUserId != 0}>
-						<td>
-							<span id="faq_answer" class="ui-icon ui-icon-person" style="margin: 0 2px 0 2px; float:<{$direct_lang}>;">
-							</span>
-							<{$smarty.const._AM_XFAQ_FAQ_ANSUSER}>: 
-							<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_ansUserId}>"><{$faq.faq_ansUser}></a>
-						</td>
-						<{/if}>
-					</tr>
-				</table>
-			</h6>
-		</div>
-	<{/foreach}>
+   <div>
+
+   <div>
+	<{$smarty.const._AM_XFAQ_FAQ_QUESTION}> : <{$faq.faq_question}>					
+	<a href="<{$xoops_url}>/modules/xfaq/request.php?op=edit_faq&faq_id=<{$faq.faq_id}>"><{$smarty.const._AM_XFAQ_FAQ_EDIT}></a>
+	<a href="<{$xoops_url}>/modules/xfaq/request.php?op=delete_faq&faq_id=<{$faq.faq_id}>"><{$smarty.const._AM_XFAQ_FAQ_DELETE}></a>
+	<a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$faq.faq_topicId}>">a</a>
+   </div>
+   
+	<div>
+	<{$smarty.const._AM_XFAQ_FAQ_ANSWER}> : 
+	<{if $faq.faq_answer == ''}>
+		<{$smarty.const._AM_XFAQ_FAQ_NO_ANSWER}>
+	<{else}>
+		<{$faq.faq_answer}>
+	<{/if}>
 	</div>
+			
+	<div>
+	<{$smarty.const._AM_XFAQ_FAQ_DATE_CREATED}>: <{$faq.faq_date_created}>
+	<{$smarty.const._AM_XFAQ_FAQ_SUBMITTER}>: <a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_submitterId}>"><{$faq.faq_submitter}></a>
+	<{if $faq.faq_ansUserId != 0}>
+		<{$smarty.const._AM_XFAQ_FAQ_ANSUSER}>: 
+		<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_ansUserId}>"><{$faq.faq_ansUser}></a>
+	<{/if}>
+	</div>	
+	
+	</div>
+	<{/foreach}>
+<{/if}>
+
+
+<{if $answeredNum > 0}>
+	<{foreach item=faq from=$answeredList}>
+   <div>
+
+   <div>
+	<{$smarty.const._AM_XFAQ_FAQ_QUESTION}> : <{$faq.faq_question}>					
+	<a href="<{$xoops_url}>/modules/xfaq/request.php?op=answere_faq&faq_id=<{$faq.faq_id}>"><{$smarty.const._AM_XFAQ_FAQ_ANSWER}></a>
+	<a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$faq.faq_topicId}>">a</a>
+   </div>
+   
+	<div>
+	<{$smarty.const._AM_XFAQ_FAQ_ANSWER}> : 
+	<{if $faq.faq_answer == ''}>
+		<{$smarty.const._AM_XFAQ_FAQ_NO_ANSWER}>
+	<{else}>
+		<{$faq.faq_answer}>
+	<{/if}>
+	</div>
+			
+	<div>
+	<{$smarty.const._AM_XFAQ_FAQ_DATE_CREATED}>: <{$faq.faq_date_created}>
+	<{$smarty.const._AM_XFAQ_FAQ_SUBMITTER}>: <a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_submitterId}>"><{$faq.faq_submitter}></a>
+	<{if $faq.faq_ansUserId != 0}>
+		<{$smarty.const._AM_XFAQ_FAQ_ANSUSER}>: 
+		<a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_ansUserId}>"><{$faq.faq_ansUser}></a>
+	<{/if}>
+	</div>	
+	
+	</div>
+	<{/foreach}>
 <{/if}>

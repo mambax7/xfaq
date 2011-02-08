@@ -49,4 +49,5 @@ function XFAQ_MygetItemIds($permtype,$dirname)
     return $categories;
 }
 
+
 ?>
