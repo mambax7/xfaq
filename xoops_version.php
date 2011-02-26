@@ -48,7 +48,7 @@
 	
 	// Admin things
 	$modversion["hasAdmin"] = 1;
-	
+	$modversion['system_menu'] = 1;
 	$modversion["adminindex"] = "admin/index.php";
 	$modversion["adminmenu"] = "admin/menu.php";
 	

@@ -28,13 +28,6 @@ xoops_cp_header();
 
 global $xoopsModule;
 
-//Apelle du menu admin
-if ( !is_readable(XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php"))	{
-xfaq_adminmenu(0, _AM_XFAQ_MANAGER_INDEX);
-} else {
-include_once XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php";
-loadModuleAdminMenu (0, _AM_XFAQ_MANAGER_INDEX);
-}
 
 	//compte "total"
 	$count_topic = $topicHandler->getCount();

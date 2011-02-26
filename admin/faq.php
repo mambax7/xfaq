@@ -32,18 +32,6 @@ if (isset($_REQUEST["op"])) {
 	@$op = "show_list_faq";
 }
 
-//Menu admin
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php") ) {
-xfaq_adminmenu(2, _AM_XFAQ_MANAGER_FAQ);
-} else {
-include_once XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php";
-loadModuleAdminMenu (2, _AM_XFAQ_MANAGER_FAQ);
-}
-
-//Sous menu
-echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/faq.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\">
-		<strong>"._AM_XFAQ_MANAGER_FAQ."</strong>
-	</div><br /><br>";
 switch ($op) 
 {	
 	case "save_faq":
@@ -55,13 +43,9 @@ switch ($op)
         } else {
            $obj =& $faqHandler->create();
         }
-		   $obj->setVar("faq_question", $_REQUEST["faq_question"]);
-			$obj->setVar("faq_answer", $_REQUEST["faq_answer"]);
-			$obj->setVar("faq_topic", $_REQUEST["faq_topic"]);
-			$obj->setVar("faq_url", $_REQUEST["faq_url"]);
-			$obj->setVar("faq_open", $_REQUEST["faq_open"]);
-			$obj->setVar("faq_submitter", $_REQUEST["faq_submitter"]);
-			$obj->setVar("faq_ansUser", $_REQUEST["faq_ansUser"]);
+        
+         $obj->setVars($_REQUEST);
+
 			$obj->setVar("faq_date_created", strtotime($_REQUEST["faq_date_created"]));
 			$online = ($_REQUEST["faq_online"] == 1) ? "1" : "0";
 			$obj->setVar("faq_online", $online);

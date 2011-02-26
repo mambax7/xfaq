@@ -26,29 +26,6 @@ include_once("./header.php");
 
 xoops_cp_header();
 
-if ( !is_readable(XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php"))	{
-xfaq_adminmenu(4, _AM_XFAQ_MANAGER_ABOUT);
-
-echo "<style>
-.CPbigTitle{
-	font-size: 20px;
-	color: #1E90FF;
-	background: no-repeat left top;
-	font-weight: bold;
-	height: 40px;
-	vertical-align: middle;
-	padding: 10px 0 0 50px;
-	border-bottom: 3px solid #1E90FF;
-}
-</style>";
-} else {
-include_once XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php";
-loadModuleAdminMenu (4, _AM_XFAQ_MANAGER_ABOUT);
-}
-
-//menu
-echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/about.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\"><strong>"._AM_XFAQ_MANAGER_ABOUT."</strong>
-</div><br />";
 
 $versioninfo =& $module_handler->get( $xoopsModule->getVar("mid") );
 

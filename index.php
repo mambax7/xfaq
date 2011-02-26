@@ -26,7 +26,7 @@ include "../../mainfile.php";
 $xoopsOption['template_main'] = 'xfaq_index.html';
 include_once XOOPS_ROOT_PATH."/header.php";
 include_once "header.php";
-$xoTheme->addStylesheet ( 'modules/xfaq/css/cupertino/jquery-ui-1.8.1.custom.css', array ('media' => 'screen' ) );
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 
 // pour les permissions
 $access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
@@ -118,6 +118,8 @@ $topic_arr = $topicHandler->getall($criteria);
 				$list[$i]['faq_submitter'] = XoopsUser::getUnameFromId($faq_arr[$i]->getVar("faq_submitter"));
 				$list[$i]['faq_submitterId'] = $faq_arr[$i]->getVar("faq_submitter");
 				$list[$i]['faq_date_created'] = formatTimestamp($faq_arr[$i]->getVar("faq_date_created"),"Y-m-d");
+				$list[$i]['faq_howdoi'] = $faq_arr[$i]->getVar("faq_howdoi");
+				$list[$i]['faq_diduno'] = $faq_arr[$i]->getVar("faq_diduno");
 			}
 		}
 $xoopsTpl->assign('faqList',$list);

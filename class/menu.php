@@ -3,8 +3,8 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * fleet - MODULE FOR XOOPS AND IMPRESS CMS
- * Copyright (c) Mojtaba Jamali ()
+ * test - MODULE FOR XOOPS AND IMPRESS CMS
+ * Copyright (c) Mamba (www.xoops.org)
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -13,10 +13,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Mojtaba Jamali ()
- * @license         Dolphin
- * @package         fleet
- * @author 			Mojtaba Jamali ()
+ * @copyright       Mamba (www.xoops.org)
+ * @license         GPL
+ * @package         test
+ * @author 			Mamba (www.xoops.org)
  *
  * Version : 1.00:
  * ****************************************************************************
@@ -125,11 +125,14 @@ class xfaqMenu
 				padding: 2px 5px 1px 5px;
 				margin: 3px;
 				color: $this->FontColor;
+
 				background-color: #f0f0f0;
                 -moz-border-radius: 6px;
 	            -webkit-border-radius: 6px;
 	            -khtml-border-radius: 6px;
 	             border-radius: 6px;
+
+
 			}
 			div.rmmenuicon img { margin-top: 8px; margin-bottom: 8px; }
 			div.rmmenuicon a span {
@@ -147,10 +150,6 @@ class xfaqMenu
 				background-color: $this->OverBgColor;
 				border: ".$this->BorderWidth."px $this->BorderStyle $this->OverBorderColor;
 				color: $this->OverFontColor;
-				border-left: 1px solid #eee;
-	            border-top: 1px solid #eee;
-	            border-right: 1px solid #ccc;
-	            border-bottom: 1px solid #ccc;
 			}
 			div.rmmenuicon a:hover span{
 				text-decoration: $this->OverFontDeco;
@@ -158,7 +157,8 @@ class xfaqMenu
 			div.rmmenuicon a:hover span.uno{
 				text-decoration: $this->OverFontExtraDeco;
 				color: $this->OverFontExtraColor;
-}
+			}
+
 			div.hometitle{
 			    color: #333;
 			    font-size: 18px;
@@ -184,6 +184,8 @@ class xfaqMenu
 	            padding: 10px 0 0 40px;
 	            border-bottom: 3px solid #393e41;
 			}";
+
+
 		if ($ws) $csscode .= "\n-->\n</style>";
 		return $csscode;
 	}

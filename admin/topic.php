@@ -32,18 +32,6 @@ if (isset($_REQUEST["op"])) {
 	@$op = "show_list_topic";
 }
 
-//Menu admin
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php") ) {
-xfaq_adminmenu(1, _AM_XFAQ_MANAGER_TOPIC);
-} else {
-include_once XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php";
-loadModuleAdminMenu (1, _AM_XFAQ_MANAGER_TOPIC);
-}
-
-//Sous menu
-echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/topic.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\">
-		<strong>"._AM_XFAQ_MANAGER_TOPIC."</strong>
-	</div><br /><br>";
 switch ($op) 
 {	
 	case "save_topic":

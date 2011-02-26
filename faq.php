@@ -25,8 +25,7 @@ include "../../mainfile.php";
 $xoopsOption['template_main'] = 'xfaq_faq.html';
 include_once XOOPS_ROOT_PATH."/header.php";
 include_once "header.php";
-$xoTheme->addStylesheet ( 'modules/xfaq/css/cupertino/jquery-ui-1.8.1.custom.css', array ('media' => 'screen' ) );
-
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 $faq_id = XFAQ_CleanVars($_REQUEST, 'faq_id', 0, 'int');
 $view_faq = $faqHandler->get($faq_id);
 
@@ -44,6 +43,8 @@ if (count($view_faq) == 0 || $view_faq->getVar('faq_online') == 0){
 	$xoopsTpl->assign('submittername' , XoopsUser::getUnameFromId($view_faq->getVar("faq_submitter")));
 	$xoopsTpl->assign('submitterid' , $view_faq->getVar("faq_submitter"));
 	$xoopsTpl->assign('datecreated' , formatTimestamp($view_faq->getVar("faq_date_created"),"Y-m-d"));
+	$xoopsTpl->assign('howdoi' , $view_faq->getVar("faq_howdoi"));
+	$xoopsTpl->assign('diduno' , $view_faq->getVar("faq_diduno"));
 
 
 // tags

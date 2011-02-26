@@ -33,17 +33,6 @@ xoops_cp_header();
 
 global $xoopsDB;
 
-if ( !is_readable(XOOPS_ROOT_PATH . "/Frameworks/art/functions.admin.php"))	{
-xfaq_adminmenu(3,_AM_XFAQ_MANAGER_PERMISSIONS);
-} else {
-include_once XOOPS_ROOT_PATH."/Frameworks/art/functions.admin.php";
-loadModuleAdminMenu (3,_AM_XFAQ_MANAGER_PERMISSIONS);
-}
-
-//menu
-echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/permissions.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\">
-		<strong>"._AM_XFAQ_MANAGER_PERMISSIONS."</strong>
-	</div><br />";
 
 	$permtoset= isset($_POST["permtoset"]) ? intval($_POST["permtoset"]) : 1;
 	$selected=array("","","");

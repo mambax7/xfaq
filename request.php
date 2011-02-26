@@ -27,7 +27,7 @@ $xoopsOption['template_main'] = 'xfaq_request.html';
 include_once XOOPS_ROOT_PATH."/header.php";
 include_once "header.php";
 
-$xoTheme->addStylesheet ( 'modules/xfaq/css/cupertino/jquery-ui-1.8.1.custom.css', array ('media' => 'screen' ) );
+$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 $obj =& $faqHandler->create();
 
 if (isset($_REQUEST["op"])) {

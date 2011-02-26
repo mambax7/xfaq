@@ -1,12 +1,18 @@
+<div class="xfaq">
+
 <{if $topicNum > 0}>
 	
 	<div><{$smarty.const._AM_XFAQ_MANAGER_TOPIC}></div>
 	<{foreach item=topic from=$topicList}>
-   <div>
-   <a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>"><{$topic.topic_title}></a>
-   <a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>"><img src="<{$topic.topic_img}>"></a>
-   <{$topic.topic_desc}>
-   </div>
+	   <div class="pad5 marg5 ui-widget-content ui-corner-all">
+		   <div class="pad5 marg5 ui-widget-header ui-corner-all"><a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>"><{$topic.topic_title}></a></div>
+		   <div class="pad5 marg5 ui-widget-content ui-corner-all">
+		      <{if $topic.topic_img}>
+				<a class="left content_img ui-state-highlight pad5 ui-corner-all" href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$topic.topic_id}>"><img src="<{$xoops_url}>/uploads/xfaq/topic/topic_img/<{$topic.topic_img}>"></a>
+	         <{/if}>
+	         <{$topic.topic_desc}>
+		   </div>
+	   </div>
 	<{/foreach}>
 
 	
@@ -14,18 +20,30 @@
 
 <{if $faqNum > 0}>
 	<{if $faqpagenav != ''}>
-	<div><{$faqpagenav}></div>
+	<div class="pagenav"><{$faqpagenav}></div>
 	<{/if}>
 
 	<div><{$smarty.const._AM_XFAQ_MANAGER_FAQ}></div>
 	<{foreach item=faq from=$faqList}>
-   <div>
-   <{$smarty.const._AM_XFAQ_FAQ_QUESTION}>
-   <a href="<{$xoops_url}>/modules/xfaq/faq.php?faq_id=<{$faq.faq_id}>"><{$faq.faq_question}></a>   
+   <div class="pad5 marg5 ui-widget-content ui-corner-all">
+	   <div class="pad5 marg5 ui-widget-header ui-corner-all">
+		    <{$smarty.const._AM_XFAQ_FAQ_QUESTION}> : 
+			 <a href="<{$xoops_url}>/modules/xfaq/faq.php?faq_id=<{$faq.faq_id}>"><{$faq.faq_question}></a>  
+	   </div> 
+	   <div class="pad5 marg5 ui-widget-content ui-corner-all">
+		   <p><{$smarty.const._AM_XFAQ_FAQ_HOWDOI}> : <{$faq.faq_howdoi}></p>
+		   <p><{$smarty.const._AM_XFAQ_FAQ_DIDUNO}> <{$faq.faq_diduno}></p>
+	   </div>
+	   <div class="pad5 marg5 ui-state-default ui-corner-all">
+	   <span><a href="<{$xoops_url}>/userinfo.php?uid=<{$faq.faq_submitterId}>"><{$faq.faq_submitter}></a></span>
+	   <span><{$faq.faq_date_created}></span>
+	   </div>
    </div>
 	<{/foreach}>
 
 	<{if $faqpagenav != ''}>
-	<div><{$faqpagenav}></div>
+	<div class="pagenav"><{$faqpagenav}></div>
 	<{/if}>
 <{/if}>
+
+</div>
