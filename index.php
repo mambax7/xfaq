@@ -59,10 +59,11 @@ $topic_arr = $topicHandler->getall($criteria);
 	$criteria = new CriteriaCompo();
 	$criteria->setSort("faq_id");
 	$criteria->setOrder("DESC");
-	$criteria->add(new Criteria('faq_online','1','='));
-	$criteria->add(new Criteria('faq_open','1','='));
+	$criteria->add(new Criteria('faq_online','1'));
+	$criteria->add(new Criteria('faq_open','2'));
+	$criteria->add(new Criteria('faq_open','3'), 'OR');
 	$cid = (isset($_GET['cid']))? intval($_GET['cid']):0;
-	$criteria->add(new Criteria('faq_topic', $cid ,'='));
+	$criteria->add(new Criteria('faq_topic', $cid));
 	$numrows = $faqHandler->getCount($criteria);
 	$faq_arr = $faqHandler->getall($criteria);
 	if ($numrows>0) 

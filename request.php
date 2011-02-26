@@ -63,7 +63,7 @@ switch ($op)
 			$obj->setVar("faq_question", $_REQUEST["faq_question"]);
 			$obj->setVar("faq_topic", $_REQUEST["faq_topic"]);
 			$obj->setVar("faq_submitter", $userId);
-			$obj->setVar("faq_date_created", strtotime(time()));
+			$obj->setVar("faq_date_created", time());
 			$obj->setVar("faq_open", $_REQUEST["faq_open"]);
 
          if($_REQUEST["faq_answer"]){
