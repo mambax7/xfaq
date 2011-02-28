@@ -9,10 +9,15 @@
 			<p><{$url}></p>
 		</div>
 	
-		<div class="pad5 marg5 ui-state-default ui-corner-all">
-		   <span><a href="<{$xoops_url}>/userinfo.php?uid=<{$submitterid}>"><{$submittername}></a></span>
-		   <span><a href="<{$xoops_url}>/userinfo.php?uid=<{$ansuserid}>"><{$ansusername}></a></span>
-	   </div>
+	   <div class="pad5 marg5 ui-state-default ui-corner-all">
+		<{$smarty.const._AM_XFAQ_FAQ_DATE_CREATED}>: <{$datecreated}>
+		<{$smarty.const._AM_XFAQ_FAQ_SUBMITTER}>: <a href="<{$xoops_url}>/userinfo.php?uid=<{$submitterid}>"><{$submittername}></a>
+		<{if $ansuserid != 0}>
+			<{$smarty.const._AM_XFAQ_FAQ_ANSUSER}>: 
+			<a href="<{$xoops_url}>/userinfo.php?uid=<{$ansuserid}>"><{$ansusername}></a>
+		<{/if}>
+		</div>	
+		
 	   
 		<{if $tags}>
 		<div><{include file="db:tag_bar.html"}></div>

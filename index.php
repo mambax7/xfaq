@@ -33,8 +33,8 @@ $access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
 $criteria = new CriteriaCompo();
 $criteria->add(new Criteria('topic_id', '(' . implode(',', $access_topic) . ')','IN'));
 $criteria->add(new Criteria('topic_online','1','='));
-$pid = (isset($_GET['cid']))? intval($_GET['cid']):0;
-$criteria->add(new Criteria('topic_pid', $pid ,'='));
+$cid = (isset($_GET['cid']))? intval($_GET['cid']):0;
+$criteria->add(new Criteria('topic_pid', $cid ,'='));
 $criteria->setSort('topic_weight');
 $criteria->setOrder('ASC');
 $numrows = $topicHandler->getCount($criteria);
@@ -56,16 +56,20 @@ $topic_arr = $topicHandler->getall($criteria);
 	$xoopsTpl->assign('topicList',$list);
 	$xoopsTpl->assign('topicNum',$numrows);
 //////////////////////////////////////////////////////////////////////////////////////////
+
+if($cid > 0){
+	
+	$xoTheme->addScript('browse.php?Frameworks/jquery/jquery.js');
+	$xoTheme->addScript('browse.php?Frameworks/jquery/plugins/jquery.ui.js');
+		
 	$criteria = new CriteriaCompo();
 	$criteria->setSort("faq_id");
 	$criteria->setOrder("DESC");
 	$criteria->add(new Criteria('faq_online','1'));
 	$criteria->add(new Criteria('faq_open','2'));
 	$criteria->add(new Criteria('faq_open','3'), 'OR');
-	$cid = (isset($_GET['cid']))? intval($_GET['cid']):0;
 	$criteria->add(new Criteria('faq_topic', $cid));
 	$numrows = $faqHandler->getCount($criteria);
-	$faq_arr = $faqHandler->getall($criteria);
 	if ($numrows>0) 
 		{		
 		
@@ -123,8 +127,11 @@ $topic_arr = $topicHandler->getall($criteria);
 				$list[$i]['faq_diduno'] = $faq_arr[$i]->getVar("faq_diduno");
 			}
 		}
-$xoopsTpl->assign('faqList',$list);
-$xoopsTpl->assign('faqNum',$numrows);
+		
+		$xoopsTpl->assign('faqList',$list);
+		$xoopsTpl->assign('faqNum',$numrows);
 
+}  
+ 
 include_once XOOPS_ROOT_PATH."/footer.php";	
 ?>

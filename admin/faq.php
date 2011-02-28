@@ -158,7 +158,6 @@ switch ($op)
 				<tr>
 					   <th align=\"center\">"._AM_XFAQ_FAQ_ID."</th>
 					   <th align=\"center\">"._AM_XFAQ_FAQ_QUESTION."</th>
-						<th align=\"center\">"._AM_XFAQ_FAQ_ANSWER."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_TOPIC."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_OPEN."</th>
 						<th align=\"center\">"._AM_XFAQ_FAQ_SUBMITTER."</th>
@@ -177,7 +176,6 @@ switch ($op)
 				$class = ($class == "even") ? "odd" : "even";
 				   echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_id")."</td>";	
 				   echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_question")."</td>";	
-					echo "<td align=\"center\">".$faq_arr[$i]->getVar("faq_answer")."</td>";	
 					$faq1 = $topicHandler->get($faq_arr[$i]->getVar("faq_topic"));
 					$faq_topic1 = $faq1->getVar("topic_title");
 					echo "<td align=\"center\">".$faq_topic1."</td>";	
