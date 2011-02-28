@@ -49,33 +49,6 @@ function xfaq_tag_iteminfo(&$items)
 
 function xfaq_tag_synchronization($mid)
 {
-    $item_handler =& xoops_getmodulehandler('xfaq_faq', 'xfaq');
-    $link_handler =& xoops_getmodulehandler("link", "tag");
-
-    /* clear tag-item links */
-    if (version_compare( mysql_get_server_info(), "4.1.0", "ge" )):
-    $sql =  "    DELETE FROM {$link_handler->table}" .
-            "    WHERE " .
-            "        tag_modid = {$mid}" .
-            "        AND " .
-            "        ( tag_itemid NOT IN " .
-            "            ( SELECT DISTINCT {$item_handler->keyName} " .
-            "                FROM {$item_handler->table} " .
-            "                WHERE {$item_handler->table}.status > 0" .
-            "            ) " .
-            "        )";
-    else:
-    $sql =  "    DELETE {$link_handler->table} FROM {$link_handler->table}" .
-            "    LEFT JOIN {$item_handler->table} AS aa ON {$link_handler->table}.tag_itemid = aa.{$item_handler->keyName} " .
-            "    WHERE " .
-            "        tag_modid = {$mid}" .
-            "        AND " .
-            "        ( aa.{$item_handler->keyName} IS NULL" .
-            "            OR aa.status < 1" .
-            "        )";
-    endif;
-    if (!$result = $link_handler->db->queryF($sql)) {
-        //xoops_error($link_handler->db->error());
-    }
+   // Optional
 }
 ?>
