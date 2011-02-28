@@ -38,8 +38,16 @@ if (count($view_faq) == 0 || $view_faq->getVar('faq_online') == 0){
 // pour les permissions
 $access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
 if(!in_array($view_faq->getVar('faq_topic'), $access_topic)) {
-    redirect_header(XOOPS_URL, 2, _NOPERM);
+    redirect_header('index.php', 3, _NOPERM);
     exit();
+}
+
+if($view_faq->getVar('faq_metas_keyword')){
+	$xoTheme->addMeta('meta','keywords', $view_faq->getVar('faq_metas_keyword')); 	
+} 
+
+if($view_faq->getVar('faq_metas_desc')){
+ 	$xoTheme->addMeta('meta','description', $view_faq->getVar('faq_metas_desc'));
 }
 
 	$xoopsTpl->assign('question' , $view_faq->getVar('faq_question'));
