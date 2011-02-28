@@ -35,6 +35,13 @@ if (count($view_faq) == 0 || $view_faq->getVar('faq_online') == 0){
     exit();
 }
 
+// pour les permissions
+$access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
+if(!in_array($view_faq->getVar('faq_topic'), $access_topic)) {
+    redirect_header(XOOPS_URL, 2, _NOPERM);
+    exit();
+}
+
 	$xoopsTpl->assign('question' , $view_faq->getVar('faq_question'));
 	$xoopsTpl->assign('answer' , $view_faq->getVar('faq_answer'));
 	$xoopsTpl->assign('url' , $view_faq->getVar('faq_url'));
