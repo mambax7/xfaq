@@ -76,7 +76,17 @@ $module_id = $xoopsModule->getVar("mid");
 	{
 		$permform->addItem($topic_id, $topic["title"], $topic["pid"]);
 	}
-	echo $permform->render();
+//check if topics exist before rendering the form and redirect, if there are no topics	
+$result_view = $xoopsDB->query("SELECT topic_id, topic_name FROM " . $xoopsDB->prefix("xfaq_topic") . " ");
+if ($xoopsDB->getRowsNum($result_view)) {
+    echo $form_submit->render();
+} else {
+redirect_header("topic.php", 5, _AM_XFAQ_NOPERMSSET, false);	
+}	
+	
+	
+	//echo $permform->render();
+	
 	echo "<br /><br /><br /><br />\n";
 	unset ($permform);
 
