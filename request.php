@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *

@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
@@ -23,16 +23,33 @@
  */
  
 $adminmenu = array(); 
-$adminmenu[0]["title"] = _AM_XFAQ_MANAGER_INDEX;
-$adminmenu[0]["link"] = "admin/index.php";
-$adminmenu[1]["title"] = _AM_XFAQ_MANAGER_TOPIC;
-$adminmenu[1]["link"] = "admin/topic.php";
-$adminmenu[2]["title"] = _AM_XFAQ_MANAGER_FAQ;
-$adminmenu[2]["link"] = "admin/faq.php";
-$adminmenu[3]["title"] = _AM_XFAQ_MANAGER_PERMISSIONS;
-$adminmenu[3]["link"] = "admin/permissions.php";
+$i = 0;
+$adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_INDEX;
+$adminmenu[$i]["link"] = "admin/index.php";
+$adminmenu[$i]["icon"] = "images/icons/home.png";
+$i++;
+$adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_TOPIC;
+$adminmenu[$i]["link"] = "admin/topic.php";
+$adminmenu[$i]["icon"] = "images/icons/category.png";
+$i++;
+$adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_FAQ;
+$adminmenu[$i]["link"] = "admin/faq.php";
+$adminmenu[$i]["icon"] = "images/icons/xfaq.png";
+$i++;
+$adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_PERMISSIONS;
+$adminmenu[$i]["link"] = "admin/permissions.php";
+$adminmenu[$i]["icon"] = "images/icons/permissions.png";
 
-$adminmenu[4]["title"] = _AM_XFAQ_MANAGER_ABOUT;
-$adminmenu[4]["link"] = "admin/about.php";
+$i++;
+$adminmenu[$i]["title"] = _MI_XFAQ_ADMIN_ABOUT;
+$adminmenu[$i]["link"]  = "admin/about.php";
+//$adminmenu[$i]["desc"] = _AM_XFAQ_ADMIN_ABOUT_DESC;
+$adminmenu[$i]["icon"] = "images/icons/about.png";
+$i++;
+$adminmenu[$i]["title"] = _MI_XFAQ_ADMIN_HELP;
+$adminmenu[$i]["link"]  = "admin/help.php";
+//$adminmenu[$i]["desc"] = _AM_XFAQ_ADMIN_HELP_DESC;
+$adminmenu[$i]["icon"] = "images/icons/help.png";
+
 
 ?>

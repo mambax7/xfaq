@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
@@ -77,11 +77,13 @@ $module_id = $xoopsModule->getVar("mid");
 		$permform->addItem($topic_id, $topic["title"], $topic["pid"]);
 	}
 //check if topics exist before rendering the form and redirect, if there are no topics	
-$result_view = $xoopsDB->query("SELECT topic_id, topic_name FROM " . $xoopsDB->prefix("xfaq_topic") . " ");
+$result_view = $xoopsDB->query("SELECT topic_id, topic_title FROM " . $xoopsDB->prefix("xfaq_topic") . " ");
 if ($xoopsDB->getRowsNum($result_view)) {
-    echo $form_submit->render();
+    
+	echo $permform->render();
+	
 } else {
-redirect_header("topic.php", 5, _AM_XFAQ_NOPERMSSET, false);	
+redirect_header("topic.php", 2, _AM_XFAQ_NOPERMSSET, false);	
 }	
 	
 	

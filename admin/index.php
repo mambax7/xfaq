@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
@@ -46,17 +46,18 @@ global $xoopsModule;
 include_once XOOPS_ROOT_PATH."/modules/xfaq/class/menu.php";
 
 	$menu = new xfaqMenu();
-	$menu->addItem("topic", "topic.php", "../images/deco/topic.png", _AM_XFAQ_MANAGER_TOPIC);$menu->addItem("faq", "faq.php", "../images/deco/faq.png", _AM_XFAQ_MANAGER_FAQ);
-	$menu->addItem("update", "../../system/admin.php?fct=modulesadmin&op=update&module=xfaq", "../images/deco/update.png",  _AM_XFAQ_MANAGER_UPDATE);	
-	$menu->addItem("permissions", "permissions.php", "../images/deco/permissions.png", _AM_XFAQ_MANAGER_PERMISSIONS);
-	$menu->addItem("preference", "../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=".$xoopsModule->getVar("mid").
-												"&amp;&confcat_id=1", "../images/deco/pref.png", _AM_XFAQ_MANAGER_PREFERENCES);
-	$menu->addItem("about", "about.php", "../images/deco/about.png", _AM_XFAQ_MANAGER_ABOUT);
+	$menu->addItem("topic", "topic.php", "../images/admin/category.png", _MI_XFAQ_MANAGER_TOPIC);
+	$menu->addItem("faq", "faq.php", "../images/admin/xfaq.png", _MI_XFAQ_MANAGER_FAQ);
+//	$menu->addItem("update", "../../system/admin.php?fct=modulesadmin&op=update&module=xfaq", "../images/admin/update.png",  _AM_XFAQ_MANAGER_UPDATE);	
+	$menu->addItem("permissions", "permissions.php", "../images/deco/permissions.png", _MI_XFAQ_MANAGER_PERMISSIONS);
+//	$menu->addItem("preference", "../../system/admin.php?fct=preferences&amp;op=showmod&amp;mod=".$xoopsModule->getVar("mid").	"&amp;&confcat_id=1", "../images/deco/pref.png", _AM_XFAQ_MANAGER_PREFERENCES);
+	$menu->addItem("about", "about.php", "../images/admin/about.png", _MI_XFAQ_MANAGER_ABOUT);
+	$menu->addItem("help", "help.php", "../images/admin/help.png", _MI_XFAQ_ADMIN_HELP);
 	
 	echo $menu->getCSS();
 	
 
-echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/index.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\"><strong>"._AM_XFAQ_MANAGER_INDEX."</strong></div><br />
+echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/admin/home.png); background-repeat: no-repeat; background-position: left; padding-left: 50px;\"><strong>"._MI_XFAQ_MANAGER_INDEX."</strong></div><br />
 		<table width=\"100%\" border=\"0\" cellspacing=\"10\" cellpadding=\"4\">
 			<tr>
 				<td valign=\"top\">".$menu->render()."</td>
@@ -85,6 +86,7 @@ echo "<div class=\"CPbigTitle\" style=\"background-image: url(../images/deco/ind
 		</table>
 <br />
 ";
+include "footer1.php";
 xoops_cp_footer();
 
 ?>

@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,22 +14,25 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
  * Version : 1.00:
  * ****************************************************************************
  */
- 
-	
+if (!defined('XOOPS_ROOT_PATH')) {
+    die('XOOPS root path not defined'); 
+	}
+$module_dirname = basename( dirname( __FILE__ ) ) ;
+
 	$modversion["name"] = "xfaq";
 	$modversion["version"] = 1.00;
 	$modversion["description"] = "XOOPS FAQ";
 	$modversion["author"] = "Mojtaba Jamali";
 	$modversion["author_website_url"] = "http://mydolphin.ir";
 	$modversion["author_website_name"] = "";
-	$modversion["credits"] = "";
+	$modversion["credits"] = "Voltan, Mamba";
 	$modversion["license"] = "GPL";
 	$modversion["release_info"] = "";
 	$modversion["release_file"] = "";
@@ -41,10 +44,17 @@
 	//about
 	$modversion["demo_site_url"] = "";
 	$modversion["demo_site_name"] = "";
-	$modversion["module_website_url"] = "";
-	$modversion["module_website_name"] = "";
+	$modversion['module_website_url'] = "http://xoops.org";
+	$modversion['module_website_name'] = "XOOPS";
 	$modversion["release"] = "0";
-	$modversion["module_status"] = "";
+	$modversion["module_status"] = "Beta";
+	$modversion["author_website_url"] = "http://mydolphin.ir";
+	$modversion["author_website_name"] = "MyDolphin";
+	
+	
+	//Installation	
+	$modversion['onInstall'] = 'include/install.php';
+
 	
 	// Admin things
 	$modversion["hasAdmin"] = 1;
@@ -148,10 +158,21 @@
 
 
 	//templates
-	$modversion['templates'][1]['file'] = 'xfaq_index.html';
-	$modversion['templates'][1]['description'] = '';
-	$modversion['templates'][2]['file'] = 'xfaq_request.html';
-	$modversion['templates'][2]['description'] = '';
-	$modversion['templates'][3]['file'] = 'xfaq_faq.html';
-	$modversion['templates'][3]['description'] = '';
+	$i = 1;
+	$modversion['templates'][$i]['file'] = 'xfaq_index.html';
+	$modversion['templates'][$i]['description'] = '';
+	$i++;
+	$modversion['templates'][$i]['file'] = 'xfaq_request.html';
+	$modversion['templates'][$i]['description'] = '';
+	$i++;
+	$modversion['templates'][$i]['file'] = 'xfaq_faq.html';
+	$modversion['templates'][$i]['description'] = '';
+
+	$i++;
+	$modversion["templates"][$i]["file"] 		= "admin/" . $module_dirname . "_admin_about.html";
+	$modversion["templates"][$i]["description"] 	= "";
+	$i++;
+	$modversion["templates"][$i]["file"] 		= "admin/" . $module_dirname . "_admin_help.html";
+	$modversion["templates"][$i]["description"] 	= "";
+	
 ?>

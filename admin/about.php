@@ -1,9 +1,9 @@
 <?php
 /**
  * ****************************************************************************
- * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
+ * Module gÃ©nÃ©rÃ© par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - MODULE FOR XOOPS CMS
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,81 +14,41 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
  * Version : 1.00:
  * ****************************************************************************
  */
- 
-include_once("./header.php");
+include "header1.php";
 
-xoops_cp_header();
+$module_info =& $module_handler->get( $xoopsModule->getVar("mid") );
 
+$xoopsTpl->assign("module_name",            $xoopsModule->getVar("name") );
+$xoopsTpl->assign("module_dirname",         $xoopsModule->getVar("dirname") );
+$xoopsTpl->assign("module_image",           $module_info->getInfo("image") );
+$xoopsTpl->assign("module_version",         $module_info->getInfo("version") );
+$xoopsTpl->assign("module_description",         $module_info->getInfo("description") );
+//$xoopsTpl->assign("module_release",         $module_info->getInfo("release") );
+$xoopsTpl->assign("module_author",          $module_info->getInfo("author") );
+$xoopsTpl->assign("module_credits",         $module_info->getInfo("credits") );
+$xoopsTpl->assign("module_license_url",     $module_info->getInfo("license_url") );
+$xoopsTpl->assign("module_license",         $module_info->getInfo("license") );
+$xoopsTpl->assign("module_status",          $module_info->getInfo("module_status") );
+$xoopsTpl->assign("module_website_url",     $module_info->getInfo("module_website_url") );
+$xoopsTpl->assign("module_website_name",    $module_info->getInfo("module_website_name") );
+$xoopsTpl->assign("author_website_url",     $module_info->getInfo("author_website_url") );
+$xoopsTpl->assign("author_website_name",    $module_info->getInfo("author_website_name") );
 
-$versioninfo =& $module_handler->get( $xoopsModule->getVar("mid") );
+global $xoopsModule;
+$xoopsTpl->assign("module_update_date", formatTimestamp($xoopsModule->getVar("last_update"),"m") );
 
-echo "<style type=\"text/css\">
-		label,text {
-			display: block;
-			float: left;
-			margin-bottom: 2px;
-		}
-		label {
-			text-align: right;
-			width: 150px;
-			padding-right: 20px;
-		}
-		br {
-			clear: left;
-		}
-	</style>
-
-	<fieldset>
-		<legend style=\"font-weight: bold; color: #900;\">".$xoopsModule->getVar("name")."</legend>
-			<div style=\"padding: 8px;\">
-				<img src=\"".XOOPS_URL."/modules/".$xoopsModule->getVar("dirname")."/".$versioninfo->getInfo("image")."\" alt=\"\" hspace=\"10\" vspace=\"0\" /></a>\n
-				<div style=\"padding: 5px;\"><strong>".$versioninfo->getInfo("name")." version ".$versioninfo->getInfo("version")."</strong></div>\n
-				<label>"._AM_XFAQ_ABOUT_RELEASEDATE.":</label><text>".$versioninfo->getInfo("release")."</text><br />
-				<label>"._AM_XFAQ_ABOUT_AUTHOR.":</label><text>".$versioninfo->getInfo("author")."</text><br />
-				<label>"._AM_XFAQ_ABOUT_CREDITS.":</label><text>".$versioninfo->getInfo("credits")."</text><br />
-				<label>"._AM_XFAQ_ABOUT_LICENSE.":</label><text><a href=\"".$versioninfo->getInfo("license_file")."\" target=\"_blank\" >".$versioninfo->getInfo("license")."</a></text>\n
-			</div>
-	</fieldset>
-<br clear=\"all\"/>
-
-	<fieldset>
-		<legend style=\"font-weight: bold; color: #900;\">"._AM_XFAQ_ABOUT_MODULE_INFO."</legend>
-			<div style=\"padding: 8px;\">
-				<label>"._AM_XFAQ_ABOUT_MODULE_STATUS.":</label><text>".$versioninfo->getInfo("module_status")."</text><br />
-				<label>"._AM_XFAQ_ABOUT_WEBSITE.":</label><text><a href=\"".$versioninfo->getInfo("module_website_url")."\" target=\"_blank\">".$versioninfo->getInfo("module_website_name")."</a></text><br />
-			</div>
-	</fieldset>
-<br clear=\"all\" />
-
-	<fieldset>
-		<legend style=\"font-weight: bold; color: #900;\">"._AM_XFAQ_ABOUT_AUTHOR_INFO."</legend>
-			<div style=\"padding: 8px;\">
-				<label>"._AM_XFAQ_ABOUT_AUTHOR_NAME.":</label><text>".$versioninfo->getInfo("author")."</text><br />
-				<label>"._AM_XFAQ_ABOUT_WEBSITE.":</label><text><a href=\"".$versioninfo->getInfo("author_website_url")."\" target=\"_blank\">".$versioninfo->getInfo("author_website_name")."</a></text><br />
-			</div>
-	</fieldset>
-<br clear=\"all\" />";
-
-$file = XOOPS_ROOT_PATH."/modules/".$xoopsModule->getVar("dirname")."/changelog.txt";
-
-if ( is_readable( $file ) ){
-echo "<fieldset>
-		<legend style=\"font-weight: bold; color: #900;\">"._AM_XFAQ_ABOUT_CHANGELOG."</legend>
-			<div style=\"padding: 8px;\">
-				<div>".implode("<br />", file( $file ))."</div>
-			</div>
-	</fieldset>
-	<br clear=\"all\" />";
-
+if ( is_readable( $changelog = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/docs/changelog.txt" ) ){
+    $xoopsTpl->assign("changelog",          implode("<br />", file( $changelog ) ) );
 }
-echo "<br /><br />
-";
-xoops_cp_footer();
+
+$xoopsTpl->display("db: admin/" . $xoopsModule->getVar("dirname") . "_admin_about.html");
+
+include "footer1.php";
 ?>

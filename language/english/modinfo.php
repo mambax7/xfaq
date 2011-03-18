@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
@@ -48,15 +48,21 @@ define("_MI_XFAQ_TOPICPERADMINEDSC","Number of Topics in each page in admin side
 
 
 //Menu
-define("_AM_XFAQ_MANAGER_INDEX","List");
-define("_AM_XFAQ_MANAGER_ABOUT","About");
-define("_AM_XFAQ_MANAGER_PREFERENCES","Preferences");
-define("_AM_XFAQ_MANAGER_UPDATE","Update");
-define("_AM_XFAQ_MANAGER_PERMISSIONS","Permissions");
+ define("_MI_XFAQ_MANAGER_INDEX","Home");
+ define("_MI_XFAQ_MANAGER_ABOUT","About");
+ define("_MI_XFAQ_MANAGER_TOPIC","Topics");
+ define("_MI_XFAQ_MANAGER_FAQ","FAQ");
+ define("_MI_XFAQ_MANAGER_UPDATE","Update");
+ define("_MI_XFAQ_MANAGER_PERMISSIONS","Permissions");
+
+// index.php
+define("_MI_XFAQ_MENU_01", "Home");
+define("_MI_XFAQ_ADMIN_ABOUT", "About");
+define("_MI_XFAQ_ADMIN_HELP", "Help");
 
 //Index
-define("_AM_XFAQ_MANAGER_TOPIC","Topics");
-define("_AM_XFAQ_MANAGER_FAQ","FAQ");
+//define("_AM_XFAQ_MANAGER_TOPIC","Topics");
+//define("_AM_XFAQ_MANAGER_FAQ","FAQ");
 
 
 //Blocks

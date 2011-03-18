@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * xfaq - MODULE FOR XOOPS AND IMPRESS CMS
+ * xfaq - a simple module for Frequently Asked Questions
  * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
  *
  * You may not change or alter any portion of this comment or credits
@@ -14,7 +14,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         Dolphin
+ * @license         GPL
  * @package         xfaq
  * @author 			Mojtaba Jamali (http://mydolphin.ir)
  *
@@ -82,8 +82,8 @@
 			$form->addElement(new XoopsFormText(_AM_XFAQ_TOPIC_TITLE, "topic_title", 50, 255, $this->getVar("topic_title")), true);
 			$form->addElement(new XoopsFormTextArea(_AM_XFAQ_TOPIC_DESC, "topic_desc", $this->getVar("topic_desc"), 4, 47), false);
 			
-			$topic_img = $this->getVar("topic_img") ? $this->getVar("topic_img") : 'blank.gif';
-			$uploadirectory_topic_img = '/uploads/xfaq/topic/topic_img';
+			$topic_img = $this->getVar("topic_img") ? $this->getVar("topic_img") : 'blank.png';
+			$uploadirectory_topic_img = '/uploads/xfaq/topics/images';
 			$imgtray_topic_img = new XoopsFormElementTray(_AM_XFAQ_TOPIC_IMG,'<br />');
 			$imgpath_topic_img = sprintf(_AM_XFAQ_FORMIMAGE_PATH, $uploadirectory_topic_img);
 			$imageselect_topic_img = new XoopsFormSelect($imgpath_topic_img, 'topic_img', $topic_img);

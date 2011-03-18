@@ -3,7 +3,7 @@
  * ****************************************************************************
  * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
  * ****************************************************************************
- * test - MODULE FOR XOOPS AND IMPRESS CMS
+ * test - MODULE FOR XOOPS  CMS
  * Copyright (c) Mamba (www.xoops.org)
  *
  * You may not change or alter any portion of this comment or credits
