@@ -74,9 +74,14 @@
 			
 			
 			include_once(XOOPS_ROOT_PATH."/class/tree.php");
-			
+				
 			$topicHandler =& xoops_getModuleHandler("xfaq_topic", "xfaq");
-			$arr = $topicHandler->getall();
+			
+			if(!$this->isNew()){ 
+			$arr = $topicHandler->getall(new Criteria('topic_id', $this->getVar("topic_id"), '!=')); 
+				}else{ 
+				 $arr = $topicHandler->getall(); 
+			}
 			$mytree = new XoopsObjectTree($arr, "topic_id", "topic_pid");
 			$form->addElement(new XoopsFormLabel(_AM_XFAQ_TOPIC_PID, $mytree->makeSelBox("topic_pid", "topic_title","-", $this->getVar("topic_pid"),true)));
 			$form->addElement(new XoopsFormText(_AM_XFAQ_TOPIC_TITLE, "topic_title", 50, 255, $this->getVar("topic_title")), true);
