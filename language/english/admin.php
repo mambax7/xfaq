@@ -23,7 +23,7 @@
  */
 if (!defined('XOOPS_ROOT_PATH')) { exit(); } 
 
-	global $xoopsModule;	
+global $xoopsModule;	
 //Menu
 //define("_AM_XFAQ_MANAGER_INDEX","Home");
 
@@ -126,15 +126,6 @@ define("_AM_XFAQ_ABOUT_DISCLAIMER","Disclaimer");
 define("_AM_XFAQ_ABOUT_DISCLAIMER_TEXT","GPL Licensed - No Warranty");
 define("_AM_XFAQ_ABOUT_DESCRIPTION",          "Description: ");
 
-
-// index.php
-// define("_AM_XFAQ_ADMIN_INDEX",                  "Home");
- //define("_AM_XFAQ_ADMIN_ABOUT",                  "About");
- //define("_AM_XFAQ_ADMIN_HELP",                 "Help");
-// define("_AM_XFAQ_ADMIN_SLIDES",                 "Slides");
-// define("_AM_XFAQ_ADMIN_PAGES",            "Pages");
-// define("_AM_XFAQ_ADMIN_UPDATE",                 "Update");
-// define("_AM_XFAQ_ADMIN_PREFERENCES",                 "Settings");
 define("_AM_XFAQ_ADMIN_INDEX_TXT1",                 "This module lets you display on your pages with <strong>\"slideshow \"</strong> images with links to pages on your site or pages externes.<br />By default, the module is delivered with 7 flash slideshow templates, javascript or css, you can naturally incorporate or create new ones <em>(make based on those existing for example)</em> with some knowledge of development");
 
 // text in admin footer
