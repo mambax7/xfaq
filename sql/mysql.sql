@@ -14,7 +14,7 @@ CREATE TABLE `xfaq_topic` (
   `topic_date_created` int (10)   NOT NULL default "0",
   `topic_online` tinyint (1)   NOT NULL default "0",
   PRIMARY KEY  (`topic_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 #
 # Table structure for table `xfaq_faq`
 #

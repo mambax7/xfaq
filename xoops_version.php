@@ -24,22 +24,24 @@
 if (!defined('XOOPS_ROOT_PATH')) {
     die('XOOPS root path not defined'); 
 	}
-$module_dirname = basename( dirname( __FILE__ ) ) ;
+$moduleDirName = basename( dirname( __FILE__ ) ) ;
 
 	$modversion["name"] = "xfaq";
-	$modversion["version"] = 1.00;
+	$modversion["version"] = 1.01;
 	$modversion["description"] = "XOOPS FAQ";
 	$modversion["author"] = "Mojtaba Jamali";
 	$modversion["author_website_url"] = "http://mydolphin.ir";
 	$modversion["author_website_name"] = "";
 	$modversion["credits"] = "Voltan, Mamba";
-	$modversion["license"] = "GPL";
+    $modversion['license'] = 'GNU GPL 2.0';
+    $modversion['license_url'] = "www.gnu.org/licenses/gpl-2.0.html/";
 	$modversion["release_info"] = "";
 	$modversion["release_file"] = "";
 	$modversion["manual"] = "";
 	$modversion["manual_file"] = "";
 	$modversion["image"] = "images/xfaqLogo.png";
 	$modversion["dirname"] = "xfaq";
+    $modversion['help'] = 'page=help';	
 
 	//about
 	$modversion["demo_site_url"] = "";
@@ -50,6 +52,9 @@ $module_dirname = basename( dirname( __FILE__ ) ) ;
 	$modversion["module_status"] = "Beta";
 	$modversion["author_website_url"] = "http://mydolphin.ir";
 	$modversion["author_website_name"] = "MyDolphin";
+    $modversion['release_date']     = '2011/03/22';	
+    $modversion['min_php']='5.2';
+    $modversion['min_xoops']="2.5";
 	
 	
 	//Installation	
@@ -168,11 +173,5 @@ $module_dirname = basename( dirname( __FILE__ ) ) ;
 	$modversion['templates'][$i]['file'] = 'xfaq_faq.html';
 	$modversion['templates'][$i]['description'] = '';
 
-	$i++;
-	$modversion["templates"][$i]["file"] 		= "admin/" . $module_dirname . "_admin_about.html";
-	$modversion["templates"][$i]["description"] 	= "";
-	$i++;
-	$modversion["templates"][$i]["file"] 		= "admin/" . $module_dirname . "_admin_help.html";
-	$modversion["templates"][$i]["description"] 	= "";
 	
 ?>

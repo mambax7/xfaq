@@ -33,6 +33,9 @@ include_once XOOPS_ROOT_PATH."/class/pagenav.php";
 include_once XOOPS_ROOT_PATH."/class/xoopstopic.php";
 include_once XOOPS_ROOT_PATH."/class/xoopsform/grouppermform.php";
 
+//include once XOOPS_ROOT_PATH."include/cp_header.php";
+include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+
 $myts =& MyTextSanitizer::getInstance();
 include_once XOOPS_ROOT_PATH."/modules/xfaq/class/topic.php";
 include_once XOOPS_ROOT_PATH."/modules/xfaq/class/faq.php";
@@ -47,6 +50,8 @@ if ( $xoopsUser ) {
 	redirect_header(XOOPS_URL."/",3,_NOPERM);
 	exit();
 }
+
+xoops_cp_header();
 
 // Include language file
 xoops_loadLanguage("admin", "system");

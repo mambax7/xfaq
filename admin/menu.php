@@ -26,30 +26,24 @@ $adminmenu = array();
 $i = 0;
 $adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_INDEX;
 $adminmenu[$i]["link"] = "admin/index.php";
-$adminmenu[$i]["icon"] = "images/icons/home.png";
+$adminmenu[$i]["icon"] = "images/admin/home.png";
 $i++;
 $adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_TOPIC;
 $adminmenu[$i]["link"] = "admin/topic.php";
-$adminmenu[$i]["icon"] = "images/icons/category.png";
+$adminmenu[$i]["icon"] = "images/admin/category.png";
 $i++;
 $adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_FAQ;
 $adminmenu[$i]["link"] = "admin/faq.php";
-$adminmenu[$i]["icon"] = "images/icons/xfaq.png";
+$adminmenu[$i]["icon"] = "images/admin/xfaq.png";
 $i++;
 $adminmenu[$i]["title"] = _MI_XFAQ_MANAGER_PERMISSIONS;
 $adminmenu[$i]["link"] = "admin/permissions.php";
-$adminmenu[$i]["icon"] = "images/icons/permissions.png";
+$adminmenu[$i]["icon"] = "images/admin/permissions.png";
 
 $i++;
 $adminmenu[$i]["title"] = _MI_XFAQ_ADMIN_ABOUT;
 $adminmenu[$i]["link"]  = "admin/about.php";
-//$adminmenu[$i]["desc"] = _AM_XFAQ_ADMIN_ABOUT_DESC;
-$adminmenu[$i]["icon"] = "images/icons/about.png";
-$i++;
-$adminmenu[$i]["title"] = _MI_XFAQ_ADMIN_HELP;
-$adminmenu[$i]["link"]  = "admin/help.php";
-//$adminmenu[$i]["desc"] = _AM_XFAQ_ADMIN_HELP_DESC;
-$adminmenu[$i]["icon"] = "images/icons/help.png";
+$adminmenu[$i]["icon"] = "images/admin/about.png";
 
 
 ?>

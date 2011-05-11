@@ -63,6 +63,3 @@ function XFAQ_CleanVars( &$global, $key, $default = '', $type = 'int' ) {
     }
     return $ret;
 }
-
-
-?>

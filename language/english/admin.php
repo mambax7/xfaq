@@ -109,7 +109,8 @@ define("_AM_XFAQ_PERMISSIONS_ACCESS","Permission for view");
 define("_AM_XFAQ_PERMISSIONS_SUBMIT","Permission for submit");
 
 //About.php
-define("_AM_XFAQ_ABOUT_RELEASEDATE","Update Date");
+define("_AM_XFAQ_ABOUT_RELEASEDATE","Released:");
+define("_AM_XFAQ_ABOUT_UPDATEDATE","Updated:");
 define("_AM_XFAQ_ABOUT_AUTHOR","Author");
 define("_AM_XFAQ_ABOUT_CREDITS","Credits");
 define("_AM_XFAQ_ABOUT_README","General Information");
@@ -126,12 +127,15 @@ define("_AM_XFAQ_ABOUT_DISCLAIMER","Disclaimer");
 define("_AM_XFAQ_ABOUT_DISCLAIMER_TEXT","GPL Licensed - No Warranty");
 define("_AM_XFAQ_ABOUT_DESCRIPTION",          "Description: ");
 
-define("_AM_XFAQ_ADMIN_INDEX_TXT1",                 "This module lets you display on your pages with <strong>\"slideshow \"</strong> images with links to pages on your site or pages externes.<br />By default, the module is delivered with 7 flash slideshow templates, javascript or css, you can naturally incorporate or create new ones <em>(make based on those existing for example)</em> with some knowledge of development");
-
 // text in admin footer
 define("_AM_XFAQ_ADMIN_FOOTER", "<div class='right smallsmall italic pad5'><b>" . $xoopsModule->getVar("name") . "</b> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
 
 define('_XFAQ_ADMIN_'," "); //
 
 define("_AM_XFAQ_NOPERMSSET", "Permission cannot be set : No Topics created yet! Please create a Topic first.");
+
+// Configuration
+define("_AM_XFAQ_CONFIG_CHECK","Configuration Check");
+define("_AM_XFAQ_CONFIG_PHP","Minimum PHP required: %s (your version is %s)");
+define("_AM_XFAQ_CONFIG_XOOPS","Minimum XOOPS required:  %s (your version is %s)");
 ?>

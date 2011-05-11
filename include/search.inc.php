@@ -46,7 +46,7 @@ global $xoopsDB;
        $ret = array();
        $i = 0;
        while($myrow = $xoopsDB->fetchArray($result)){
-               $ret[$i]['image'] = "images/decos/search.png";
+               $ret[$i]['image'] = "images/icons/search.png";
                $ret[$i]['link'] = "index.php?cid=".$myrow['faq_topic'];
                $ret[$i]['title'] = $myrow['faq_question'];
                $ret[$i]['time'] = formattimestamp($myrow['faq_date_created']);
@@ -55,4 +55,3 @@ global $xoopsDB;
        }
        return $ret;
 }
-?>

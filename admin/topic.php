@@ -23,8 +23,10 @@
  */
  
 include_once("./header.php");
-	
-xoops_cp_header();
+
+	include_once XOOPS_ROOT_PATH."/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+	$index_admin = new ModuleAdmin();
+    echo $index_admin->addNavigation('topic.php');
 
 if (isset($_REQUEST["op"])) {
 	$op = $_REQUEST["op"];
@@ -206,13 +208,13 @@ switch ($op)
 					$online = $topic_arr[$i]->getVar("topic_online");
 				
 					if( $online == 1 ) {
-						echo "<td align=\"center\"><a href=\"./topic.php?op=update_online_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."&topic_online=0\"><img src=\"./../images/deco/on.png\" border=\"0\" alt=\""._AM_XFAQ_ON."\" title=\""._AM_XFAQ_ON."\"></a></td>";	
+						echo "<td align=\"center\"><a href=\"./topic.php?op=update_online_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."&topic_online=0\"><img src=\"./../images/icons/on.png\" border=\"0\" alt=\""._AM_XFAQ_ON."\" title=\""._AM_XFAQ_ON."\"></a></td>";	
 					} else {
-						echo "<td align=\"center\"><a href=\"./topic.php?op=update_online_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."&topic_online=1\"><img src=\"./../images/deco/off.png\" border=\"0\" alt=\""._AM_XFAQ_OFF."\" title=\""._AM_XFAQ_OFF."\"></a></td>";
+						echo "<td align=\"center\"><a href=\"./topic.php?op=update_online_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."&topic_online=1\"><img src=\"./../images/icons/off.png\" border=\"0\" alt=\""._AM_XFAQ_OFF."\" title=\""._AM_XFAQ_OFF."\"></a></td>";
 					}
 							echo "<td align=\"center\" width=\"10%\">
-								<a href=\"topic.php?op=edit_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."\"><img src=\"../images/deco/edit.png\" alt=\""._AM_XFAQ_EDIT."\" title=\""._AM_XFAQ_EDIT."\"></a>
-								<a href=\"topic.php?op=delete_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."\"><img src=\"../images/deco/delete.png\" alt=\""._AM_XFAQ_DELETE."\" title=\""._AM_XFAQ_DELETE."\"></a>
+								<a href=\"topic.php?op=edit_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."\"><img src=\"../images/icons/edit.png\" alt=\""._AM_XFAQ_EDIT."\" title=\""._AM_XFAQ_EDIT."\"></a>
+								<a href=\"topic.php?op=delete_topic&topic_id=".$topic_arr[$i]->getVar("topic_id")."\"><img src=\"../images/icons/delete.png\" alt=\""._AM_XFAQ_DELETE."\" title=\""._AM_XFAQ_DELETE."\"></a>
 							  </td>";
 				echo "</tr>";
 			}

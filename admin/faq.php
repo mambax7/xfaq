@@ -24,7 +24,9 @@
  
 include_once("./header.php");
 	
-xoops_cp_header();
+	include_once XOOPS_ROOT_PATH."/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+	$index_admin = new ModuleAdmin();
+    echo $index_admin->addNavigation('faq.php');
 
 if (isset($_REQUEST["op"])) {
 	$op = $_REQUEST["op"];
@@ -187,13 +189,13 @@ switch ($op)
 					$online = $faq_arr[$i]->getVar("faq_online");
 				
 					if( $online == 1 ) {
-						echo "<td align=\"center\"><a href=\"./faq.php?op=update_online_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."&faq_online=0\"><img src=\"./../images/deco/on.png\" border=\"0\" alt=\""._AM_XFAQ_ON."\" title=\""._AM_XFAQ_ON."\"></a></td>";	
+						echo "<td align=\"center\"><a href=\"./faq.php?op=update_online_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."&faq_online=0\"><img src=\"./../images/icons/on.png\" border=\"0\" alt=\""._AM_XFAQ_ON."\" title=\""._AM_XFAQ_ON."\"></a></td>";	
 					} else {
-						echo "<td align=\"center\"><a href=\"./faq.php?op=update_online_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."&faq_online=1\"><img src=\"./../images/deco/off.png\" border=\"0\" alt=\""._AM_XFAQ_OFF."\" title=\""._AM_XFAQ_OFF."\"></a></td>";
+						echo "<td align=\"center\"><a href=\"./faq.php?op=update_online_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."&faq_online=1\"><img src=\"./../images/icons/off.png\" border=\"0\" alt=\""._AM_XFAQ_OFF."\" title=\""._AM_XFAQ_OFF."\"></a></td>";
 					}
 							echo "<td align=\"center\" width=\"10%\">
-								<a href=\"faq.php?op=edit_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."\"><img src=\"../images/deco/edit.png\" alt=\""._AM_XFAQ_EDIT."\" title=\""._AM_XFAQ_EDIT."\"></a>
-								<a href=\"faq.php?op=delete_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."\"><img src=\"../images/deco/delete.png\" alt=\""._AM_XFAQ_DELETE."\" title=\""._AM_XFAQ_DELETE."\"></a>
+								<a href=\"faq.php?op=edit_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."\"><img src=\"../images/icons/edit.png\" alt=\""._AM_XFAQ_EDIT."\" title=\""._AM_XFAQ_EDIT."\"></a>
+								<a href=\"faq.php?op=delete_faq&faq_id=".$faq_arr[$i]->getVar("faq_id")."\"><img src=\"../images/icons/delete.png\" alt=\""._AM_XFAQ_DELETE."\" title=\""._AM_XFAQ_DELETE."\"></a>
 							  </td>";
 				echo "</tr>";
 			}

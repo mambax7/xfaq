@@ -84,7 +84,7 @@ switch ($op)
 		$xoopsTpl->assign('requestForm',$form);
 	break;
 	
-	case "answere_faq":
+	case "answered_faq":
 		$obj = $faqHandler->get($_REQUEST["faq_id"]);
 		$form = $obj->getanswereForm();
 		$xoopsTpl->assign('answereForm',$form);
@@ -114,7 +114,45 @@ switch ($op)
 		$numrows = $faqHandler->getCount($criteria);
 		$faq_arr = $faqHandler->getall($criteria);
 		if ($numrows>0) 
-			{			
+			{	
+
+		 /**
+		 * start pagenav setting 
+		 * get information for limit by $_REQUEST['limit']
+		 * get information for start by $_REQUEST['start']
+		 */ 
+		 
+		 // get limited information
+       if (isset($_REQUEST['limit'])) {
+	        $criteria->setLimit($_REQUEST['limit']);
+	        $limit = $_REQUEST['limit'];
+	    } else {
+	        $criteria->setLimit($xoopsModuleConfig['itemperpage']);
+	        $limit = $xoopsModuleConfig['itemperpage'];
+	    }
+	    
+	    // get start information
+       if (isset($_REQUEST['start'])) {
+        $criteria->setStart($_REQUEST['start']);
+        $start = $_REQUEST['start'];
+	    } else {
+        $criteria->setStart(0);
+        $start = 0;
+	    }
+       
+       // make pagenav tolbar
+	    $faq_arr = $faqHandler->getall($criteria);
+	    if ( $numrows > $limit ) {
+	        $pagenav = new XoopsPageNav($numrows, $limit, $start, 'start', 'limit=' . $limit.'&faq_id='.$faq_id);
+	        $pagenav = $pagenav->renderNav(4);
+	    } else {
+	        $pagenav = '';
+	    }
+	    $xoopsTpl->assign('faqpagenav', $pagenav);	
+		 
+		 /**
+		 * end pagenav setting 
+		 */	            
 				$list = array();
 				foreach (array_keys($faq_arr) as $i) 
 				{

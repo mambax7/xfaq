@@ -1,10 +1,6 @@
 <?php
 /**
- * ****************************************************************************
- * Module généré par TDMCreate de la TDM "http://www.tdmxoops.net"
- * ****************************************************************************
- * xfaq - MODULE FOR XOOPS CMS
- * Copyright (c) Mojtaba Jamali (http://mydolphin.ir)
+ * Marquee module
  *
  * You may not change or alter any portion of this comment or credits
  * of supporting developers from this source code or any supporting source code
@@ -13,42 +9,38 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright       Mojtaba Jamali (http://mydolphin.ir)
- * @license         GPL
- * @package         xfaq
- * @author 			Mojtaba Jamali (http://mydolphin.ir)
- *
- * Version : 1.00:
- * ****************************************************************************
- */
-include "header1.php";
+ * @copyright    The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @license             http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @package    Marquee
+ * @since        2.5.0
+ * @author     Mage, Mamba
+ * @version    $Id $
+ **/
 
-$module_info =& $module_handler->get( $xoopsModule->getVar("mid") );
+include '../../../include/cp_header.php';
+include '../../../class/xoopsformloader.php';
+xoops_cp_header();
+include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
 
-$xoopsTpl->assign("module_name",            $xoopsModule->getVar("name") );
-$xoopsTpl->assign("module_dirname",         $xoopsModule->getVar("dirname") );
-$xoopsTpl->assign("module_image",           $module_info->getInfo("image") );
-$xoopsTpl->assign("module_version",         $module_info->getInfo("version") );
-$xoopsTpl->assign("module_description",         $module_info->getInfo("description") );
-//$xoopsTpl->assign("module_release",         $module_info->getInfo("release") );
-$xoopsTpl->assign("module_author",          $module_info->getInfo("author") );
-$xoopsTpl->assign("module_credits",         $module_info->getInfo("credits") );
-$xoopsTpl->assign("module_license_url",     $module_info->getInfo("license_url") );
-$xoopsTpl->assign("module_license",         $module_info->getInfo("license") );
-$xoopsTpl->assign("module_status",          $module_info->getInfo("module_status") );
-$xoopsTpl->assign("module_website_url",     $module_info->getInfo("module_website_url") );
-$xoopsTpl->assign("module_website_name",    $module_info->getInfo("module_website_name") );
-$xoopsTpl->assign("author_website_url",     $module_info->getInfo("author_website_url") );
-$xoopsTpl->assign("author_website_name",    $module_info->getInfo("author_website_name") );
+$module_info =& $module_handler->get($xoopsModule->getVar("mid"));
 
-global $xoopsModule;
-$xoopsTpl->assign("module_update_date", formatTimestamp($xoopsModule->getVar("last_update"),"m") );
+$module_info = '<div id="about">
+				<label>' . _AM_XFAQ_ABOUT_DESCRIPTION . '</label><text>' . $module_info->getInfo("description") . '</text><br />			
+				<label>' . _AM_XFAQ_ABOUT_RELEASEDATE . '</label><text class="bold">' . $module_info->getInfo("release_date") . '</text><br />
+				<label>' . _AM_XFAQ_ABOUT_UPDATEDATE . '</label><text class="bold">' . formatTimestamp($xoopsModule->getVar("last_update"), "m") . '</text><br />
+                <label>' . _AM_XFAQ_ABOUT_MODULE_STATUS . '</label><text>' . $module_info->getInfo("module_status") . '</text><br />
+                <label>' . _AM_XFAQ_ABOUT_WEBSITE . '</label><text><a class="tooltip" href="' . $module_info->getInfo("module_website_url") . '" rel="external" title="' . $module_info->getInfo("module_website_name") . ' - ' . $module_info->getInfo("module_website_url") . '">
+                ' . $module_info->getInfo("module_website_name") . '</a></text></div>';
 
-if ( is_readable( $changelog = XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/docs/changelog.txt" ) ){
-    $xoopsTpl->assign("changelog",          implode("<br />", file( $changelog ) ) );
-}
+$about_admin = new ModuleAdmin();
+$about_admin->addLabel($xoopsModule->getVar("name"));
+$about_admin->addLabel(_AM_XFAQ_ABOUT_MODULE_INFO);
+$about_admin->addLineLabel($xoopsModule->getVar("name"), '', '6KJ7RW5DR3VTJ', '', 'module');
+$about_admin->addLineLabel(_AM_XFAQ_ABOUT_MODULE_INFO, $module_info, '', '', 'information');
+$about_admin->addChangelogLabel(_AM_XFAQ_ABOUT_CHANGELOG);
 
-$xoopsTpl->display("db: admin/" . $xoopsModule->getVar("dirname") . "_admin_about.html");
+echo $about_admin->addNavigation('about.php');
+echo $about_admin->renderabout();
+include "footer.php";
 
-include "footer1.php";
 ?>

@@ -35,13 +35,13 @@ function xoops_module_update_xnews(&$xoopsModule)
 	
 	$module_id = $xoopsModule->getVar('mid');
 	$module_name = $xoopsModule->getVar('name');
-	$module_dirname = $xoopsModule->getVar('dirname');
+	$moduleDirName = $xoopsModule->getVar('dirname');
 	$module_version = $xoopsModule->getVar('version');
 	
 	global $xoopsDB;
 	
 	//EDIT Cloner table 
-	$result = $xoopsDB->query("SELECT clone_id FROM " . $xoopsDB->prefix('news_clonerdata') . " WHERE clone_dir = '" . $module_dirname . "' ;");
+	$result = $xoopsDB->query("SELECT clone_id FROM " . $xoopsDB->prefix('news_clonerdata') . " WHERE clone_dir = '" . $moduleDirName . "' ;");
 	$tmpcloneid = $xoopsDB->fetchRow($result);
 	$cloneid = $tmpcloneid[0];	
 	$xoopsDB->query("UPDATE " . $xoopsDB->prefix('news_clonerdata') . " SET clone_version = " . $module_version . " WHERE clone_id = " . $cloneid);

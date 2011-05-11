@@ -23,13 +23,14 @@
  */
  
 include("header.php");
+include_once XOOPS_ROOT_PATH."/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+	$index_admin = new ModuleAdmin();
+    echo $index_admin->addNavigation('permissions.php');
 
 if( !empty($_POST["submit"]) ) 
 {
 	redirect_header( XOOPS_URL."/modules/".$xoopsModule->dirname()."/admin/permissions.php" , 1 , _MP_GPERMUPDATED );
 }
-
-xoops_cp_header();
 
 global $xoopsDB;
 
