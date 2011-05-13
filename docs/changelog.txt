@@ -1,3 +1,29 @@
-- Ver 1.01 -
+TO DO:
+- Add comments
+- fix uploading images
+- fix menu link "Answered Questions" - it doesn't seem to work (could be related to error: Notice: Undefined variable: list in file /modules/xfaq/request.php line 203
+- improved usability on front-end
+- why is Topic Weight mandatory?
+- add explanation about red star being mandatory field
+- the count of "pending questions" and "pending topics" seems to be wrong
+
 =================================
-+ Initial Release
+2011/05/11: Version 1.0.0
+=================================
+- general php and XHTML code cleanup (ZySpec)
+- replaced deprecated xoops_getModuleOption method (ZySpec)
+- changed all 'getall' method calls to 'getAll' (ZySpec)
+- fixed a few typos in English language files (ZySpec)
+- only show parent topic if there are other topics in db (./admin/topic.php) (ZySpec)
+- created ./docs/changelog.txt (ZySpec)
+- added accordion to answered questions view
+- make visual actions on top: Edit Question, Delete Question, Topic (mamba)
+- fixed errors on permissions when there are no topics (mamba)
+- updated GUI to 2.5.0 Standard (mamba)
+- fixed creating directory for images (mamba)
+- multicolumn and page navigation (voltan)
+- Add tag support (voltan)
+- moved "Submitter" before "Answered" in the Forms (Mamba)
+- updated English translations (Mamba)
+- replaced GIF images to PNG (Mamba)
+- Original release (Mojtaba Jamali)
