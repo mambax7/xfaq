@@ -27,7 +27,7 @@ define("_MI_XFAQ_REQUEST","Add Question");
 define("_MI_XFAQ_REQUEST_PRIVACY","Add Privacy Question");
 define("_MI_XFAQ_USER_ASKEDFAQ","My Asked Questions");
 define("_MI_XFAQ_USER_ANSWEREDFAQ","My Answered Questions");
-define("_MI_XFAQ_USER_ANSWERED","Answered questions");
+define("_MI_XFAQ_USER_ANSWERED","Answered Questions");
 
 //Config
 define("_MI_XFAQ_EDITOR","Editor");
@@ -37,8 +37,8 @@ define("_MI_XFAQ_IMG_SIZE","Image size");
 define("_MI_XFAQ_IMG_SIZE_DESC","Max size for topic image size");
 define("_MI_XFAQ_IMG_MIMETYPES","Image mimetypes");
 define("_MI_XFAQ_IMG_MIMETYPES_DESC","Mimetypes for topic image");
-define("_MI_XFAQ_NUMCOLUME","Number of colume");
-define("_MI_XFAQ_NUMCOLUME_DESC","Number of colume in each topic");
+define("_MI_XFAQ_NUMCOLUME","Number of colums");
+define("_MI_XFAQ_NUMCOLUME_DESC","Number of colums in each topic");
 define("_MI_XFAQ_PERPAGE","FAQ per page");
 define("_MI_XFAQ_PERPAGEEDSC","Number of FAQs in each page in user side");
 define("_MI_XFAQ_PERADMIN","FAQ per admin page");

@@ -21,9 +21,9 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-if (!defined('XOOPS_ROOT_PATH')) { exit(); } 
+if (!defined('XOOPS_ROOT_PATH')) { exit(); }
 
-global $xoopsModule;	
+global $xoopsModule;
 //Menu
 //define("_AM_XFAQ_MANAGER_INDEX","Home");
 
@@ -63,7 +63,7 @@ define("_AM_XFAQ_TOPIC_DESC","Description");
 define("_AM_XFAQ_TOPIC_IMG","Image");
 define("_AM_XFAQ_TOPIC_WEIGHT","Weight");
 define("_AM_XFAQ_TOPIC_SUBMITTER","Submitter");
-define("_AM_XFAQ_TOPIC_DATE_CREATED","Date_created");
+define("_AM_XFAQ_TOPIC_DATE_CREATED","Date created");
 define("_AM_XFAQ_TOPIC_ONLINE","Online");
 define("_AM_XFAQ_FAQ_NO_TOPIC","No topic exist for you to add questions.");
 
@@ -94,7 +94,7 @@ define("_AM_XFAQ_FAQ_WEIGHT","Weight");
 define("_AM_XFAQ_FAQ_METAKEY","Meta Keywords");
 define("_AM_XFAQ_FAQ_METADESC","Meta Description");
 define("_AM_XFAQ_FAQ_HOWDOI","How do I");
-define("_AM_XFAQ_FAQ_DIDUNO","Did You Know?");	
+define("_AM_XFAQ_FAQ_DIDUNO","Did You Know?");
 
 //Blocks.php
 define("_AM_XFAQ_TOPIC_BLOCK_DAY","Today's Topics");
