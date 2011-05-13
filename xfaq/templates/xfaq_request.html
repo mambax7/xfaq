@@ -36,7 +36,7 @@
      
 		<{foreach item=faq from=$faqList}>             
 		   
-        <h3><strong>	<a href="#">	<{$smarty.const._AM_XFAQ_FAQ_QUESTION}> : <{$faq.faq_question}> </a> </strong> </h3>   
+        <h3><strong>	<a href="#"> <{$faq.faq_question}> </a> </strong> </h3>   
 		
 
 	   <div>
@@ -75,7 +75,7 @@
 	   <div class="pad5 marg5 ui-widget-content ui-corner-all">
 
 	   <div class="pad5 marg5 ui-widget-header ui-corner-all">
-		<a href="#">	<{$smarty.const._AM_XFAQ_FAQ_QUESTION}> : <{$faq.faq_question}></a> 					
+		<a href="#"> <{$faq.faq_question}></a> 					
 		<a href="<{$xoops_url}>/modules/xfaq/request.php?op=answere_faq&faq_id=<{$faq.faq_id}>"><{$smarty.const._AM_XFAQ_FAQ_ANSWER}></a>
 		<a href="<{$xoops_url}>/modules/xfaq/index.php?cid=<{$faq.faq_topicId}>"><{$smarty.const._AM_XFAQ_FAQ_TOPIC}></a>
 	   </div>
