@@ -40,7 +40,7 @@ define("_AM_XFAQ_THEREARE_FAQ_ONLINE","There are <span style='color: #ff0000; fo
 //Index
 define("_AM_XFAQ_MANAGER_TOPIC","Topics");
 define("_AM_XFAQ_MANAGER_FAQ","FAQ");
-
+define("_AM_XFAQ_XFAQCONF", "xFAQ Dashboard");
 
 //General
 define("_AM_XFAQ_FORMOK","Saved successfully");
@@ -66,9 +66,10 @@ define("_AM_XFAQ_TOPIC_SUBMITTER","Submitter");
 define("_AM_XFAQ_TOPIC_DATE_CREATED","Date created");
 define("_AM_XFAQ_TOPIC_ONLINE","Online");
 define("_AM_XFAQ_FAQ_NO_TOPIC","No topic exist for you to add questions.");
+define("_AM_XFAQ_LOGOSAMENAME","A file with this name already exists, please rename your file and try again");
 
 define("_AM_XFAQ_FAQ_ADD","Add new FAQ");
-define("_AM_XFAQ_FAQ_PRIVACY","Add Priacy FAQ");
+define("_AM_XFAQ_FAQ_PRIVACY","Add Privacy FAQ");
 define("_AM_XFAQ_FAQ_EDIT","Edit Question");
 define("_AM_XFAQ_FAQ_DELETE","Delete Question");
 define("_AM_XFAQ_FAQ_ID","Id");
@@ -78,7 +79,7 @@ define("_AM_XFAQ_FAQ_TOPIC","Topic");
 define("_AM_XFAQ_FAQ_URL","URL");
 define("_AM_XFAQ_FAQ_OPEN","status");
 define("_AM_XFAQ_FAQ_OPEN1","Asked");
-define("_AM_XFAQ_FAQ_OPEN2","Answered - close");
+define("_AM_XFAQ_FAQ_OPEN2","Answered - Close");
 define("_AM_XFAQ_FAQ_OPEN3","Answered - Open");
 define("_AM_XFAQ_FAQ_OPEN4","Privacy");
 define("_AM_XFAQ_FAQ_OPEN5","Answered by users");
@@ -95,6 +96,10 @@ define("_AM_XFAQ_FAQ_METAKEY","Meta Keywords");
 define("_AM_XFAQ_FAQ_METADESC","Meta Description");
 define("_AM_XFAQ_FAQ_HOWDOI","How do I");
 define("_AM_XFAQ_FAQ_DIDUNO","Did You Know?");
+
+//Request.php
+define("_AM_XFAQ_FAQ_REQUEST_FORM_HELP","Request Form Help");
+define("_AM_XFAQ_FAQ_PRIVACY_FORM_HELP","Privacy Form Help");
 
 //Blocks.php
 define("_AM_XFAQ_TOPIC_BLOCK_DAY","Today's Topics");
@@ -125,10 +130,10 @@ define("_AM_XFAQ_ABOUT_MODULE_INFO","Module Info");
 define("_AM_XFAQ_ABOUT_AUTHOR_INFO","Author Info");
 define("_AM_XFAQ_ABOUT_DISCLAIMER","Disclaimer");
 define("_AM_XFAQ_ABOUT_DISCLAIMER_TEXT","GPL Licensed - No Warranty");
-define("_AM_XFAQ_ABOUT_DESCRIPTION",          "Description: ");
+define("_AM_XFAQ_ABOUT_DESCRIPTION", "Description: ");
 
 // text in admin footer
-define("_AM_XFAQ_ADMIN_FOOTER", "<div class='right smallsmall italic pad5'><b>" . $xoopsModule->getVar("name") . "</b> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
+define("_AM_XFAQ_ADMIN_FOOTER", "<div class='right smallsmall italic pad5'><strong>" . $xoopsModule->getVar("name") . "</strong> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
 
 define('_XFAQ_ADMIN_'," "); //
 

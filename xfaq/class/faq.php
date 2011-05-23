@@ -151,8 +151,11 @@ class xfaq_faq extends XoopsObject
         $form->addElement(new XoopsFormTextDateSelect(_AM_XFAQ_FAQ_DATE_CREATED, "faq_date_created", "", $this->getVar("faq_date_created")));
         $form->addElement(new XoopsFormTextDateSelect(_AM_XFAQ_FAQ_DATE_ANSWER, "faq_date_answer", "", $this->getVar("faq_date_created")));
         $faq_online = $this->isNew() ? 1 : $this->getVar("faq_online");
+        $check_faq_online = new XoopsFormRadioYN(_AM_XFAQ_FAQ_ONLINE, 'faq_online', $faq_online, ' ' . _YES . '', ' ' . _NO . '');
+/*
         $check_faq_online = new XoopsFormCheckBox(_AM_XFAQ_FAQ_ONLINE, "faq_online", $faq_online);
         $check_faq_online->addOption(1, " ");
+*/
         $form->addElement($check_faq_online);
 
         $form->addElement(new XoopsFormHidden("op", "save_faq"));
@@ -243,7 +246,7 @@ class xfaq_faq extends XoopsObject
 
     function getanswereForm($action = false)
     {
-        global $xoopsDB;
+        global $xoopsDB, $xoopsModuleConfig;
 
         if ($action === false) {
             $action = $_SERVER["REQUEST_URI"];

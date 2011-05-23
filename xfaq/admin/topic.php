@@ -22,11 +22,13 @@
  * ****************************************************************************
  */
 
-include_once "./header.php";
+include_once './header.php';
 
 include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
 $index_admin = new ModuleAdmin();
 echo $index_admin->addNavigation('topic.php');
+
+$xfDir = basename( dirname( dirname( __FILE__ ) ) );
 
 if (isset($_REQUEST["op"])) {
     $op = $_REQUEST["op"];
@@ -40,6 +42,53 @@ switch ($op)
         if ( !$GLOBALS["xoopsSecurity"]->check() ) {
                redirect_header("topic.php", 3, implode(",", $GLOBALS["xoopsSecurity"]->getErrors()));
         }
+
+        $ferror = '';
+        // check for a valid image
+        include_once XOOPS_ROOT_PATH . '/class/uploader.php';
+        if (!empty($_FILES['topic_img']['name'])) {
+            $path = XOOPS_UPLOAD_PATH . '/' . $xfDir . '/topics/images';  //path to targetfolder
+            if (file_exists($path . "/" . $_FILES['topic_img']['name'])) {
+                $ferror .= _AM_XFAQ_LOGOSAMENAME . "<br />\n";
+            } else {
+                $allowed_mimetypes = $xoopsModuleConfig['img_mimetypes'];
+                $maxfilesize = $xoopsModuleConfig['img_size'];
+                $uploader = new XoopsMediaUploader($path, $allowed_mimetypes, $maxfilesize);
+                if ($uploader->fetchMedia('topic_img')) {
+                    if (!$uploader->upload()) {
+                        $newerrs = $uploader->getErrors();
+                        if (is_array($newerrs)) {
+                            foreach ($newerrs as $err) {
+                                $ferror .= "{$err}<br />";
+                            }
+                        } else {
+                            $ferror .= $newerrs;
+                        }
+                    } else {
+                        $topicImg = $uploader->getSavedFileName();
+                    }
+                } else {
+                    $newerrs = $uploader->getErrors();
+                    if (is_array($newerrs)) {
+                        foreach ($newerrs as $err) {
+                            $ferror .= "{$err}<br />";
+                        }
+                    } else {
+                        $ferror .= $newerrs;
+                    }
+                }
+            }
+        } elseif ( (!empty($_POST['topic_img'])) && (trim($_POST['topic_img']) != '') ){
+            $topicImg = $myts->addSlashes($_POST['topic_img']);
+        } else {
+            $topicImg = '';
+        }
+
+        if ($ferror != "") {   // exit if error
+            redirect_header("topic.php?op=show_list_topic", 2, $ferror);
+            exit();
+        }
+
         if (isset($_REQUEST["topic_id"])) {
            $obj =& $topicHandler->get($_REQUEST["topic_id"]);
         } else {
@@ -48,11 +97,11 @@ switch ($op)
         $obj->setVar("topic_pid", $_REQUEST["topic_pid"]);
         $obj->setVar("topic_title", $_REQUEST["topic_title"]);
         $obj->setVar("topic_desc", $_REQUEST["topic_desc"]);
-        $obj->setVar("topic_img", $_REQUEST["topic_img"]);
+        $obj->setVar("topic_img", $topicImg);
         $obj->setVar("topic_weight", $_REQUEST["topic_weight"]);
         $obj->setVar("topic_submitter", $_REQUEST["topic_submitter"]);
         $obj->setVar("topic_date_created", strtotime($_REQUEST["topic_date_created"]));
-        $online = ($_REQUEST["topic_online"] == 1) ? "1" : "0";
+        $online = (1 == $_REQUEST["topic_online"]) ? "1" : "0";
         $obj->setVar("topic_online", $online);
 
         if ($topicHandler->insert($obj)) {
@@ -99,7 +148,7 @@ switch ($op)
 
     case "delete_topic":
         $obj =& $topicHandler->get($_REQUEST["topic_id"]);
-        if (isset($_REQUEST["ok"]) && $_REQUEST["ok"] == 1) {
+        if (isset($_REQUEST["ok"]) && (1 == $_REQUEST["ok"])) {
             if ( !$GLOBALS["xoopsSecurity"]->check() ) {
                 redirect_header("topic.php", 3, implode(",", $GLOBALS["xoopsSecurity"]->getErrors()));
             }
@@ -136,8 +185,7 @@ switch ($op)
         $numrows = $topicHandler->getCount();
 
         //Affichage du tableau
-        if ($numrows>0)
-        {
+        if ($numrows>0) {
             $topic_arr = $topicHandler->getAll($criteria);
 
         /**
@@ -191,8 +239,7 @@ switch ($op)
 
             $class = "odd";
 
-            foreach (array_keys($topic_arr) as $i)
-            {
+            foreach (array_keys($topic_arr) as $i) {
                 echo "<tr class=\"".$class."\">";
                 $class = ($class == "even") ? "odd" : "even";
                 echo "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar("topic_id") . "</td>\n"
@@ -212,7 +259,7 @@ switch ($op)
                     ."      <a href=\"topic.php?op=edit_topic&amp;topic_id=" . $topic_arr[$i]->getVar("topic_id") . "\"><img src=\"../images/icons/edit.png\" alt=\"" . _AM_XFAQ_EDIT . "\" title=\"" . _AM_XFAQ_EDIT . "\"></a>\n"
                     ."      <a href=\"topic.php?op=delete_topic&topic_id=" . $topic_arr[$i]->getVar("topic_id") . "\"><img src=\"../images/icons/delete.png\" alt=\"" . _AM_XFAQ_DELETE . "\" title=\"" . _AM_XFAQ_DELETE . "\"></a>\n"
                     ."    </td>\n"
-            ."  </tr>\n";
+                    ."  </tr>\n";
             }
             echo "</table><br /><br />\n";
         }

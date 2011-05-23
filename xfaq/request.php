@@ -22,12 +22,14 @@
  * ****************************************************************************
  */
 
-include "../../mainfile.php";
+include '../../mainfile.php';
 $xoopsOption['template_main'] = 'xfaq_request.html';
-include_once XOOPS_ROOT_PATH . "/header.php";
-include_once "header.php";
+include_once XOOPS_ROOT_PATH . '/header.php';
+include_once 'header.php';
 //$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
-$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . $xoopsConfig['jquery_theme'] . '/ui.all.css');
+//$xoTheme->addStylesheet('browse.php?modules/system/css/ui/' . $xoopsConfig['jquery_theme'] . '/ui.all.css');
+$xoTheme->addStylesheet('browse.php?modules/system/css/ui/' . $GLOBALS['xoopsConfig']['jquery_theme'] . '/ui.all.css');
+
 $obj =& $faqHandler->create();
 
 if (isset($_REQUEST["op"])) {
@@ -36,9 +38,8 @@ if (isset($_REQUEST["op"])) {
     @$op = "show_list_faq";
 }
 global $xoopsUser;
-if(!is_object($xoopsUser))
-{
-    redirect_header("index.php", 3, "Login");
+if(!is_object($xoopsUser)) {
+    redirect_header("index.php", 3, _LOGIN);
     exit(0);
 }
 
@@ -66,7 +67,7 @@ switch ($op)
         $obj->setVar("faq_date_created", time());
         $obj->setVar("faq_open", $_REQUEST["faq_open"]);
 
-        if($_REQUEST["faq_answer"]){
+        if($_REQUEST["faq_answer"]) {
             $obj->setVar("faq_answer", $_REQUEST["faq_answer"]);
         }
 
@@ -84,7 +85,7 @@ switch ($op)
         $xoopsTpl->assign('requestForm',$form);
         break;
 
-    case "answered_faq":
+    case "answere_faq":
         $obj = $faqHandler->get($_REQUEST["faq_id"]);
         $form = $obj->getanswereForm();
         $xoopsTpl->assign('answereForm',$form);
@@ -112,9 +113,8 @@ switch ($op)
         $criteria->setOrder("DESC");
         $criteria->add(new Criteria('faq_submitter', $userId ,'='));
         $numrows = $faqHandler->getCount($criteria);
-        if ($numrows>0)
-        {
 
+        if ($numrows>0) {
             $faq_arr = $faqHandler->getAll($criteria);
             /**
              * start pagenav setting
@@ -154,8 +154,7 @@ switch ($op)
              * end pagenav setting
              */
             $list = array();
-            foreach (array_keys($faq_arr) as $i)
-            {
+            foreach (array_keys($faq_arr) as $i) {
                 $list[$i]['faq_id'] = $faq_arr[$i]->getVar("faq_id");
                 $list[$i]['faq_question'] = $faq_arr[$i]->getVar("faq_question");
                 $list[$i]['faq_answer'] = $faq_arr[$i]->getVar("faq_answer");
@@ -182,11 +181,10 @@ switch ($op)
         $criteria->add(new Criteria('faq_ansUser', $userId ,'='));
         $numrows = $faqHandler->getCount($criteria);
         $faq_arr = $faqHandler->getAll($criteria);
-        if ($numrows>0)
-        {
+        $list = array();
+        if ($numrows>0) {
             $list = array();
-            foreach (array_keys($faq_arr) as $i)
-            {
+            foreach (array_keys($faq_arr) as $i) {
                 $list[$i]['faq_id'] = $faq_arr[$i]->getVar("faq_id");
                 $list[$i]['faq_question'] = $faq_arr[$i]->getVar("faq_question");
                 $list[$i]['faq_answer'] = $faq_arr[$i]->getVar("faq_answer");
@@ -217,12 +215,11 @@ switch ($op)
         $criteria->setOrder("DESC");
         $criteria->add(new Criteria('faq_open', '5' ,'='));
         $numrows = $faqHandler->getCount($criteria);
-        if ($numrows>0)
-        {
+        $list = array();
+        if ($numrows>0) {
             $faq_arr = $faqHandler->getAll($criteria);
             $list = array();
-            foreach (array_keys($faq_arr) as $i)
-            {
+            foreach (array_keys($faq_arr) as $i) {
                 $list[$i]['faq_id'] = $faq_arr[$i]->getVar("faq_id");
                 $list[$i]['faq_question'] = $faq_arr[$i]->getVar("faq_question");
                 $list[$i]['faq_answer'] = $faq_arr[$i]->getVar("faq_answer");
@@ -242,9 +239,39 @@ switch ($op)
         $xoopsTpl->assign('answeredNum',$numrows);
         break;
 
-    default:
+    case 'unansweredfaq':
+        $criteria = new CriteriaCompo();
+        $criteria->setSort("faq_id");
+        $criteria->setOrder("DESC");
+        $criteria->add(new Criteria('faq_open', '1' ,'='));
+        $numrows = $faqHandler->getCount($criteria);
+        $list = array();
+        if ($numrows>0) {
+            $faq_arr = $faqHandler->getAll($criteria);
+            $list = array();
+            foreach (array_keys($faq_arr) as $i) {
+                $list[$i]['faq_id'] = $faq_arr[$i]->getVar("faq_id");
+                $list[$i]['faq_question'] = $faq_arr[$i]->getVar("faq_question");
+                $list[$i]['faq_answer'] = $faq_arr[$i]->getVar("faq_answer");
+                $faq1 = $topicHandler->get($faq_arr[$i]->getVar("faq_topic"));
+                $faq_topic1 = $faq1->getVar("topic_title");
+                $list[$i]['faq_topic'] = $faq_topic1;
+                $list[$i]['faq_topicId'] = $faq_arr[$i]->getVar("faq_topic");
+                $list[$i]['faq_url'] = $faq_arr[$i]->getVar("faq_url");
+                $list[$i]['faq_ansUser'] = XoopsUser::getUnameFromId($faq_arr[$i]->getVar("faq_ansUser"));
+                $list[$i]['faq_ansUserId'] = $faq_arr[$i]->getVar("faq_ansUser");
+                $list[$i]['faq_submitter'] = XoopsUser::getUnameFromId($faq_arr[$i]->getVar("faq_submitter"));
+                $list[$i]['faq_submitterId'] = $faq_arr[$i]->getVar("faq_submitter");
+                $list[$i]['faq_date_created'] = formatTimestamp($faq_arr[$i]->getVar("faq_date_created"),"Y-m-d");
+            }
+        }
+        $xoopsTpl->assign('answeredList',$list);
+        $xoopsTpl->assign('answeredNum',$numrows);
+        break;
+
+        default:
         $form = $obj->getUserForm();
-        $xoopsTpl->assign('requestForm',$form);
+        $xoopsTpl->assign('requestForm', $form);
 
 }
 

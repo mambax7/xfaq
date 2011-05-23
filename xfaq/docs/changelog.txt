@@ -1,11 +1,30 @@
 TO DO:
 - Add comments
-- fix uploading images
-- fix menu link "Answered Questions" - it doesn't seem to work (could be related to error: Notice: Undefined variable: list in file /modules/xfaq/request.php line 203
 - improved usability on front-end
-- why is Topic Weight mandatory?
+- why is Topic Weight mandatory? and why is field so big?
 - add explanation about red star being mandatory field
 - the count of "pending questions" and "pending topics" seems to be wrong
+- need to change the way jquery javascript is loaded so it doesn't load 2X
+  if theme has it loaded already (./templates/xfaq_request.html, request.php)
+
+=================================
+2011/05/23: Version 1.0.1
+=================================
+- fixed uploading topic images
+- fixed ./include/uninstall.php and ./include/install.php references to xnews
+- fixed error Notice: Undefined variable: list in request.php file
+- fixed typo 'Priacy' to 'Private' in ./language/english/admin.php
+- added topic and faq count to admin index display
+- general PHP code cleanup & make output more XHTML compliant
+- removed hard coded text strings from ./templates/xfaq_request.html
+- changed HTML checkbox to YN Radio for online in ./class/topic.php
+  and ./class/faq.php
+- changed upload folder location to use XOOPS_UPLOAD_PATH
+- fixed "Answered Questions" menu link
+- fixed various bugs in request.php / ./templates/xfaq_request.html
+- fixed typo in xoops_version.php menu to go to unanswered questions
+- changed language in ./language/english/modinfo.php to be more clear for menu
+- added 'unanswered' questions menu item
 
 =================================
 2011/05/11: Version 1.0.0

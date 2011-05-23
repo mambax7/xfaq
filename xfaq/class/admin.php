@@ -93,7 +93,7 @@ class ModuleAdmin
     }
 
     function addLineLabel(
-        $label, $text, $value = '', $color = 'none', $type = 'default'
+        $label, $text, $value = '', $color = 'inherit', $type = 'default'
     )
     {
         $ret['label'] = $label;
@@ -111,7 +111,7 @@ class ModuleAdmin
             case "module":
                 $date = explode('/', $this->_obj->getInfo('release_date'));
                 $release_date = formatTimestamp(mktime(0, 0, 0, $date[1], $date[2], $date[0]), 's');
-                $line .= "<table>\n<tr>\n<td width=\"100px\">\n";
+                $line .= "<table>\n<tr>\n<td style=\"width: 100px;\">\n";
                 $line .= "<img src='" . XOOPS_URL . "/modules/"
                     . $this->_obj->getVar('dirname') . "/"
                     . $this->_obj->getInfo('image') . "' alt='"

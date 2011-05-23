@@ -21,7 +21,7 @@
  * Version : 1.00:
  * ****************************************************************************
  */
- 	
+
 //Menu
 define("_AM_XFAQ_MANAGER_INDEX","Index");
 
@@ -30,15 +30,15 @@ define("_AM_XFAQ_THEREARE_TOPIC_ONLINE","Il y a <span style='color: #ff0000; fon
 define("_AM_XFAQ_THEREARE_FAQ","Il y a <span style=\"color: #ff0000; font-weight: bold\">%s</span> Questions dans la base");
 define("_AM_XFAQ_THEREARE_FAQ_ONLINE","Il y a <span style='color: #ff0000; font-weight: bold'>%s</span> questions en attente");
 
-define("_AM_XFAQ_MANAGER_ABOUT","A propos");
-define("_AM_XFAQ_MANAGER_PREFERENCES","Preferences");
-define("_AM_XFAQ_MANAGER_UPDATE","Mise a jour");
-define("_AM_XFAQ_MANAGER_PERMISSIONS","Permissions");
+//define("_AM_XFAQ_MANAGER_ABOUT","A propos");
+//define("_AM_XFAQ_MANAGER_PREFERENCES","Preferences");
+//define("_AM_XFAQ_MANAGER_UPDATE","Mise a jour");
+//define("_AM_XFAQ_MANAGER_PERMISSIONS","Permissions");
 
 //Index
 define("_AM_XFAQ_MANAGER_TOPIC","Cat&eacute;gories");
 define("_AM_XFAQ_MANAGER_FAQ","FAQ");
-
+define("_AM_XFAQ_XFAQCONF", "xFAQ Dashboard");
 
 //General
 define("_AM_XFAQ_FORMOK","Enregistr&eacute; avec succ&egrave;s");
@@ -64,6 +64,7 @@ define("_AM_XFAQ_TOPIC_SUBMITTER","Auteur");
 define("_AM_XFAQ_TOPIC_DATE_CREATED","Date de cr&eacute;ation");
 define("_AM_XFAQ_TOPIC_ONLINE","En ligne");
 define("_AM_XFAQ_FAQ_NO_TOPIC","Il n'y a pas de cat&eacute;gorie vous permettant de poster votre question.");
+define("_AM_XFAQ_LOGOSAMENAME","A file with this name already exists, please rename your file and try again");
 
 define("_AM_XFAQ_FAQ_ADD","Ajouter une FAQ");
 define("_AM_XFAQ_FAQ_PRIVACY","Ajouter une FAQ priv&eacute;e");
@@ -92,7 +93,11 @@ define("_AM_XFAQ_FAQ_WEIGHT","Poids");
 define("_AM_XFAQ_FAQ_METAKEY","Meta Keywords");
 define("_AM_XFAQ_FAQ_METADESC","Meta Description");
 define("_AM_XFAQ_FAQ_HOWDOI","Comment faire ?");
-define("_AM_XFAQ_FAQ_DIDUNO","Le saviez-vous ?");	
+define("_AM_XFAQ_FAQ_DIDUNO","Le saviez-vous ?");
+
+//Request.php
+define("_AM_XFAQ_FAQ_REQUEST_FORM_HELP","Request Form Help");
+define("_AM_XFAQ_FAQ_PRIVACY_FORM_HELP","Privacy Form Help");
 
 //Blocks.php
 define("_AM_XFAQ_TOPIC_BLOCK_DAY","Sujets du jour");
@@ -122,5 +127,5 @@ define("_AM_XFAQ_ABOUT_MODULE_INFO","Infos du modules");
 define("_AM_XFAQ_ABOUT_AUTHOR_INFO","Infos sur l'auteur");
 define("_AM_XFAQ_ABOUT_DISCLAIMER","Disclaimer");
 define("_AM_XFAQ_ABOUT_DISCLAIMER_TEXT","GPL Licensed - Pas de garantie");
-	
+
 ?>

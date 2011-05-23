@@ -28,34 +28,32 @@
 //  ------------------------------------------------------------------------ //
 
 //Default Permission Settings
-function xoops_module_uninstall_xnews(&$xoopsModule) 
+function xoops_module_uninstall_xfaq(&$xoopsModule)
 {
-	$module_id = $xoopsModule->getVar('mid');
-	$module_name = $xoopsModule->getVar('name');
-	$moduleDirName = $xoopsModule->getVar('dirname');
-	$module_version = $xoopsModule->getVar('version');
-	$module_original = $xoopsModule->getInfo('original');
-	
-	global $xoopsDB;
-	
-	//DNPROSSI - DROP cloner control table
-	if (nw_TableExists($xoopsDB->prefix('news_clonerdata')))
-	{				
-		//Update database on clone uninstall
-		$result = $xoopsDB->query("SELECT * FROM " . $xoopsDB->prefix('news_clonerdata'));
-		list($count) = $xoopsDB->fetchRow($result);
-		
-		$result = $xoopsDB->query("SELECT clone_id FROM " . $xoopsDB->prefix('news_clonerdata') . " WHERE clone_dir = '" . $moduleDirName . "' ;");
-		$tmpcloneid = $xoopsDB->fetchRow($result);
-		$cloneid = $tmpcloneid[0];	
-		$xoopsDB->query("UPDATE " . $xoopsDB->prefix('news_clonerdata') . " SET clone_installed = " . 0 . " WHERE clone_id = " . $cloneid);
-		
-		//if table is empty drop
-		if ( $count == 1 && $module_original == 1 ) 
-		{
-			$result = $xoopsDB->query("DROP TABLE " . $xoopsDB->prefix('news_clonerdata'));
-	    }  
-	}
-	return true;
+    $module_id = $xoopsModule->getVar('mid');
+    $module_name = $xoopsModule->getVar('name');
+    $moduleDirName = $xoopsModule->getVar('dirname');
+    $module_version = $xoopsModule->getVar('version');
+    $module_original = $xoopsModule->getInfo('original');
+
+    global $xoopsDB;
+    //Delete contents of image uploads folder
+    $rcsvDirs = array($moduleDirName, 'topics', 'images');
+    while (!empty($rcsvDirs)) {
+        $currentDir = XOOPS_UPLOAD_PATH . "/" . implode('/', $rcsvDirs);
+        if(is_dir($currentDir)) {
+            $uploadDirContents = scandir($currentDir);
+            foreach($uploadDirContents as $thisFile) {
+                if ($thisFile == '.' || $thisFile == '..') {
+                    continue;
+                }
+                unlink("{$currentDir}/{$thisFile}");
+            }
+            rmdir($currentDir);
+            array_pop($rcsvDirs);
+        }
+    }
+
+    return true;
 }
 ?>

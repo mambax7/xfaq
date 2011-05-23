@@ -2,3 +2,8 @@ LANGUAGE DIFFERENCES
 =====================
 
 Below are language differences from a version to next version.
+
+v 1.00 to v 1.01
+----------------
+admin.php
+  - added _AM_XFAQ_LOGOSAMENAME

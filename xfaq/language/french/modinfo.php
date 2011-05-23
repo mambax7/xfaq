@@ -28,6 +28,7 @@ define("_MI_XFAQ_REQUEST_PRIVACY","Ajouter une question priv&eacute;e");
 define("_MI_XFAQ_USER_ASKEDFAQ","Mes questions pos&eacute;es");
 define("_MI_XFAQ_USER_ANSWEREDFAQ","Mes questions r&eacute;pondues");
 define("_MI_XFAQ_USER_ANSWERED","Questions r&eacute;pondues");
+define("_MI_XFAQ_USER_UNANSWERED","Unanswered Questions");
 
 //Config
 define("_MI_XFAQ_EDITOR","Editeur");

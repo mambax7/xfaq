@@ -21,36 +21,47 @@
  * Version : 1.00:
  * ****************************************************************************
  */
- 
-include_once("./header.php");
+
+include_once './header.php';
 
 global $xoopsModule;
 
+//compte "total"
+$count_topic = $topicHandler->getCount();
 
-	//compte "total"
-	$count_topic = $topicHandler->getCount();
-	//compte "attente"
-	$criteria = new CriteriaCompo();
-	$criteria->add(new Criteria("topic_online", 1));
-	$topic_online = $topicHandler->getCount($criteria);
-	
-	//compte "total"
-	$count_faq = $faqHandler->getCount();
-	//compte "attente"
-	$criteria = new CriteriaCompo();
-	$criteria->add(new Criteria("faq_online", 1));
-	$faq_online = $faqHandler->getCount($criteria);
-	
-include_once XOOPS_ROOT_PATH."/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+//compte "attente"
+$criteria = new CriteriaCompo();
+$criteria->add(new Criteria("topic_online", 1));
+$topic_online = $topicHandler->getCount($criteria);
+$topic_offline = $count_topic - $topic_online;
 
-	$indexAdmin = new ModuleAdmin();
-    
-    $indexAdmin->addConfigLabel(_AM_XFAQ_CONFIG_CHECK);
-	$indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_PHP, $xoopsModule->getInfo("min_php"), 'php');
-    $indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_XOOPS, $xoopsModule->getInfo("min_xoops"), 'xoops');
+//compte "total"
+$count_faq = $faqHandler->getCount();
+//compte "attente"
+$criteria = new CriteriaCompo();
+$criteria->add(new Criteria("faq_online", 1));
+$faq_online = $faqHandler->getCount($criteria);
+$faq_offline = $count_faq - $faq_online;
+
+include_once XOOPS_ROOT_PATH . "/modules/" . $xoopsModule->getVar("dirname") . "/class/admin.php";
+
+$indexAdmin = new ModuleAdmin();
+$indexAdmin->addLabel(_AM_XFAQ_XFAQCONF);
+
+//number of topics
+$indexAdmin->addLineLabel(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC_ONLINE, $topic_online, 'Green');
+$indexAdmin->addLineLabel(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC, $count_topic);
+
+//number of faqs
+$indexAdmin->addLineLabel(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ_ONLINE, $faq_online, 'Green');
+$indexAdmin->addLineLabel(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ, $count_faq);
+
+$indexAdmin->addConfigLabel(_AM_XFAQ_CONFIG_CHECK);
+$indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_PHP, $xoopsModule->getInfo("min_php"), 'php');
+$indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_XOOPS, $xoopsModule->getInfo("min_xoops"), 'xoops');
 
 
-    echo $indexAdmin->addNavigation('index.php');
-    echo $indexAdmin->renderIndex();
+echo $indexAdmin->addNavigation('index.php');
+echo $indexAdmin->renderIndex();
 
-include "footer.php";
+include 'footer.php';

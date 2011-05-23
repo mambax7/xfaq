@@ -29,43 +29,47 @@
 
 include_once dirname(__FILE__) . '/functions.php';
 
-//Default Permission Settings
-
-
 function xoops_module_install_xfaq() {
 
-    
- global $xoopsModule, $xoopsConfig;
-    
-    
-	//Create directory /xfaq
-	$dir = XOOPS_ROOT_PATH."/uploads/xfaq";
-	if(!is_dir($dir))
-		mkdir($dir, 0705);
-		chmod($dir, 0705);
-	
-	//Create directory /xfaq/topics/
-	$dir = XOOPS_ROOT_PATH."/uploads/xfaq/topics";
-	if(!is_dir($dir))
-		mkdir($dir, 0705);
-		chmod($dir, 0705);
-	
-	//Create directory /xfaq/topics/images/
-	$dir = XOOPS_ROOT_PATH."/uploads/xfaq/topics/images";
-	if(!is_dir($dir))
-		mkdir($dir, 0705);
-		chmod($dir, 0705);
-	
-//Copy index.html
-	$indexFile = XOOPS_ROOT_PATH."/modules/xfaq/include/index.html";
-	copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/index.html");	
-	copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/topics/index.html");
-	copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/topics/images/index.html");	
-//Copy images
-	copy(XOOPS_ROOT_PATH . '/modules/xfaq/images/topics/blank.png', XOOPS_ROOT_PATH."/uploads/xfaq/topics/images/blank.png");
-	copy(XOOPS_ROOT_PATH . '/modules/xfaq/images/topics/xoops.gif', XOOPS_ROOT_PATH."/uploads/xfaq/topics/images//xoops.gif");        
-   return true;
-	
-}
+    global $xoopsModule, $xoopsConfig;
 
+    //Create directory /xfaq
+    $dir = XOOPS_UPLOAD_PATH . "/xfaq";
+    if(!is_dir($dir)) {
+        mkdir($dir, 0705);
+    }
+    chmod($dir, 0705);
+
+    //Create directory /xfaq
+    $dir = XOOPS_ROOT_PATH."/uploads/xfaq";
+    if(!is_dir($dir)) {
+        mkdir($dir, 0705);
+    }
+    chmod($dir, 0705);
+
+    //Create directory /xfaq/topics/
+    $dir = XOOPS_ROOT_PATH."/uploads/xfaq/topics";
+    if(!is_dir($dir)) {
+        mkdir($dir, 0705);
+    }
+    chmod($dir, 0705);
+
+    //Create directory /xfaq/topics/images/
+    $dir = XOOPS_ROOT_PATH."/uploads/xfaq/topics/images";
+    if(!is_dir($dir)) {
+        mkdir($dir, 0705);
+    }
+    chmod($dir, 0705);
+
+    //Copy index.html
+    $indexFile = XOOPS_ROOT_PATH."/modules/xfaq/include/index.html";
+    copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/index.html");
+    copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/topics/index.html");
+    copy($indexFile, XOOPS_ROOT_PATH."/uploads/xfaq/topics/images/index.html");
+    //Copy images
+    copy(XOOPS_ROOT_PATH . '/modules/xfaq/images/topics/blank.png', XOOPS_ROOT_PATH."/uploads/xfaq/topics/images/blank.png");
+    copy(XOOPS_ROOT_PATH . '/modules/xfaq/images/topics/xoops.gif', XOOPS_ROOT_PATH."/uploads/xfaq/topics/images//xoops.gif");
+
+    return true;
+}
 ?>

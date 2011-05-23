@@ -24,10 +24,11 @@
 
 //User menu
 define("_MI_XFAQ_REQUEST","Add Question");
-define("_MI_XFAQ_REQUEST_PRIVACY","Add Privacy Question");
+define("_MI_XFAQ_REQUEST_PRIVACY","Add Private Question");
 define("_MI_XFAQ_USER_ASKEDFAQ","My Asked Questions");
 define("_MI_XFAQ_USER_ANSWEREDFAQ","My Answered Questions");
-define("_MI_XFAQ_USER_ANSWERED","Answered Questions");
+define("_MI_XFAQ_USER_ANSWERED","User Answered Questions");
+define("_MI_XFAQ_USER_UNANSWERED","Unanswered Questions");
 
 //Config
 define("_MI_XFAQ_EDITOR","Editor");
