@@ -17,7 +17,7 @@
  * @license::    @link{http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package::    xfaq
  * @author::     Mojtaba Jamali (http://mydolphin.ir)
- * @version::    $Id: $
+ * @version::    $Id$
  *
  * Version : 1.00:
  * ****************************************************************************
