@@ -31,13 +31,13 @@ define("_AM_XFAQ_THEREARE_FAQ_ONLINE","ØªØ¹Ø¯Ø§Ø¯ <span style='color: 
 //Index
 define("_AM_XFAQ_MANAGER_TOPIC","Cat&eacute;gories");
 define("_AM_XFAQ_MANAGER_FAQ","FAQ");
-define("_AM_XFAQ_XFAQCONF", "xFAQ Dashboard");
+define("_AM_XFAQ_XFAQCONF","xFAQ Dashboard");
 
 //General
 define("_AM_XFAQ_FORMOK","Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÙŠØª Ø°Ø®ÙŠØ±Ù‡ Ø´Ø¯.");
 define("_AM_XFAQ_FORMDELOK","Ø§Ø·Ù„Ø§Ø¹Ø§Øª Ø¨Ø§ Ù…ÙˆÙ�Ù‚ÙŠØª Ø­Ø°Ù� Ø´Ø¯");
-define("_AM_XFAQ_FORMSUREDEL", "Ø¢ÙŠØ§ Ø§Ø² Ø­Ø°Ù� Ø§ÙŠÙ† Ø±Ú©ÙˆØ±Ø¯ Ø§Ø·Ù…ÙŠÙ†Ø§Ù† Ø¯Ø§Ø±ÙŠØ¯ØŸ : <b><span style=\"color : Red\"> %s </span></b>");
-define("_AM_XFAQ_FORMSURERENEW", "Etes-vous s&ucirc;r de vouloir renevouler : <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSUREDEL","Ø¢ÙŠØ§ Ø§Ø² Ø­Ø°Ù� Ø§ÙŠÙ† Ø±Ú©ÙˆØ±Ø¯ Ø§Ø·Ù…ÙŠÙ†Ø§Ù† Ø¯Ø§Ø±ÙŠØ¯ØŸ : <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSURERENEW","Etes-vous s&ucirc;r de vouloir renevouler : <b><span style=\"color : Red\"> %s </span></b>");
 define("_AM_XFAQ_FORMUPLOAD","Ø¨Ø§Ø±Ú¯Ø²Ø§Ø±ÙŠ");
 define("_AM_XFAQ_FORMIMAGE_PATH","Ù…Ø³ÙŠØ± ØªØµÙˆÙŠØ± %s");
 define("_AM_XFAQ_FORMACTION","Ø¹Ù…Ù„");

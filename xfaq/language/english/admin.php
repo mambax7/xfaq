@@ -40,13 +40,13 @@ define("_AM_XFAQ_THEREARE_FAQ_ONLINE","There are <span style='color: #ff0000; fo
 //Index
 define("_AM_XFAQ_MANAGER_TOPIC","Topics");
 define("_AM_XFAQ_MANAGER_FAQ","FAQ");
-define("_AM_XFAQ_XFAQCONF", "xFAQ Dashboard");
+define("_AM_XFAQ_XFAQCONF","xFAQ Dashboard");
 
 //General
 define("_AM_XFAQ_FORMOK","Saved successfully");
 define("_AM_XFAQ_FORMDELOK","Deleted successfully");
-define("_AM_XFAQ_FORMSUREDEL", "Are you sure you want to delete: <b><span style=\"color : Red\"> %s </span></b>");
-define("_AM_XFAQ_FORMSURERENEW", "Are you sure you want update: <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSUREDEL","Are you sure you want to delete: <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSURERENEW","Are you sure you want update: <b><span style=\"color : Red\"> %s </span></b>");
 define("_AM_XFAQ_FORMUPLOAD","Upload");
 define("_AM_XFAQ_FORMIMAGE_PATH","File in %s");
 define("_AM_XFAQ_FORMACTION","Action");
@@ -130,14 +130,14 @@ define("_AM_XFAQ_ABOUT_MODULE_INFO","Module Info");
 define("_AM_XFAQ_ABOUT_AUTHOR_INFO","Author Info");
 define("_AM_XFAQ_ABOUT_DISCLAIMER","Disclaimer");
 define("_AM_XFAQ_ABOUT_DISCLAIMER_TEXT","GPL Licensed - No Warranty");
-define("_AM_XFAQ_ABOUT_DESCRIPTION", "Description: ");
+define("_AM_XFAQ_ABOUT_DESCRIPTION","Description: ");
 
 // text in admin footer
-define("_AM_XFAQ_ADMIN_FOOTER", "<div class='right smallsmall italic pad5'><strong>" . $xoopsModule->getVar("name") . "</strong> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
+define("_AM_XFAQ_ADMIN_FOOTER","<div class='right smallsmall italic pad5'><strong>" . $xoopsModule->getVar("name") . "</strong> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
 
 define('_XFAQ_ADMIN_'," "); //
 
-define("_AM_XFAQ_NOPERMSSET", "Permission cannot be set : No Topics created yet! Please create a Topic first.");
+define("_AM_XFAQ_NOPERMSSET","Permission cannot be set : No Topics created yet! Please create a Topic first.");
 
 // Configuration
 define("_AM_XFAQ_CONFIG_CHECK","Configuration Check");

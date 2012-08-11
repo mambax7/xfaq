@@ -32,8 +32,8 @@ define("_MI_XFAQ_USER_UNANSWERED","Unanswered Questions");
 
 //Config
 define("_MI_XFAQ_EDITOR","Editor");
-define("_MI_XFAQ_USE_TAG", "Use TAG module to generate tags");
-define("_MI_XFAQ_USE_TAG_DSC", "You have to install TAG module in order to use this option");
+define("_MI_XFAQ_USE_TAG","Use TAG module to generate tags");
+define("_MI_XFAQ_USE_TAG_DSC","You have to install TAG module in order to use this option");
 define("_MI_XFAQ_IMG_SIZE","Image size");
 define("_MI_XFAQ_IMG_SIZE_DESC","Max size for topic image size");
 define("_MI_XFAQ_IMG_MIMETYPES","Image mimetypes");
@@ -57,9 +57,9 @@ define("_MI_XFAQ_TOPICPERADMINEDSC","Number of Topics in each page in admin side
  define("_MI_XFAQ_MANAGER_PERMISSIONS","Permissions");
 
 // index.php
-define("_MI_XFAQ_MENU_01", "Home");
-define("_MI_XFAQ_ADMIN_ABOUT", "About");
-define("_MI_XFAQ_ADMIN_HELP", "Help");
+define("_MI_XFAQ_MENU_01","Home");
+define("_MI_XFAQ_ADMIN_ABOUT","About");
+define("_MI_XFAQ_ADMIN_HELP","Help");
 
 //Index
 //define("_AM_XFAQ_MANAGER_TOPIC","Topics");

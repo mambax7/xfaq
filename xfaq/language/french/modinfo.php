@@ -32,8 +32,8 @@ define("_MI_XFAQ_USER_UNANSWERED","Unanswered Questions");
 
 //Config
 define("_MI_XFAQ_EDITOR","Editeur");
-define("_MI_XFAQ_USE_TAG", "Utiliser le module TAG");
-define("_MI_XFAQ_USE_TAG_DSC", "Vous devez installer le module TAG pour utiliser cette option.");
+define("_MI_XFAQ_USE_TAG","Utiliser le module TAG");
+define("_MI_XFAQ_USE_TAG_DSC","Vous devez installer le module TAG pour utiliser cette option.");
 define("_MI_XFAQ_IMG_SIZE","Taille de l'image");
 define("_MI_XFAQ_IMG_SIZE_DESC","Taille max pour les images des cat&eacute;gories");
 define("_MI_XFAQ_IMG_MIMETYPES","Types d'images");

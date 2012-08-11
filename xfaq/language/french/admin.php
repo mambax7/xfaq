@@ -38,13 +38,13 @@ define("_AM_XFAQ_THEREARE_FAQ_ONLINE","Il y a <span style='color: #ff0000; font-
 //Index
 define("_AM_XFAQ_MANAGER_TOPIC","Cat&eacute;gories");
 define("_AM_XFAQ_MANAGER_FAQ","FAQ");
-define("_AM_XFAQ_XFAQCONF", "xFAQ Dashboard");
+define("_AM_XFAQ_XFAQCONF","xFAQ Dashboard");
 
 //General
 define("_AM_XFAQ_FORMOK","Enregistr&eacute; avec succ&egrave;s");
 define("_AM_XFAQ_FORMDELOK","Supprim&eacute; avec succ&egrave;s");
-define("_AM_XFAQ_FORMSUREDEL", "Etes vous certain de vouloir supprimer: <b><span style=\"color : Red\"> %s </span></b>");
-define("_AM_XFAQ_FORMSURERENEW", "Etes vous certain de vouloir mettre a jour: <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSUREDEL","Etes vous certain de vouloir supprimer: <b><span style=\"color : Red\"> %s </span></b>");
+define("_AM_XFAQ_FORMSURERENEW","Etes vous certain de vouloir mettre a jour: <b><span style=\"color : Red\"> %s </span></b>");
 define("_AM_XFAQ_FORMUPLOAD","Upload");
 define("_AM_XFAQ_FORMIMAGE_PATH","Fichier dans %s");
 define("_AM_XFAQ_FORMACTION","Action");
