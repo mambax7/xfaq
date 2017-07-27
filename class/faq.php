@@ -22,12 +22,10 @@
  * ****************************************************************************
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 //if (!class_exists('XoopsPersistableObjectHandler')) {
-//    include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
 //}
 
 /**
@@ -76,10 +74,10 @@ class XfaqFaq extends XoopsObject
     }
 
     /**
-     * @param        $global
-     * @param        $key
-     * @param string $default
-     * @param string $type
+     * @param               $global
+     * @param               $key
+     * @param  string       $default
+     * @param  string       $type
      * @return mixed|string
      */
     public function XFAQ_CleanVars(&$global, $key, $default = '', $type = 'int')
@@ -101,7 +99,7 @@ class XfaqFaq extends XoopsObject
     }
 
     /**
-     * @param bool $action
+     * @param  bool $action
      * @return XoopsThemeForm
      */
     public function getForm($action = false)
@@ -114,7 +112,7 @@ class XfaqFaq extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_XFAQ_FAQ_ADD) : sprintf(_AM_XFAQ_FAQ_EDIT);
 
-        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
@@ -139,11 +137,11 @@ class XfaqFaq extends XoopsObject
         }
         if (($xoopsModuleConfig['xfaqtag'] == 1) and $dir_tag_ok) {
             $tagId = $this->isNew() ? 0 : $this->getVar('faq_id');
-            include_once XOOPS_ROOT_PATH . '/modules/tag/include/formtag.php';
+            require_once XOOPS_ROOT_PATH . '/modules/tag/include/formtag.php';
             $form->addElement(new TagFormTag('item_tag', 60, 255, $tagId, 0));
         }
 
-        include_once XOOPS_ROOT_PATH . '/class/tree.php';
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
 
         $topicHandler = xoops_getModuleHandler('Topic', 'xfaq');
         $arr          = $topicHandler->getAll();
@@ -182,7 +180,7 @@ class XfaqFaq extends XoopsObject
     }
 
     /**
-     * @param bool $action
+     * @param  bool $action
      * @return XoopsThemeForm
      */
     public function getUserForm($action = false)
@@ -195,7 +193,7 @@ class XfaqFaq extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_XFAQ_FAQ_ADD) : sprintf(_AM_XFAQ_FAQ_EDIT);
 
-        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
@@ -204,7 +202,7 @@ class XfaqFaq extends XoopsObject
         $editor_configs['name'] = 'faq_question';
         $form->addElement(new XoopsFormTextArea(_AM_XFAQ_FAQ_QUESTION, 'faq_question', $this->getVar('faq_question', 'e')), true);
 
-        include_once XOOPS_ROOT_PATH . '/class/tree.php';
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $access_topic = XFAQ_MygetItemIds('xfaq_submit', 'xfaq');
         $criteria     = new CriteriaCompo();
         $criteria->add(new Criteria('topic_id', '(' . implode(',', $access_topic) . ')', 'IN'));
@@ -227,7 +225,7 @@ class XfaqFaq extends XoopsObject
     }
 
     /**
-     * @param bool $action
+     * @param  bool $action
      * @return XoopsThemeForm
      */
     public function getprivacyForm($action = false)
@@ -240,7 +238,7 @@ class XfaqFaq extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_XFAQ_FAQ_PRIVACY) : sprintf(_AM_XFAQ_FAQ_EDIT);
 
-        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
@@ -249,7 +247,7 @@ class XfaqFaq extends XoopsObject
         $editor_configs['name'] = 'faq_question';
         $form->addElement(new XoopsFormTextArea(_AM_XFAQ_FAQ_QUESTION, 'faq_question', $this->getVar('faq_question', 'e')), true);
 
-        include_once XOOPS_ROOT_PATH . '/class/tree.php';
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $access_topic = XFAQ_MygetItemIds('xfaq_submit', 'xfaq');
         $criteria     = new CriteriaCompo();
         $criteria->add(new Criteria('topic_id', '(' . implode(',', $access_topic) . ')', 'IN'));
@@ -272,7 +270,7 @@ class XfaqFaq extends XoopsObject
     }
 
     /**
-     * @param bool $action
+     * @param  bool $action
      * @return XoopsThemeForm
      */
     public function getanswereForm($action = false)
@@ -285,7 +283,7 @@ class XfaqFaq extends XoopsObject
 
         $title = sprintf(_AM_XFAQ_FAQ_ANSWER);
 
-        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
@@ -300,7 +298,7 @@ class XfaqFaq extends XoopsObject
         $editor_configs['editor'] = $xoopsModuleConfig['xfaq_editor'];
         $form->addElement(new XoopsFormEditor(_AM_XFAQ_FAQ_ANSWER, 'faq_answer', $editor_configs), true);
 
-        include_once XOOPS_ROOT_PATH . '/class/tree.php';
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
         $access_topic = XFAQ_MygetItemIds('xfaq_submit', 'xfaq');
         $criteria     = new CriteriaCompo();
         $criteria->add(new Criteria('topic_id', '(' . implode(',', $access_topic) . ')', 'IN'));
@@ -332,7 +330,7 @@ class XfaqFaqHandler extends XoopsPersistableObjectHandler
      * xfaqxfaq_faqHandler constructor.
      * @param null|XoopsDatabase $db
      */
-    public function __construct(&$db)
+    public function __construct($db)
     {
         parent::__construct($db, 'xfaq_faq', 'XfaqFaq', 'faq_id', '');
     }

@@ -22,10 +22,10 @@
  * ****************************************************************************
  */
 
-include '../../mainfile.php';
-$xoopsOption['template_main'] = 'xfaq_index.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
-include_once 'header.php';
+include __DIR__ . '/../../mainfile.php';
+$GLOBALS['xoopsOption']['template_main'] = 'xfaq_index.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
+require_once __DIR__ . '/header.php';
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 //$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . $xoopsConfig['jquery_theme'] . '/ui.all.css');
 //$xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
@@ -35,7 +35,7 @@ $access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
 $criteria     = new CriteriaCompo();
 $criteria->add(new Criteria('topic_id', '(' . implode(',', $access_topic) . ')', 'IN'));
 $criteria->add(new Criteria('topic_online', '1', '='));
-$cid = isset($_GET['cid']) ? (int)($_GET['cid']) : 0;
+$cid = isset($_GET['cid']) ? (int)$_GET['cid'] : 0;
 $criteria->add(new Criteria('topic_pid', $cid, '='));
 $criteria->setSort('topic_weight');
 $criteria->setOrder('ASC');
@@ -129,4 +129,4 @@ if ($cid > 0) {
     $xoopsTpl->assign('faqNum', $numrows);
 }
 
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';

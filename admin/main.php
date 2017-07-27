@@ -22,7 +22,7 @@
  * ****************************************************************************
  */
 
-include_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 
 global $xoopsModule;
 
@@ -43,22 +43,22 @@ $criteria->add(new Criteria('faq_online', 1));
 $faq_online  = $faqHandler->getCount($criteria);
 $faq_offline = $count_faq - $faq_online;
 
-$indexAdmin = new ModuleAdmin();
-$indexAdmin->addInfoBox(_AM_XFAQ_XFAQCONF);
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->addInfoBox(_AM_XFAQ_XFAQCONF);
 
 //number of topics
-$indexAdmin->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC_ONLINE, $topic_online, 'Green');
-$indexAdmin->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC, $count_topic);
+$adminObject->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC_ONLINE, $topic_online, 'Green');
+$adminObject->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_TOPIC, $count_topic);
 
 //number of faqs
-$indexAdmin->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ_ONLINE, $faq_online, 'Green');
-$indexAdmin->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ, $count_faq);
+$adminObject->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ_ONLINE, $faq_online, 'Green');
+$adminObject->addInfoBoxLine(_AM_XFAQ_XFAQCONF, _AM_XFAQ_THEREARE_FAQ, $count_faq);
 
-//$indexAdmin->addConfigLabel(_AM_XFAQ_CONFIG_CHECK);
-//$indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_PHP, $xoopsModule->getInfo('min_php'), 'php');
-//$indexAdmin->addLineConfigLabel(_AM_XFAQ_CONFIG_XOOPS, $xoopsModule->getInfo('min_xoops'), 'xoops');
+//$adminObject->addConfigLabel(_AM_XFAQ_CONFIG_CHECK);
+//$adminObject->addLineConfigLabel(_AM_XFAQ_CONFIG_PHP, $xoopsModule->getInfo('min_php'), 'php');
+//$adminObject->addLineConfigLabel(_AM_XFAQ_CONFIG_XOOPS, $xoopsModule->getInfo('min_xoops'), 'xoops');
 
-echo $indexAdmin->addNavigation(basename(__FILE__));
-echo $indexAdmin->renderIndex();
+$adminObject->displayNavigation(basename(__FILE__));
+$adminObject->displayIndex();
 
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';

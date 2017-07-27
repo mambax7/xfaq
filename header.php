@@ -22,19 +22,19 @@
  * ****************************************************************************
  */
 
-include_once(XOOPS_ROOT_PATH . '/kernel/module.php');
-include_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/class/tree.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopstopic.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
-include_once('include/functions.php');
+require_once XOOPS_ROOT_PATH . '/kernel/module.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/class/tree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
+require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopstopic.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
+require_once __DIR__ . '/include/functions.php';
 
 $myts = MyTextSanitizer::getInstance();
-include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
-include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
+require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
+require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
 
 // Include language file
 xoops_loadLanguage('admin', 'system');

@@ -19,9 +19,7 @@
  * ****************************************************************************
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /**
  * @param $queryarray
@@ -47,7 +45,7 @@ function xfaq_search($queryarray, $andor, $limit, $offset, $userid)
         }
         $sql .= ') ';
     }
-    $sql .= 'ORDER BY faq_id DESC';
+    $sql   .= 'ORDER BY faq_id DESC';
     $query = $xoopsDB->query('SELECT COUNT(*) FROM ' . $xoopsDB->prefix('xfaq_faq') . ' WHERE faq_id>0');
     list($numrows) = $xoopsDB->fetchrow($query);
 

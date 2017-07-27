@@ -22,11 +22,11 @@
  * ****************************************************************************
  */
 
-include_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
 
-$index_admin = new ModuleAdmin();
-echo $index_admin->addNavigation(basename(__FILE__));
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation(basename(__FILE__));
 
 $xfDir = basename(dirname(__DIR__));
 
@@ -44,11 +44,11 @@ switch ($op) {
 
         $ferror = '';
         // check for a valid image
-        include_once XOOPS_ROOT_PATH . '/class/uploader.php';
+        require_once XOOPS_ROOT_PATH . '/class/uploader.php';
         if (!empty($_FILES['topic_img']['name'])) {
             $path = XOOPS_UPLOAD_PATH . '/' . $xfDir . '/topics/images';  //path to targetfolder
             if (file_exists($path . '/' . $_FILES['topic_img']['name'])) {
-                $ferror .= _AM_XFAQ_LOGOSAMENAME . "<br />\n";
+                $ferror .= _AM_XFAQ_LOGOSAMENAME . "<br>\n";
             } else {
                 $allowed_mimetypes = $xoopsModuleConfig['img_mimetypes'];
                 $maxfilesize       = $xoopsModuleConfig['img_size'];
@@ -58,7 +58,7 @@ switch ($op) {
                         $newerrs = $uploader->getErrors();
                         if (is_array($newerrs)) {
                             foreach ($newerrs as $err) {
-                                $ferror .= "{$err}<br />";
+                                $ferror .= "{$err}<br>";
                             }
                         } else {
                             $ferror .= $newerrs;
@@ -70,7 +70,7 @@ switch ($op) {
                     $newerrs = $uploader->getErrors();
                     if (is_array($newerrs)) {
                         foreach ($newerrs as $err) {
-                            $ferror .= "{$err}<br />";
+                            $ferror .= "{$err}<br>";
                         }
                     } else {
                         $ferror .= $newerrs;
@@ -106,29 +106,29 @@ switch ($op) {
         if ($topicHandler->insert($obj)) {
             $newcat_cid = $obj->get_new_enreg();
             //permission pour voir
-            $perm_id       = isset($_REQUEST['topic_id']) ? (int)($_REQUEST['topic_id']) : $newcat_cid;
-            $gperm_handler = xoops_getHandler('groupperm');
-            $criteria      = new CriteriaCompo();
+            $perm_id      = isset($_REQUEST['topic_id']) ? (int)$_REQUEST['topic_id'] : $newcat_cid;
+            $gpermHandler = xoops_getHandler('groupperm');
+            $criteria     = new CriteriaCompo();
             $criteria->add(new Criteria('gperm_itemid', $perm_id, '='));
             $criteria->add(new Criteria('gperm_modid', $xoopsModule->getVar('mid'), '='));
             $criteria->add(new Criteria('gperm_name', 'xfaq_access', '='));
-            $gperm_handler->deleteAll($criteria);
+            $gpermHandler->deleteAll($criteria);
             if (isset($_REQUEST['groups_view'])) {
                 foreach ($_REQUEST['groups_view'] as $onegroup_id) {
-                    $gperm_handler->addRight('xfaq_access', $perm_id, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $gpermHandler->addRight('xfaq_access', $perm_id, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
             //permission pour editer
-            $perm_id       = isset($_REQUEST['topic_id']) ? (int)($_REQUEST['topic_id']) : $newcat_cid;
-            $gperm_handler = xoops_getHandler('groupperm');
-            $criteria      = new CriteriaCompo();
+            $perm_id      = isset($_REQUEST['topic_id']) ? (int)$_REQUEST['topic_id'] : $newcat_cid;
+            $gpermHandler = xoops_getHandler('groupperm');
+            $criteria     = new CriteriaCompo();
             $criteria->add(new Criteria('gperm_itemid', $perm_id, '='));
             $criteria->add(new Criteria('gperm_modid', $xoopsModule->getVar('mid'), '='));
             $criteria->add(new Criteria('gperm_name', 'xfaq_submit', '='));
-            $gperm_handler->deleteAll($criteria);
+            $gpermHandler->deleteAll($criteria);
             if (isset($_POST['groups_submit'])) {
                 foreach ($_POST['groups_submit'] as $onegroup_id) {
-                    $gperm_handler->addRight('xfaq_submit', $perm_id, $onegroup_id, $xoopsModule->getVar('mid'));
+                    $gpermHandler->addRight('xfaq_submit', $perm_id, $onegroup_id, $xoopsModule->getVar('mid'));
                 }
             }
 
@@ -222,29 +222,94 @@ switch ($op) {
             /**
              * end pagenav setting
              */
-            echo "<table style=\"width: 100%; margin: 1px;\" class=\"outer\">\n" . "  <tr>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_ID . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_TITLE . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_DESC . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_IMG . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_WEIGHT . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_TOPIC_ONLINE . "</th>\n" . "    <th style=\"text-align: center; width: 10%;\">" . _AM_XFAQ_FORMACTION . "</th>\n" . "  </tr>\n";
+            echo "<table style=\"width: 100%; margin: 1px;\" class=\"outer\">\n"
+                 . "  <tr>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_ID
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_TITLE
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_DESC
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_IMG
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_WEIGHT
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_TOPIC_ONLINE
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center; width: 10%;\">"
+                 . _AM_XFAQ_FORMACTION
+                 . "</th>\n"
+                 . "  </tr>\n";
 
             $class = 'odd';
 
             foreach (array_keys($topic_arr) as $i) {
                 echo "<tr class=\"" . $class . "\">";
                 $class = ($class === 'even') ? 'odd' : 'even';
-                echo "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar('topic_id') . "</td>\n" . "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar('topic_title') . "</td>\n" . "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar('topic_desc') . "</td>\n" . "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar('topic_img') . "</td>\n" . "    <td style=\"text-align: center;\">" . $topic_arr[$i]->getVar('topic_weight') . "</td>\n";
+                echo "    <td style=\"text-align: center;\">"
+                     . $topic_arr[$i]->getVar('topic_id')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $topic_arr[$i]->getVar('topic_title')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $topic_arr[$i]->getVar('topic_desc')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $topic_arr[$i]->getVar('topic_img')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $topic_arr[$i]->getVar('topic_weight')
+                     . "</td>\n";
 
                 $online = $topic_arr[$i]->getVar('topic_online');
 
                 if (1 == $online) {
-                    echo "    <td style=\"text-align: center;\"><a href=\"./topic.php?op=update_online_topic&amp;topic_id=" . $topic_arr[$i]->getVar('topic_id') . "&amp;topic_online=0\"><img src=\"./../assets/images/icons/on.png\" border=\"0\" alt=\"" . _AM_XFAQ_ON . "\" title=\"" . _AM_XFAQ_ON . "\"></a></td>\n";
+                    echo "    <td style=\"text-align: center;\"><a href=\"./topic.php?op=update_online_topic&amp;topic_id="
+                         . $topic_arr[$i]->getVar('topic_id')
+                         . "&amp;topic_online=0\"><img src=\"./../assets/images/icons/on.png\" border=\"0\" alt=\""
+                         . _AM_XFAQ_ON
+                         . "\" title=\""
+                         . _AM_XFAQ_ON
+                         . "\"></a></td>\n";
                 } else {
-                    echo "    <td style=\"text-align: center;\"><a href=\"./topic.php?op=update_online_topic&amp;topic_id=" . $topic_arr[$i]->getVar('topic_id') . "&amp;topic_online=1\"><img src=\"./../assets/images/icons/off.png\" border=\"0\" alt=\"" . _AM_XFAQ_OFF . "\" title=\"" . _AM_XFAQ_OFF . "\"></a></td>\n";
+                    echo "    <td style=\"text-align: center;\"><a href=\"./topic.php?op=update_online_topic&amp;topic_id="
+                         . $topic_arr[$i]->getVar('topic_id')
+                         . "&amp;topic_online=1\"><img src=\"./../assets/images/icons/off.png\" border=\"0\" alt=\""
+                         . _AM_XFAQ_OFF
+                         . "\" title=\""
+                         . _AM_XFAQ_OFF
+                         . "\"></a></td>\n";
                 }
-                echo "    <td style=\"text-align: center; width: 10%;\">\n" . "      <a href=\"topic.php?op=edit_topic&amp;topic_id=" . $topic_arr[$i]->getVar('topic_id') . "\"><img src=\"../assets/images/icons/edit.png\" alt=\"" . _AM_XFAQ_EDIT . "\" title=\"" . _AM_XFAQ_EDIT . "\"></a>\n" . "      <a href=\"topic.php?op=delete_topic&topic_id=" . $topic_arr[$i]->getVar('topic_id') . "\"><img src=\"../assets/images/icons/delete.png\" alt=\"" . _AM_XFAQ_DELETE . "\" title=\"" . _AM_XFAQ_DELETE . "\"></a>\n" . "    </td>\n" . "  </tr>\n";
+                echo "    <td style=\"text-align: center; width: 10%;\">\n"
+                     . "      <a href=\"topic.php?op=edit_topic&amp;topic_id="
+                     . $topic_arr[$i]->getVar('topic_id')
+                     . "\"><img src=\"../assets/images/icons/edit.png\" alt=\""
+                     . _AM_XFAQ_EDIT
+                     . "\" title=\""
+                     . _AM_XFAQ_EDIT
+                     . "\"></a>\n"
+                     . "      <a href=\"topic.php?op=delete_topic&topic_id="
+                     . $topic_arr[$i]->getVar('topic_id')
+                     . "\"><img src=\"../assets/images/icons/delete.png\" alt=\""
+                     . _AM_XFAQ_DELETE
+                     . "\" title=\""
+                     . _AM_XFAQ_DELETE
+                     . "\"></a>\n"
+                     . "    </td>\n"
+                     . "  </tr>\n";
             }
-            echo "</table><br /><br />\n";
+            echo "</table><br><br>\n";
         }
         // Affichage du formulaire
         $obj  = $topicHandler->create();
         $form = $obj->getForm();
 }
 
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';

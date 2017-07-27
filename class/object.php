@@ -18,6 +18,7 @@
  *
  * ****************************************************************************
  */
+
 //class XoopsPersistableObjectHandler extends XoopsObjectHandler
 class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
 {
@@ -33,20 +34,21 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
 
     /**
      * Constructor - called from child classes
-     * @param object $db        {@link XoopsDatabase} object
-     * @param string $tablename Name of database table
-     * @param string $classname Name of Class, this handler is managing
-     * @param string $keyname   Name of the property, holding the key
+     * @param object|XoopsDatabase $db        {@link XoopsDatabase}
+     *                                        object
+     * @param string               $tablename Name of database table
+     * @param string               $classname Name of Class, this handler is managing
+     * @param string               $keyname   Name of the property, holding the key
      *
-     * @param bool   $idenfierName
+     * @param bool                 $idenfierName
      */
-    public function __construct(&$db, $tablename, $classname, $keyname, $idenfierName = false)
+    public function __construct(XoopsDatabase $db, $tablename, $classname, $keyname, $idenfierName = false)
     {
         parent::__construct($db);
         $this->table     = $db->prefix($tablename);
         $this->keyName   = $keyname;
         $this->className = $classname;
-        if ($idenfierName != false) {
+        if ($idenfierName !== false) {
             $this->identifierName = $idenfierName;
         }
     }
@@ -79,7 +81,7 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
     {
         if (is_array($this->keyName)) {
             $criteria = new CriteriaCompo();
-            for ($i = 0, $iMax = count($this->keyName);  $i < $iMax; ++$i) {
+            for ($i = 0, $iMax = count($this->keyName); $i < $iMax; ++$i) {
                 $criteria->add(new Criteria($this->keyName[$i], (int)$id[$i]));
             }
         } else {
@@ -243,7 +245,7 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
         if (!$result) {
             return 0;
         }
-        if ($groupby == false) {
+        if ($groupby === false) {
             list($count) = $this->db->fetchRow($result);
 
             return $count;
@@ -264,11 +266,11 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
      * @param  bool   $force
      * @return bool   FALSE if failed.
      */
-    public function delete(&$obj, $force = false)
+    public function delete($obj, $force = false)
     {
         if (is_array($this->keyName)) {
             $clause = array();
-            for ($i = 0, $iMax = count($this->keyName);  $i < $iMax; ++$i) {
+            for ($i = 0, $iMax = count($this->keyName); $i < $iMax; ++$i) {
                 $clause[] = $this->keyName[$i] . ' = ' . $obj->getVar($this->keyName[$i]);
             }
             $whereclause = implode(' AND ', $clause);
@@ -291,15 +293,15 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
     /**
      * insert a new object in the database
      *
-     * @param  object $obj         reference to the object
-     * @param  bool   $force       whether to force the query execution despite security settings
-     * @param  bool   $checkObject check if the object is dirty and clean the attributes
-     * @return bool   FALSE if failed, TRUE if already present and unchanged or successful
+     * @param object|XoopsObject $obj         reference to the object
+     * @param  bool              $force       whether to force the query execution despite security settings
+     * @param  bool              $checkObject check if the object is dirty and clean the attributes
+     * @return bool FALSE if failed, TRUE if already present and unchanged or successful
      */
 
-    public function insert(&$obj, $force = false, $checkObject = true)
+    public function insert(XoopsObject $obj, $force = false, $checkObject = true)
     {
-        if ($checkObject != false) {
+        if ($checkObject !== false) {
             if (!is_object($obj)) {
                 var_dump($obj);
 
@@ -315,6 +317,7 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
             }
             if (!$obj->isDirty()) {
                 $obj->setErrors('Not dirty'); //will usually not be outputted as errors are not displayed when the method returns true, but it can be helpful when troubleshooting code - Mith
+
                 return true;
             }
         }
@@ -341,18 +344,20 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
         } else {
             $sql = 'UPDATE ' . $this->table . ' SET';
             foreach ($cleanvars as $key => $value) {
-                if ((!is_array($this->keyName) && $key == $this->keyName) || (is_array($this->keyName) && in_array($key, $this->keyName))) {
+                if ((!is_array($this->keyName) && $key == $this->keyName)
+                    || (is_array($this->keyName)
+                        && in_array($key, $this->keyName))) {
                     continue;
                 }
                 if (isset($notfirst)) {
                     $sql .= ',';
                 }
-                $sql .= ' ' . $key . ' = ' . $value;
+                $sql      .= ' ' . $key . ' = ' . $value;
                 $notfirst = true;
             }
             if (is_array($this->keyName)) {
                 $whereclause = '';
-                for ($i = 0, $iMax = count($this->keyName);  $i < $iMax; ++$i) {
+                for ($i = 0, $iMax = count($this->keyName); $i < $iMax; ++$i) {
                     if ($i > 0) {
                         $whereclause .= ' AND ';
                     }
@@ -384,7 +389,7 @@ class XFaqXoopsPersistableObjectHandler extends XoopsObjectHandler
      * @param  string $fieldname  Name of the field
      * @param  string $fieldvalue Value to write
      * @param  object $criteria   {@link CriteriaElement}
-     * @param bool    $force
+     * @param  bool   $force
      * @return bool
      */
     public function updateAll($fieldname, $fieldvalue, $criteria = null, $force = false)

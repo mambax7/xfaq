@@ -21,10 +21,10 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-include '../../mainfile.php';
-$xoopsOption['template_main'] = 'xfaq_faq.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
-include_once 'header.php';
+include __DIR__ . '/../../mainfile.php';
+$GLOBALS['xoopsOption']['template_main'] = 'xfaq_faq.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
+require_once __DIR__ . '/header.php';
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 $faq_id   = XFAQ_CleanVars($_REQUEST, 'faq_id', 0, 'int');
 $view_faq = $faqHandler->get($faq_id);
@@ -62,11 +62,11 @@ $xoopsTpl->assign('diduno', $view_faq->getVar('faq_diduno'));
 
 // tags
 if (($xoopsModuleConfig['xfaqtag'] == 1) && is_dir('../tag')) {
-    include_once XOOPS_ROOT_PATH . '/modules/tag/include/tagbar.php';
+    require_once XOOPS_ROOT_PATH . '/modules/tag/include/tagbar.php';
     $xoopsTpl->assign('tagbar', tagBar($faq_id, $catid = 0));
     $xoopsTpl->assign('tags', true);
 } else {
     $xoopsTpl->assign('tags', false);
 }
 
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';

@@ -22,10 +22,10 @@
  * ****************************************************************************
  */
 
-include_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
-$index_admin = new ModuleAdmin();
-echo $index_admin->addNavigation(basename(__FILE__));
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation(basename(__FILE__));
 
 if (isset($_REQUEST['op'])) {
     $op = $_REQUEST['op'];
@@ -57,8 +57,8 @@ switch ($op) {
                 } else {
                     $faq_id = $obj->get_new_enreg();
                 }
-                $tag_handler = xoops_getModuleHandler('tag', 'tag');
-                $tag_handler->updateByItem($_POST['item_tag'], $faq_id, $xoopsModule->getVar('dirname'), $catid = 0);
+                $tagHandler = xoops_getModuleHandler('tag', 'tag');
+                $tagHandler->updateByItem($_POST['item_tag'], $faq_id, $xoopsModule->getVar('dirname'), $catid = 0);
             }
             redirect_header('faq.php?op=show_list_faq', 2, _AM_XFAQ_FORMOK);
         }
@@ -150,30 +150,110 @@ switch ($op) {
              * end pagenav setting
              */
 
-            echo "<table style=\"width: 100%; margin: 1px;\" class=\"outer\">\n" . "  <tr>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_ID . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_QUESTION . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_TOPIC . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_OPEN . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_SUBMITTER . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_ANSUSER . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_DATE_CREATED . "</th>\n" . "    <th style=\"text-align: center;\">" . _AM_XFAQ_FAQ_ONLINE . "</th>\n" . "    <th style=\"text-align: center; width: 10%;\">" . _AM_XFAQ_FORMACTION . "</th>\n" . "  </tr>\n";
+            echo "<table style=\"width: 100%; margin: 1px;\" class=\"outer\">\n"
+                 . "  <tr>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_ID
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_QUESTION
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_TOPIC
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_OPEN
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_SUBMITTER
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_ANSUSER
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_DATE_CREATED
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center;\">"
+                 . _AM_XFAQ_FAQ_ONLINE
+                 . "</th>\n"
+                 . "    <th style=\"text-align: center; width: 10%;\">"
+                 . _AM_XFAQ_FORMACTION
+                 . "</th>\n"
+                 . "  </tr>\n";
 
             $class = 'odd';
 
             foreach (array_keys($faq_arr) as $i) {
                 $faq1       = $topicHandler->get($faq_arr[$i]->getVar('faq_topic'));
                 $faq_topic1 = $faq1->getVar('topic_title');
-                echo "  <tr class=\"" . $class . "\">\n" . "    <td style=\"text-align: center;\">" . $faq_arr[$i]->getVar('faq_id') . "</td>\n" . "    <td style=\"text-align: center;\">" . $faq_arr[$i]->getVar('faq_question') . "</td>\n" . "    <td style=\"text-align: center;\">" . $faq_topic1 . "</td>\n" . "    <td style=\"text-align: center;\">" . $faq_arr[$i]->getVar('faq_open') . "</td>\n" . "    <td style=\"text-align: center;\">" . XoopsUser::getUnameFromId($faq_arr[$i]->getVar('faq_submitter'), 'S') . "</td>\n" . "    <td style=\"text-align: center;\">" . XoopsUser::getUnameFromId($faq_arr[$i]->getVar('faq_ansUser'), 'S') . "</td>\n" . "    <td style=\"text-align: center;\">" . formatTimestamp($faq_arr[$i]->getVar('faq_date_created'), 'S') . "</td>\n";
+                echo "  <tr class=\""
+                     . $class
+                     . "\">\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $faq_arr[$i]->getVar('faq_id')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $faq_arr[$i]->getVar('faq_question')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $faq_topic1
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . $faq_arr[$i]->getVar('faq_open')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . XoopsUser::getUnameFromId($faq_arr[$i]->getVar('faq_submitter'), 'S')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . XoopsUser::getUnameFromId($faq_arr[$i]->getVar('faq_ansUser'), 'S')
+                     . "</td>\n"
+                     . "    <td style=\"text-align: center;\">"
+                     . formatTimestamp($faq_arr[$i]->getVar('faq_date_created'), 'S')
+                     . "</td>\n";
 
                 $online = $faq_arr[$i]->getVar('faq_online');
 
                 if ($online == 1) {
-                    echo "    <td style=\"text-align: center;\"><a href=\"./faq.php?op=update_online_faq&amp;faq_id=" . $faq_arr[$i]->getVar('faq_id') . "&amp;faq_online=0\"><img src=\"./../assets/images/icons/on.png\" border=\"0\" alt=\"" . _AM_XFAQ_ON . "\" title=\"" . _AM_XFAQ_ON . "\" /></a></td>\n";
+                    echo "    <td style=\"text-align: center;\"><a href=\"./faq.php?op=update_online_faq&amp;faq_id="
+                         . $faq_arr[$i]->getVar('faq_id')
+                         . "&amp;faq_online=0\"><img src=\"./../assets/images/icons/on.png\" border=\"0\" alt=\""
+                         . _AM_XFAQ_ON
+                         . "\" title=\""
+                         . _AM_XFAQ_ON
+                         . "\"></a></td>\n";
                 } else {
-                    echo "    <td style=\"text-align: center;\"><a href=\"./faq.php?op=update_online_faq&amp;faq_id=" . $faq_arr[$i]->getVar('faq_id') . "&amp;faq_online=1\"><img src=\"./../assets/images/icons/off.png\" border=\"0\" alt=\"" . _AM_XFAQ_OFF . "\" title=\"" . _AM_XFAQ_OFF . "\" /></a></td>\n";
+                    echo "    <td style=\"text-align: center;\"><a href=\"./faq.php?op=update_online_faq&amp;faq_id="
+                         . $faq_arr[$i]->getVar('faq_id')
+                         . "&amp;faq_online=1\"><img src=\"./../assets/images/icons/off.png\" border=\"0\" alt=\""
+                         . _AM_XFAQ_OFF
+                         . "\" title=\""
+                         . _AM_XFAQ_OFF
+                         . "\"></a></td>\n";
                 }
-                echo "    <td style=\"text-align: center; width: 10%;\">\n" . "      <a href=\"faq.php?op=edit_faq&amp;faq_id=" . $faq_arr[$i]->getVar('faq_id') . "\"><img src=\"../assets/images/icons/edit.png\" alt=\"" . _AM_XFAQ_EDIT . "\" title=\"" . _AM_XFAQ_EDIT . "\" /></a>\n" . "      <a href=\"faq.php?op=delete_faq&amp;faq_id=" . $faq_arr[$i]->getVar('faq_id') . "\"><img src=\"../assets/images/icons/delete.png\" alt=\"" . _AM_XFAQ_DELETE . "\" title=\"" . _AM_XFAQ_DELETE . "\" /></a>\n" . "    </td>\n" . "  </tr>\n";
+                echo "    <td style=\"text-align: center; width: 10%;\">\n"
+                     . "      <a href=\"faq.php?op=edit_faq&amp;faq_id="
+                     . $faq_arr[$i]->getVar('faq_id')
+                     . "\"><img src=\"../assets/images/icons/edit.png\" alt=\""
+                     . _AM_XFAQ_EDIT
+                     . "\" title=\""
+                     . _AM_XFAQ_EDIT
+                     . "\"></a>\n"
+                     . "      <a href=\"faq.php?op=delete_faq&amp;faq_id="
+                     . $faq_arr[$i]->getVar('faq_id')
+                     . "\"><img src=\"../assets/images/icons/delete.png\" alt=\""
+                     . _AM_XFAQ_DELETE
+                     . "\" title=\""
+                     . _AM_XFAQ_DELETE
+                     . "\"></a>\n"
+                     . "    </td>\n"
+                     . "  </tr>\n";
                 $class = ($class === 'even') ? 'odd' : 'even';
             }
-            echo "</table><br /><br />\n";
+            echo "</table><br><br>\n";
         }
         // Affichage du formulaire
         $obj  = $faqHandler->create();
         $form = $obj->getForm();
 }
-echo '<br /><br />';
-include_once __DIR__ . '/admin_footer.php';
+echo '<br><br>';
+require_once __DIR__ . '/admin_footer.php';

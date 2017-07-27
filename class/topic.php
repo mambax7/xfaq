@@ -22,12 +22,10 @@
  * ****************************************************************************
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 //if (!class_exists('XoopsPersistableObjectHandler')) {
-//    include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
+//    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
 //}
 
 /**
@@ -66,7 +64,7 @@ class XfaqTopic extends XoopsObject
     }
 
     /**
-     * @param bool $action
+     * @param  bool $action
      * @return XoopsThemeForm
      */
     public function getForm($action = false)
@@ -79,12 +77,12 @@ class XfaqTopic extends XoopsObject
 
         $title = $this->isNew() ? sprintf(_AM_XFAQ_TOPIC_ADD) : sprintf(_AM_XFAQ_TOPIC_EDIT);
 
-        include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+        require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra('enctype="multipart/form-data"');
 
-        include_once XOOPS_ROOT_PATH . '/class/tree.php';
+        require_once XOOPS_ROOT_PATH . '/class/tree.php';
 
         $topicHandler = xoops_getModuleHandler('Topic', 'xfaq');
 
@@ -102,7 +100,7 @@ class XfaqTopic extends XoopsObject
 
         $topic_img                = $this->getVar('topic_img') ?: 'blank.png';
         $uploadirectory_topic_img = $xoopsModule->getVar('dirname') . '/topics/images';
-        $imgtray_topic_img        = new XoopsFormElementTray(_AM_XFAQ_TOPIC_IMG, '<br />');
+        $imgtray_topic_img        = new XoopsFormElementTray(_AM_XFAQ_TOPIC_IMG, '<br>');
         $imgpath_topic_img        = sprintf(_AM_XFAQ_FORMIMAGE_PATH, $uploadirectory_topic_img);
         $imageselect_topic_img    = new XoopsFormSelect($imgpath_topic_img, 'topic_img', $topic_img);
         $image_array_topic_img    = XoopsLists:: getImgListAsArray(XOOPS_UPLOAD_PATH . '/' . $uploadirectory_topic_img);
@@ -111,9 +109,9 @@ class XfaqTopic extends XoopsObject
         }
         $imageselect_topic_img->setExtra("onchange='showImgSelected(\"image_topic_img\", \"topic_img\", \"{$uploadirectory_topic_img}\", \"\", \"" . XOOPS_UPLOAD_URL . "\")'");
         $imgtray_topic_img->addElement($imageselect_topic_img, false);
-        $imgtray_topic_img->addElement(new XoopsFormLabel('', "<img src='" . XOOPS_UPLOAD_URL . "/{$uploadirectory_topic_img}/{$topic_img}' style='max-width: 300px; padding: 1em 0em;' name='image_topic_img' id='image_topic_img' alt='' />"));
+        $imgtray_topic_img->addElement(new XoopsFormLabel('', "<img src='" . XOOPS_UPLOAD_URL . "/{$uploadirectory_topic_img}/{$topic_img}' style='max-width: 300px; padding: 1em 0em;' name='image_topic_img' id='image_topic_img' alt=''>"));
 
-        $fileseltray_topic_img = new XoopsFormElementTray('', '<br />');
+        $fileseltray_topic_img = new XoopsFormElementTray('', '<br>');
         $fileseltray_topic_img->addElement(new XoopsFormFile(_AM_XFAQ_FORMUPLOAD, 'topic_img', $xoopsModuleConfig['img_size']), false);
         $fileseltray_topic_img->addElement(new XoopsFormLabel(''), false);
         $imgtray_topic_img->addElement($fileseltray_topic_img);
@@ -131,14 +129,14 @@ class XfaqTopic extends XoopsObject
         $form->addElement($check_topic_online);
 
         //permissions
-        $member_handler = xoops_getHandler('member');
-        $group_list     = $member_handler->getGroupList();
-        $gperm_handler  = xoops_getHandler('groupperm');
-        $full_list      = array_keys($group_list);
+        $memberHandler = xoops_getHandler('member');
+        $group_list    = $memberHandler->getGroupList();
+        $gpermHandler  = xoops_getHandler('groupperm');
+        $full_list     = array_keys($group_list);
         global $xoopsModule;
         if (!$this->isNew()) {
-            $groups_ids_view                 = $gperm_handler->getGroupIds('xfaq_access', $this->getVar('topic_id'), $xoopsModule->getVar('mid'));
-            $groups_ids_submit               = $gperm_handler->getGroupIds('xfaq_submit', $this->getVar('topic_id'), $xoopsModule->getVar('mid'));
+            $groups_ids_view                 = $gpermHandler->getGroupIds('xfaq_access', $this->getVar('topic_id'), $xoopsModule->getVar('mid'));
+            $groups_ids_submit               = $gpermHandler->getGroupIds('xfaq_submit', $this->getVar('topic_id'), $xoopsModule->getVar('mid'));
             $groups_ids_view                 = array_values($groups_ids_view);
             $groups_news_can_view_checkbox   = new XoopsFormCheckBox(_AM_XFAQ_PERMISSIONS_ACCESS, 'groups_view[]', $groups_ids_view);
             $groups_ids_submit               = array_values($groups_ids_submit);
@@ -182,7 +180,7 @@ class XfaqTopicHandler extends XoopsPersistableObjectHandler
      * xfaqxfaq_topicHandler constructor.
      * @param null|XoopsDatabase $db
      */
-    public function __construct(&$db)
+    public function __construct($db)
     {
         parent::__construct($db, 'xfaq_topic', 'XfaqTopic', 'topic_id', '');
     }

@@ -22,10 +22,10 @@
  * ****************************************************************************
  */
 
-include '../../mainfile.php';
-$xoopsOption['template_main'] = 'xfaq_request.tpl';
-include_once XOOPS_ROOT_PATH . '/header.php';
-include_once 'header.php';
+include __DIR__ . '/../../mainfile.php';
+$GLOBALS['xoopsOption']['template_main'] = 'xfaq_request.tpl';
+require_once XOOPS_ROOT_PATH . '/header.php';
+require_once __DIR__ . '/header.php';
 $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/ui/' . xoops_getModuleOption('jquery_theme', 'system') . '/ui.all.css');
 //$xoTheme->addStylesheet('browse.php?modules/system/css/ui/' . $xoopsConfig['jquery_theme'] . '/ui.all.css');
 //$xoTheme->addStylesheet('browse.php?modules/system/css/ui/' . $GLOBALS['xoopsConfig']['jquery_theme'] . '/ui.all.css');
@@ -274,4 +274,4 @@ switch ($op) {
 
 }
 
-include_once XOOPS_ROOT_PATH . '/footer.php';
+require_once XOOPS_ROOT_PATH . '/footer.php';

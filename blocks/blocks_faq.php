@@ -22,7 +22,7 @@
  * ****************************************************************************
  */
 
-include_once XOOPS_ROOT_PATH . '/modules/xfaq/include/functions.php';
+require_once XOOPS_ROOT_PATH . '/modules/xfaq/include/functions.php';
 
 /**
  * @param $options
@@ -30,7 +30,7 @@ include_once XOOPS_ROOT_PATH . '/modules/xfaq/include/functions.php';
  */
 function b_xfaq_faq($options)
 {
-    include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
+    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
     $myts = MyTextSanitizer::getInstance();
 
     $faq          = array();
@@ -89,7 +89,7 @@ function b_xfaq_faq($options)
  */
 function b_xfaq_faq_edit($options)
 {
-    include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
+    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
 
     $topicHandler = xoops_getModuleHandler('Topic', 'xfaq');
     $criteria     = new CriteriaCompo();
@@ -98,13 +98,13 @@ function b_xfaq_faq_edit($options)
     $topic_arr = $topicHandler->getAll($criteria);
 
     $form = '' . _MB_XFAQ_FAQ_DISPLAY . "\n";
-    $form .= "<input type=\"hidden\" name=\"options[0]\" value=\"" . $options[0] . "\" />";
-    $form .= "<input name=\"options[1]\" size=\"5\" maxlength=\"255\" value=\"" . $options[1] . "\" type=\"text\" />&nbsp;<br />";
-    $form .= '' . _MB_XFAQ_FAQ_TITLELENGTH . " : <input name=\"options[2]\" size=\"5\" maxlength=\"255\" value=\"" . $options[2] . "\" type=\"text\" /><br /><br />";
+    $form .= "<input type=\"hidden\" name=\"options[0]\" value=\"" . $options[0] . "\">";
+    $form .= "<input name=\"options[1]\" size=\"5\" maxlength=\"255\" value=\"" . $options[1] . "\" type=\"text\">&nbsp;<br>";
+    $form .= '' . _MB_XFAQ_FAQ_TITLELENGTH . " : <input name=\"options[2]\" size=\"5\" maxlength=\"255\" value=\"" . $options[2] . "\" type=\"text\"><br><br>";
     array_shift($options);
     array_shift($options);
     array_shift($options);
-    $form .= '' . _MB_XFAQ_FAQ_CATTODISPLAY . "<br /><select name=\"options[]\" multiple=\"multiple\" size=\"5\">";
+    $form .= '' . _MB_XFAQ_FAQ_CATTODISPLAY . "<br><select name=\"options[]\" multiple=\"multiple\" size=\"5\">";
     $form .= "<option value=\"0\" " . (array_search(0, $options) === false ? '' : "selected=\"selected\"") . '>' . _MB_XFAQ_FAQ_ALLCAT . '</option>';
     foreach (array_keys($topic_arr) as $i) {
         $form .= "<option value=\"" . $topic_arr[$i]->getVar('topic_id') . "\" " . (array_search($topic_arr[$i]->getVar('topic_id'), $options) === false ? '' : "selected=\"selected\"") . '>' . $topic_arr[$i]->getVar('topic_title') . '</option>';

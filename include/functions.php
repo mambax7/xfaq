@@ -48,20 +48,21 @@ function block_addCatSelect($cats)
 function XFAQ_MygetItemIds($permtype, $dirname)
 {
     global $xoopsUser;
-    $module_handler = xoops_getHandler('module');
-    $tdmModule      = $module_handler->getByDirname($dirname);
-    $groups         = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
-    $gperm_handler  = xoops_getHandler('groupperm');
-    $categories     = $gperm_handler->getItemIds($permtype, $groups, $tdmModule->getVar('mid'));
+    /** @var XoopsModuleHandler $moduleHandler */
+    $moduleHandler = xoops_getHandler('module');
+    $tdmModule     = $moduleHandler->getByDirname($dirname);
+    $groups        = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
+    $gpermHandler  = xoops_getHandler('groupperm');
+    $categories    = $gpermHandler->getItemIds($permtype, $groups, $tdmModule->getVar('mid'));
 
     return $categories;
 }
 
 /**
- * @param        $global
- * @param        $key
- * @param string $default
- * @param string $type
+ * @param               $global
+ * @param               $key
+ * @param  string       $default
+ * @param  string       $type
  * @return mixed|string
  */
 function XFAQ_CleanVars(&$global, $key, $default = '', $type = 'int')

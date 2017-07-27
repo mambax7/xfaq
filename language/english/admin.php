@@ -21,9 +21,7 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-if (!defined('XOOPS_ROOT_PATH')) {
-    exit();
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 global $xoopsModule;
 //Menu
@@ -90,7 +88,7 @@ define('_AM_XFAQ_FAQ_SUBMITTER', 'Submitted');
 define('_AM_XFAQ_FAQ_DATE_CREATED', 'Date created');
 define('_AM_XFAQ_FAQ_ONLINE', 'Online');
 define('_AM_XFAQ_FAQ_USER_FAQ', 'Your FAQs');
-//define("_AM_XFAQ_FAQ_USER_FAQ","You don't have permission to access this area.<br/>Please login!");
+//define("_AM_XFAQ_FAQ_USER_FAQ","You don't have permission to access this area.<br>Please login!");
 define('_AM_XFAQ_FAQ_NO_ANSWER', 'There are no answer for this question until now!');
 define('_AM_XFAQ_FAQ_DATE_ANSWER', 'Date answered');
 define('_AM_XFAQ_FAQ_WEIGHT', 'Weight');

@@ -22,10 +22,10 @@
  * ****************************************************************************
  */
 
-include_once __DIR__ . '/admin_header.php';
+require_once __DIR__ . '/admin_header.php';
 xoops_cp_header();
-$index_admin = new ModuleAdmin();
-echo $index_admin->addNavigation(basename(__FILE__));
+$adminObject = \Xmf\Module\Admin::getInstance();
+$adminObject->displayNavigation(basename(__FILE__));
 
 if (!empty($_POST['submit'])) {
     redirect_header(XOOPS_URL . '/modules/' . $xoopsModule->dirname() . '/admin/permissions.php', 1, _MP_GPERMUPDATED);
@@ -33,7 +33,7 @@ if (!empty($_POST['submit'])) {
 
 global $xoopsDB;
 
-$permtoset                = isset($_POST['permtoset']) ? (int)($_POST['permtoset']) : 1;
+$permtoset                = isset($_POST['permtoset']) ? (int)$_POST['permtoset'] : 1;
 $selected                 = array('', '', '');
 $selected[$permtoset - 1] = ' selected';
 
@@ -81,7 +81,7 @@ if ($topicHandler->getCount()) {
     redirect_header('topic.php', 2, _AM_XFAQ_NOPERMSSET, false);
 }
 
-echo "<br /><br /><br /><br />\n";
+echo "<br><br><br><br>\n";
 unset($permform);
 
-include_once __DIR__ . '/admin_footer.php';
+require_once __DIR__ . '/admin_footer.php';

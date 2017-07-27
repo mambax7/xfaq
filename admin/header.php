@@ -22,26 +22,26 @@
  * ****************************************************************************
  */
 
-include '../../../include/cp_header.php';
+include __DIR__ . '/../../../include/cp_header.php';
 
-include_once(XOOPS_ROOT_PATH . '/kernel/module.php');
-include_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-include_once XOOPS_ROOT_PATH . '/class/tree.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-include_once XOOPS_ROOT_PATH . '/class/pagenav.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopstopic.php';
-include_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
+require_once XOOPS_ROOT_PATH . '/kernel/module.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+require_once XOOPS_ROOT_PATH . '/class/tree.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
+require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopstopic.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsform/grouppermform.php';
 
 //include once XOOPS_ROOT_PATH."include/cp_header.php";
-$pathIcon16      = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons16'));
-$pathIcon32      = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons32'));
+$pathIcon16           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons16'));
+$pathIcon32           = $GLOBALS['xoops']->url('www/' . $GLOBALS['xoopsModule']->getInfo('sysicons32'));
 $xoopsModuleAdminPath = $GLOBALS['xoops']->path('www/' . $GLOBALS['xoopsModule']->getInfo('dirmoduleadmin'));
 require_once "{$xoopsModuleAdminPath}/moduleadmin.php";
 
 $myts = MyTextSanitizer::getInstance();
-include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
-include_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
+require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/topic.php';
+require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
 
 if ($xoopsUser) {
     $xoopsModule = XoopsModule::getByDirname('xfaq');

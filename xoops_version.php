@@ -21,13 +21,13 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-if (!defined('XOOPS_ROOT_PATH')) {
-    die('XOOPS root path not defined');
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 $moduleDirName = basename(__DIR__);
 
-$modversion['name']                = 'Xfaq';
 $modversion['version']             = 1.03;
+$modversion['module_status']       = 'RC-1';
+$modversion['release_date']        = '2011/03/22';
+$modversion['name']                = 'Xfaq';
 $modversion['description']         = 'XOOPS FAQ';
 $modversion['author']              = 'Mojtaba Jamali';
 $modversion['author_website_url']  = 'http://mydolphin.ir';
@@ -39,15 +39,14 @@ $modversion['release_info']        = '';
 $modversion['release_file']        = '';
 $modversion['manual']              = '';
 $modversion['manual_file']         = '';
-$modversion['image']               = 'assets/images/logo_module.png';
+$modversion['image']               = 'assets/images/logoModule.png';
 $modversion['dirname']             = $moduleDirName;
 $modversion['help']                = 'page=help';
-
-$modversion['dirmoduleadmin'] = 'Frameworks/moduleclasses/moduleadmin';
-$modversion['sysicons16']     = 'Frameworks/moduleclasses/icons/16';
-$modversion['sysicons32']     = 'Frameworks/moduleclasses/icons/32';
-$modversion['modicons16']     = 'assets/images/icons/16';
-$modversion['modicons32']     = 'assets/images/icons/32';
+//$modversion['dirmoduleadmin']      = 'Frameworks/moduleclasses/moduleadmin';
+//$modversion['sysicons16']          = 'Frameworks/moduleclasses/icons/16';
+//$modversion['sysicons32']          = 'Frameworks/moduleclasses/icons/32';
+$modversion['modicons16'] = 'assets/images/icons/16';
+$modversion['modicons32'] = 'assets/images/icons/32';
 
 // About
 $modversion['demo_site_url']       = '';
@@ -55,12 +54,10 @@ $modversion['demo_site_name']      = '';
 $modversion['module_website_url']  = 'https://xoops.org';
 $modversion['module_website_name'] = 'XOOPS';
 $modversion['release']             = '0';
-$modversion['module_status']       = 'RC-1';
 $modversion['author_website_url']  = 'http://mydolphin.ir';
 $modversion['author_website_name'] = 'MyDolphin';
-$modversion['release_date']        = '2011/03/22';
 $modversion['min_php']             = '5.5';
-$modversion['min_xoops']           = '2.5.8';
+$modversion['min_xoops']           = '2.5.9';
 
 // Admin things
 $modversion['hasAdmin']    = 1;
@@ -101,7 +98,7 @@ $modversion['search']['file'] = 'include/search.inc.php';
 $modversion['search']['func'] = 'xfaq_search';
 
 $i = 1;
-include_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
 $modversion['config'][$i]['name']        = 'xfaq_editor';
 $modversion['config'][$i]['title']       = '_MI_XFAQ_EDITOR';
 $modversion['config'][$i]['description'] = '';
@@ -131,7 +128,15 @@ $modversion['config'][$i]['description'] = '_MI_XFAQ_IMG_MIMETYPES_DESC';
 $modversion['config'][$i]['formtype']    = 'select_multi';
 $modversion['config'][$i]['valuetype']   = 'array';
 $modversion['config'][$i]['default']     = array('image/gif', 'image/jpeg', 'image/png');
-$modversion['config'][$i]['options']     = array('bmp' => 'image/bmp', 'gif' => 'image/gif', 'jpeg' => 'image/pjpeg', 'jpeg' => 'image/jpeg', 'jpg' => 'image/jpeg', 'jpe' => 'image/jpeg', 'png' => 'image/png');
+$modversion['config'][$i]['options']     = array(
+    'bmp'  => 'image/bmp',
+    'gif'  => 'image/gif',
+    'jpeg' => 'image/pjpeg',
+    'jpeg' => 'image/jpeg',
+    'jpg'  => 'image/jpeg',
+    'jpe'  => 'image/jpeg',
+    'png'  => 'image/png'
+);
 $i++;
 $modversion['config'][$i]['name']        = 'numcolumn';
 $modversion['config'][$i]['title']       = '_MI_XFAQ_NUMCOLUME';

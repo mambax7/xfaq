@@ -15,6 +15,6 @@
  * @since    ::     2.5.0
  * @author   ::    Mamba (www.xoops.org)
  **/
-echo "<div style=\"text-align: center;\"><a href=\"http://www.xoops.org\" target=\"_blank\"><img src=\"../assets/images/admin/xoopsmicrobutton.gif\" alt=\"XOOPS\" title=\"XOOPS\" /></a></div>";
-echo "<div class='center smallsmall italic pad5'><strong>" . $xoopsModule->getVar('name') . "</strong> is maintained by the <a class='tooltip' rel='external' href='http://www.xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>";
+echo "<div style=\"text-align: center;\"><a href=\"https://xoops.org\" target=\"_blank\"><img src=\"../assets/images/admin/xoopsmicrobutton.gif\" alt=\"XOOPS\" title=\"XOOPS\"></a></div>";
+echo "<div class='center smallsmall italic pad5'><strong>" . $xoopsModule->getVar('name') . "</strong> is maintained by the <a class='tooltip' rel='external' href='https://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>";
 xoops_cp_footer();
