@@ -52,7 +52,7 @@ $modversion['modicons32']     = 'assets/images/icons/32';
 // About
 $modversion['demo_site_url']       = '';
 $modversion['demo_site_name']      = '';
-$modversion['module_website_url']  = 'http://xoops.org';
+$modversion['module_website_url']  = 'https://xoops.org';
 $modversion['module_website_name'] = 'XOOPS';
 $modversion['release']             = '0';
 $modversion['module_status']       = 'RC-1';

@@ -135,7 +135,7 @@ define('_AM_XFAQ_ABOUT_DISCLAIMER_TEXT', 'GPL Licensed - No Warranty');
 define('_AM_XFAQ_ABOUT_DESCRIPTION', 'Description: ');
 
 // text in admin footer
-define('_AM_XFAQ_ADMIN_FOOTER', "<div class='right smallsmall italic pad5'><strong>" . $xoopsModule->getVar('name') . "</strong> is maintained by the <a class='tooltip' rel='external' href='http://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
+define('_AM_XFAQ_ADMIN_FOOTER', "<div class='right smallsmall italic pad5'><strong>" . $xoopsModule->getVar('name') . "</strong> is maintained by the <a class='tooltip' rel='external' href='https://xoops.org/' title='Visit XOOPS Community'>XOOPS Community</a></div>");
 
 define('_XFAQ_ADMIN_', ' '); //
 
