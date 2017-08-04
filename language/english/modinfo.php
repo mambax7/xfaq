@@ -71,3 +71,17 @@ define('_MI_XFAQ_TOPIC_BLOCK_RANDOM', 'Random Topic ');
 define('_MI_XFAQ_FAQ_BLOCK_RECENT', 'Recent FAQ');
 define('_MI_XFAQ_FAQ_BLOCK_DAY', "Today's FAQ");
 define('_MI_XFAQ_FAQ_BLOCK_RANDOM', 'Random FAQ');
+
+//1.03
+//Help
+define('_MI_XFAQ_DIRNAME', basename(dirname(dirname(__DIR__))));
+define('_MI_XFAQ_HELP_HEADER', __DIR__.'/help/helpheader.tpl');
+define('_MI_XFAQ_BACK_2_ADMIN', 'Back to Administration of ');
+define('_MI_XFAQ_OVERVIEW', 'Overview');
+
+//define('_MI_XFAQ_HELP_DIR', __DIR__);
+
+//help multi-page
+define('_MI_XFAQ_DISCLAIMER', 'Disclaimer');
+define('_MI_XFAQ_LICENSE', 'License');
+define('_MI_XFAQ_SUPPORT', 'Support');

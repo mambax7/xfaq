@@ -143,3 +143,12 @@ define('_AM_XFAQ_NOPERMSSET', 'Permission cannot be set : No Topics created yet!
 define('_AM_XFAQ_CONFIG_CHECK', 'Configuration Check');
 define('_AM_XFAQ_CONFIG_PHP', 'Minimum PHP required: %s (your version is %s)');
 define('_AM_XFAQ_CONFIG_XOOPS', 'Minimum XOOPS required:  %s (your version is %s)');
+
+//1.03
+define('_AM_XFAQ_UPGRADEFAILED0', "Update failed - couldn't rename field '%s'");
+define('_AM_XFAQ_UPGRADEFAILED1', "Update failed - couldn't add new fields");
+define('_AM_XFAQ_UPGRADEFAILED2', "Update failed - couldn't rename table '%s'");
+define('_AM_XFAQ_ERROR_COLUMN', 'Could not create column in database : %s');
+define('_AM_XFAQ_ERROR_BAD_XOOPS', 'This module requires XOOPS %s+ (%s installed)');
+define('_AM_XFAQ_ERROR_BAD_PHP', 'This module requires PHP version %s+ (%s installed)');
+define('_AM_XFAQ_ERROR_TAG_REMOVAL', 'Could not remove tags from Tag Module');

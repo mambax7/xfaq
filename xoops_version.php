@@ -97,6 +97,14 @@ $modversion['hasSearch']      = 1;
 $modversion['search']['file'] = 'include/search.inc.php';
 $modversion['search']['func'] = 'xfaq_search';
 
+// ------------------- Help files ------------------- //
+$modversion['helpsection'] = array(
+    ['name' => _MI_XFAQ_OVERVIEW, 'link' => 'page=help'],
+    ['name' => _MI_XFAQ_DISCLAIMER, 'link' => 'page=disclaimer'],
+    ['name' => _MI_XFAQ_LICENSE, 'link' => 'page=license'],
+    ['name' => _MI_XFAQ_SUPPORT, 'link' => 'page=support'],
+);
+
 $i = 1;
 require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
 $modversion['config'][$i]['name']        = 'xfaq_editor';
