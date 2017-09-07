@@ -21,7 +21,7 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 global $xoopsModule;
 //Menu

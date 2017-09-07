@@ -85,7 +85,6 @@ switch ($op) {
 
         if ($ferror != '') {   // exit if error
             redirect_header('topic.php?op=show_list_topic', 2, $ferror);
-            exit();
         }
 
         if (isset($_REQUEST['topic_id'])) {
@@ -156,7 +155,7 @@ switch ($op) {
                 echo $obj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'topic_id' => $_REQUEST['topic_id'], 'op' => 'delete_topic'), $_SERVER['REQUEST_URI'], sprintf(_AM_XFAQ_FORMSUREDEL, $obj->getVar('topic')));
+            xoops_confirm(['ok' => 1, 'topic_id' => $_REQUEST['topic_id'], 'op' => 'delete_topic'], $_SERVER['REQUEST_URI'], sprintf(_AM_XFAQ_FORMSUREDEL, $obj->getVar('topic')));
         }
         break;
 

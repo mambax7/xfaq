@@ -21,7 +21,7 @@
  * Version : 1.00:
  * ****************************************************************************
  */
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 $moduleDirName = basename(__DIR__);
 
 $modversion['version']             = 1.03;
@@ -98,12 +98,12 @@ $modversion['search']['file'] = 'include/search.inc.php';
 $modversion['search']['func'] = 'xfaq_search';
 
 // ------------------- Help files ------------------- //
-$modversion['helpsection'] = array(
+$modversion['helpsection'] = [
     ['name' => _MI_XFAQ_OVERVIEW, 'link' => 'page=help'],
     ['name' => _MI_XFAQ_DISCLAIMER, 'link' => 'page=disclaimer'],
     ['name' => _MI_XFAQ_LICENSE, 'link' => 'page=license'],
     ['name' => _MI_XFAQ_SUPPORT, 'link' => 'page=support'],
-);
+];
 
 $i = 1;
 require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
@@ -135,8 +135,8 @@ $modversion['config'][$i]['title']       = '_MI_XFAQ_IMG_MIMETYPES';
 $modversion['config'][$i]['description'] = '_MI_XFAQ_IMG_MIMETYPES_DESC';
 $modversion['config'][$i]['formtype']    = 'select_multi';
 $modversion['config'][$i]['valuetype']   = 'array';
-$modversion['config'][$i]['default']     = array('image/gif', 'image/jpeg', 'image/png');
-$modversion['config'][$i]['options']     = array(
+$modversion['config'][$i]['default']     = ['image/gif', 'image/jpeg', 'image/png'];
+$modversion['config'][$i]['options']     = [
     'bmp'  => 'image/bmp',
     'gif'  => 'image/gif',
     'jpeg' => 'image/pjpeg',
@@ -144,7 +144,7 @@ $modversion['config'][$i]['options']     = array(
     'jpg'  => 'image/jpeg',
     'jpe'  => 'image/jpeg',
     'png'  => 'image/png'
-);
+];
 $i++;
 $modversion['config'][$i]['name']        = 'numcolumn';
 $modversion['config'][$i]['title']       = '_MI_XFAQ_NUMCOLUME';

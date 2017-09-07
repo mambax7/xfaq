@@ -83,7 +83,7 @@ switch ($op) {
                 echo $obj->getHtmlErrors();
             }
         } else {
-            xoops_confirm(array('ok' => 1, 'faq_id' => $_REQUEST['faq_id'], 'op' => 'delete_faq'), $_SERVER['REQUEST_URI'], sprintf(_AM_XFAQ_FORMSUREDEL, $obj->getVar('faq')));
+            xoops_confirm(['ok' => 1, 'faq_id' => $_REQUEST['faq_id'], 'op' => 'delete_faq'], $_SERVER['REQUEST_URI'], sprintf(_AM_XFAQ_FORMSUREDEL, $obj->getVar('faq')));
         }
         break;
 

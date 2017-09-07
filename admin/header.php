@@ -47,11 +47,9 @@ if ($xoopsUser) {
     $xoopsModule = XoopsModule::getByDirname('xfaq');
     if (!$xoopsUser->isAdmin($xoopsModule->mid())) {
         redirect_header(XOOPS_URL . '/', 3, _NOPERM);
-        exit();
     }
 } else {
     redirect_header(XOOPS_URL . '/', 3, _NOPERM);
-    exit();
 }
 
 xoops_cp_header();

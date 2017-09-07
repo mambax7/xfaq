@@ -22,7 +22,7 @@
  * ****************************************************************************
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 //if (!class_exists('XoopsPersistableObjectHandler')) {
 //    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
@@ -119,7 +119,7 @@ class XfaqFaq extends XoopsObject
 
         $form->addElement(new XoopsFormTextArea(_AM_XFAQ_FAQ_QUESTION, 'faq_question', $this->getVar('faq_question', 'e')), true);
 
-        $editor_configs           = array();
+        $editor_configs           = [];
         $editor_configs['name']   = 'faq_answer';
         $editor_configs['value']  = $this->getVar('faq_answer', 'e');
         $editor_configs['rows']   = 20;
@@ -198,7 +198,7 @@ class XfaqFaq extends XoopsObject
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
 
-        $editor_configs         = array();
+        $editor_configs         = [];
         $editor_configs['name'] = 'faq_question';
         $form->addElement(new XoopsFormTextArea(_AM_XFAQ_FAQ_QUESTION, 'faq_question', $this->getVar('faq_question', 'e')), true);
 
@@ -243,7 +243,7 @@ class XfaqFaq extends XoopsObject
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
 
-        $editor_configs         = array();
+        $editor_configs         = [];
         $editor_configs['name'] = 'faq_question';
         $form->addElement(new XoopsFormTextArea(_AM_XFAQ_FAQ_QUESTION, 'faq_question', $this->getVar('faq_question', 'e')), true);
 
@@ -288,7 +288,7 @@ class XfaqFaq extends XoopsObject
         $form = new XoopsThemeForm($title, 'form', $action, 'post', true);
         $form->setExtra("enctype=\"multipart/form-data\"");
         $form->addElement(new XoopsFormLabel(_AM_XFAQ_FAQ_QUESTION, $this->getVar('faq_question', 'e')));
-        $editor_configs           = array();
+        $editor_configs           = [];
         $editor_configs['name']   = 'faq_answer';
         $editor_configs['value']  = $this->getVar('faq_answer', 'e');
         $editor_configs['rows']   = 20;

@@ -119,7 +119,7 @@ class XFaqUtility extends XoopsObject
             }
         }
 
-        if (!$success) {
+        if (false === $success) {
             $module->setErrors(sprintf(_AM_XFAQ_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
         }
 

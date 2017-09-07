@@ -33,7 +33,7 @@ function b_xfaq_faq($options)
     require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/faq.php';
     $myts = MyTextSanitizer::getInstance();
 
-    $faq          = array();
+    $faq          = [];
     $type_block   = $options[0];
     $nb_faq       = $options[1];
     $length_title = $options[2];

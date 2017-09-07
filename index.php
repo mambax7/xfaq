@@ -42,7 +42,7 @@ $criteria->setOrder('ASC');
 $numrows = $topicHandler->getCount($criteria);
 
 //Affichage du tableau
-$list = array();
+$list = [];
 if ($numrows > 0) {
     $topic_arr = $topicHandler->getAll($criteria);
     foreach (array_keys($topic_arr) as $i) {
@@ -109,7 +109,7 @@ if ($cid > 0) {
          * end pagenav setting
          */
 
-        $list = array();
+        $list = [];
         foreach (array_keys($faq_arr) as $i) {
             $list[$i]['faq_id']           = $faq_arr[$i]->getVar('faq_id');
             $list[$i]['faq_question']     = $faq_arr[$i]->getVar('faq_question');

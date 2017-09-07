@@ -19,7 +19,7 @@
  * ****************************************************************************
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 /**
  * @param $queryarray
@@ -50,7 +50,7 @@ function xfaq_search($queryarray, $andor, $limit, $offset, $userid)
     list($numrows) = $xoopsDB->fetchrow($query);
 
     $result = $xoopsDB->query($sql, $limit, $offset);
-    $ret    = array();
+    $ret    = [];
     $i      = 0;
     while ($myrow = $xoopsDB->fetchArray($result)) {
         $ret[$i]['image'] = 'assets/images/icons/search.png';

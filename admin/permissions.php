@@ -34,7 +34,7 @@ if (!empty($_POST['submit'])) {
 global $xoopsDB;
 
 $permtoset                = isset($_POST['permtoset']) ? (int)$_POST['permtoset'] : 1;
-$selected                 = array('', '', '');
+$selected                 = ['', '', ''];
 $selected[$permtoset - 1] = ' selected';
 
 echo "

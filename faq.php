@@ -38,7 +38,6 @@ if (count($view_faq) == 0 || $view_faq->getVar('faq_online') == 0) {
 $access_topic = XFAQ_MygetItemIds('xfaq_access', 'xfaq');
 if (!in_array($view_faq->getVar('faq_topic'), $access_topic)) {
     redirect_header('index.php', 3, _NOPERM);
-    exit();
 }
 
 if ($view_faq->getVar('faq_metas_keyword')) {

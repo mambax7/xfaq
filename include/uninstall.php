@@ -33,7 +33,7 @@ function xoops_module_uninstall_xfaq(XoopsObject $xoopsModule)
 
     global $xoopsDB;
     //Delete contents of image uploads folder
-    $rcsvDirs = array($moduleDirName, 'topics', 'images');
+    $rcsvDirs = [$moduleDirName, 'topics', 'images'];
     while (0 !== count($rcsvDirs)) {
         $currentDir = XOOPS_UPLOAD_PATH . '/' . implode('/', $rcsvDirs);
         if (is_dir($currentDir)) {

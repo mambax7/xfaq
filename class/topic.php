@@ -22,7 +22,7 @@
  * ****************************************************************************
  */
 
-defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
+defined('XOOPS_ROOT_PATH') || exit('Restricted access.');
 
 //if (!class_exists('XoopsPersistableObjectHandler')) {
 //    require_once XOOPS_ROOT_PATH . '/modules/xfaq/class/object.php';
