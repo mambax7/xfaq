@@ -42,23 +42,23 @@ $pathModIcon32 = $moduleHelper->getModule()->getInfo('modicons32');
 xoops_loadLanguage('modinfo', $moduleDirName);
 $adminmenu            = [];
 $i                      = 0;
-$adminmenu[$i]['title'] = _MI_XFAQ_MANAGER_INDEX;
-$adminmenu[$i]['link']  = 'admin/index.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/home.png';
+'title' =>  _MI_XFAQ_MANAGER_INDEX,
+'link' =>  'admin/index.php',
+'icon' =>  'assets/images/admin/home.png',
 $i++;
-$adminmenu[$i]['title'] = _MI_XFAQ_MANAGER_TOPIC;
-$adminmenu[$i]['link']  = 'admin/topic.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/category.png';
+'title' =>  _MI_XFAQ_MANAGER_TOPIC,
+'link' =>  'admin/topic.php',
+'icon' =>  'assets/images/admin/category.png',
 $i++;
-$adminmenu[$i]['title'] = _MI_XFAQ_MANAGER_FAQ;
-$adminmenu[$i]['link']  = 'admin/faq.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/xfaq.png';
+'title' =>  _MI_XFAQ_MANAGER_FAQ,
+'link' =>  'admin/faq.php',
+'icon' =>  'assets/images/admin/xfaq.png',
 $i++;
-$adminmenu[$i]['title'] = _MI_XFAQ_MANAGER_PERMISSIONS;
-$adminmenu[$i]['link']  = 'admin/permissions.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/permissions.png';
+'title' =>  _MI_XFAQ_MANAGER_PERMISSIONS,
+'link' =>  'admin/permissions.php',
+'icon' =>  'assets/images/admin/permissions.png',
 
 $i++;
-$adminmenu[$i]['title'] = _MI_XFAQ_ADMIN_ABOUT;
-$adminmenu[$i]['link']  = 'admin/about.php';
-$adminmenu[$i]['icon']  = 'assets/images/admin/about.png';
+'title' =>  _MI_XFAQ_ADMIN_ABOUT,
+'link' =>  'admin/about.php',
+'icon' =>  'assets/images/admin/about.png',
