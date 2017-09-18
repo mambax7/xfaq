@@ -51,7 +51,7 @@ switch ($op) {
         $obj->setVar('faq_online', $online);
 
         if ($faqHandler->insert($obj)) {
-            if (($xoopsModuleConfig['xfaqtag'] == 1) and is_dir('../../tag')) {
+            if (($xoopsModuleConfig['xfaqtag'] == 1) && is_dir('../../tag')) {
                 if (isset($_REQUEST['faq_id'])) {
                     $faq_id = $_REQUEST['faq_id'];
                 } else {
